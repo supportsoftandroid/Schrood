@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:layout_width="match_parent"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:layout_marginHorizontal="@dimen/dp_10"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/dp_180"
+    android:paddingBottom="@dimen/dp_40"
+
+    android:layout_gravity="bottom"
+    android:background="@drawable/background_white_top_radius"
+    >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvChooseOption"
+            android:layout_marginTop="@dimen/dp_40"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp_25"
+            android:fontFamily="@font/poppins_bold"
+
+            android:textColor="@color/colorText"
+            android:text="@string/choose_option"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    <ImageView
+        android:layout_width="@dimen/dp_30"
+        app:layout_constraintWidth_percent="0.1"
+        android:layout_height="@dimen/dp_30"
+        android:id="@+id/imgClose"
+        android:backgroundTint="@color/colorLightGray"
+        android:background="@drawable/circle_white"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/dp_2"
+
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_40"
+        android:src="@drawable/ic_close_red"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/layout_camera"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseOption"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="@dimen/dp_30"
+        android:orientation="horizontal"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:paddingVertical="@dimen/dp_16"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:src="@drawable/ic_camera"
+            app:tint="@color/colorPrimary"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/sp_22"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/camera"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:orientation="horizontal"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:paddingVertical="@dimen/dp_16"
+        app:layout_constraintTop_toBottomOf="@+id/layout_camera"
+
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_gallary"
+            app:tint="@color/colorPrimary"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/sp_22"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/gallary"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

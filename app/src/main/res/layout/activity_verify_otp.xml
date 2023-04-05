@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.food.schrood.viewmodel.LoginViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.LoginActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_margin="@dimen/dp_20"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/imgBack"/>
+    <ImageView
+        android:id="@+id/imagelogo"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_25"
+        android:src="@drawable/phone_verification_confirmed"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="@dimen/dp_50"
+         app:layout_constraintTop_toBottomOf="@+id/imgBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="TODO" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/clLogin"
+        android:layout_marginTop="@dimen/dp_60"
+        android:layout_marginHorizontal="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagelogo"
+        >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="start"
+            android:text="@string/phone_verification"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="start"
+            android:textSize="@dimen/sp_14"
+
+            android:text="@string/enter_your_otp_code_here"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+
+
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/pinview"
+            app:pinBackground="@drawable/bg_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            app:pinWidth="@dimen/dp_60"
+            app:pinHeight="@dimen/dp_60"
+            app:pinLength="4"
+            android:gravity="center"
+            app:cursorVisible="false"
+            app:forceKeyboard="true"
+            app:hint="0"
+
+            app:textSize="@dimen/sp_12"
+            app:inputType="text"
+            app:password="false"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="start"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_15"
+
+            android:text="@string/didn_t_you_received_any_otp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="start"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textColor="@color/colorC32C46"
+            android:text="@string/resend_a_new_otp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_50"
+            android:background="@drawable/button_background_global"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:padding="@dimen/dp_10"
+            android:singleLine="true"
+            android:inputType="text"
+            android:text="@string/send_otp"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

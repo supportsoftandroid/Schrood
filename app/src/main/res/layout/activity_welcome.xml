@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightYellow"
+
+     >
+   <androidx.viewpager.widget.ViewPager
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+       app:layout_constraintHeight_percent="0.8"
+       android:id="@+id/view_pager_welcome"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/clvBottom"
+       />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/dp_35"
+
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clvSliderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginBottom="@dimen/dp_30"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:text="@string/skip"
+            android:fontFamily="@font/poppins_medium"
+            android:background="@drawable/button_background_global"
+            app:layout_constraintBottom_toTopOf="@+id/tvNext"
+            android:id="@+id/btnGetStarted"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/sp_14"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:textColor="@color/colorText"
+            android:text="@string/skip"
+            android:visibility="gone"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/tvSkip"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_14"
+            android:text="@string/next"
+            android:visibility="gone"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/tvNext"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

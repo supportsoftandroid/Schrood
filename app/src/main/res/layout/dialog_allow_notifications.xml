@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/dp_25"
+    android:orientation="vertical"
+  >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+       android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/imgBack"/>
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@id/tvTitle"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:layout_marginTop="@dimen/dp_20"
+        android:gravity="start"
+        android:text="@string/set_notification"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/sp_28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgBack" />
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDescription"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="start"
+        android:textSize="@dimen/sp_14"
+        android:text="@string/get_updates_on_your_order_status_allow_push_notifications_to_get_updates_on_your_order_status"
+        android:textColor="@color/textPlaceHolder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+    <ImageView
+        android:id="@+id/imagelogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/notification_image"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_20"
+         app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/clvBottom"
+        android:contentDescription="TODO" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/clvBottom"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="start"
+            android:text="@string/notification"
+            android:layout_gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginHorizontal="@dimen/dp_15"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="@string/stay_notified_about_new_food_updates_menu_and_recipes"
+            android:textColor="@color/textPlaceHolder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+
+
+
+        <Button
+            android:id="@+id/btnAllow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_50"
+            android:background="@drawable/button_background_global"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:singleLine="true"
+            android:inputType="text"
+            android:text="@string/allow_notification"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="start"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/colorC32C46"
+            android:text="@string/don_t_allow"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

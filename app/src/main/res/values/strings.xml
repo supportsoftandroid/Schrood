@@ -1,0 +1,286 @@
+<resources>
+    <string name="app_name">Schrood</string>
+
+
+    <string name="your_food_your_way_everywhere_everyday">Your Food Your Way Everywhere Everyday</string>
+    <string name="with_scrhood_you_can_make_sure_you_get_exactly_what_you_want_before_your_order">With Scrhood you can make sure you get exactly what you want before your order</string>
+
+    <string name="language_is_no_barrier_wherever_you_are_in_the_world">Language is no barrier wherever you are in the world</string>
+    <string name="schrood_translates_your_messages_into_any_language">Schrood translates your messages into any language</string>
+    <string name="pick_up_eat_in_or_delivery">Pick up, Eat in or Delivery</string>
+    <string name="schrood_is_free_fast_and_easy_be_schrood_with_your_food_now_that_s_schrood">Schrood is Free, Fast and Easy. Be Schrood With Your Food.Now That’s Schrood</string>
+
+    <string name="title_home">Home</string>
+
+    <string name="notifications">Notifications</string>
+    <string name="notification">Notification</string>
+    <string name="messages">Messages</string>
+    <string name="profile">Profile</string>
+    <string name="my_orders">My Orders</string>
+    <string name="orders">Orders</string>
+    <string name="booking_confirmation">Booking Confirmation</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="booking_history">Booking History</string>
+    <string name="gmp_key">AIzaSyCSi2T-u-k5H7VMSasCjaGarHk1grQQ_uk</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_in">Sign in</string>
+
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
+    <string name="please_enter_email">Please Enter Email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="email_address">Email Address</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="add_address">Add Address</string>
+    <string name="enter_username_email_address">Enter username/email address</string>
+    <string name="enter_password">Enter password</string>
+    <string name="current_password">Current Password</string>
+    <string name="enter_current_password">Enter current password</string>
+    <string name="new_password">New Password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="strong_password_message">Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number, one special character</string>
+    <string name="enter_conform_password">Enter confirm password</string>
+    <string name="current_password_and_new_password_different">Current password and your new password must be different</string>
+    <string name="conform_password_not_match">Password and Confirm password should be same</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submit">Submit</string>
+    <string name="currency_symbol">$</string>
+
+    <string name="filter">Filter</string>
+    <string name="press_again_to_exit_from_app">Press back again to exit</string>
+    <string name="area">Area</string>
+    <string name="dummy_contact">(08)82162790</string>
+    <string name="dummy_name">John Doe</string>
+    <string name="dummy_card_no">4125 3652 4785 9856</string>
+    <string name="dummy_name_email">johndoe@gmail.com</string>
+    <string name="dummy_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint temporibus molestias accusantium perspiciatis dolorem, ratione consequuntur blanditiis officia ssimus dolores quo, commodi magni ad rerum nostrum ab non eaque id asperiores perferendis architecto?</string>
+    <string name="choose_option">Choose Option</string>
+    <string name="camera">Camera</string>
+    <string name="gallary">Gallary</string>
+
+
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="loading">Loading…</string>
+    <string name="write_a_comment">Write a comment …</string>
+    <string name="enter_message">Enter  message</string>
+    <string name="please_select_ratting">Please select ratting</string>
+    <string name="change_password">Change Password</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dialogTitle">Are you sure?</string>
+    <string name="deleteMessage">Are you sure wants to delete?</string>
+    <string name="makePaymentMessage">Are you sure wants to make payment?</string>
+    <string name="declineMessage">Are you sure wants to decline?</string>
+    <string name="logout_message">Are you sure want to Logout.</string>
+    <string name="cancel_message">Are you wants to cancel this</string>
+    <string name="state">State</string>
+    <string name="first_name">First Name</string>
+    <string name="by_clicking_submit_you_are_agreeing_to_the">By clicking submit you are agreeing to the</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="help_center">Help Center</string>
+    <string name="logout">Logout</string>
+    <string name="upload_profile_image">Please upload profile image</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="last_name">Last Name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="enter_valid_email_address">Enter valid email address</string>
+    <string name="upload_profile_picture">Upload profile picture</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="enter_mobile_number">Enter mobile number</string>
+    <string name="suburb">Suburb</string>
+    <string name="enter_suburb">Enter suburb</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_about_you">Enter about you</string>
+    <string name="about">About</string>
+    <string name="enter_the_verification_code">Enter the Verification Code</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="continues">Continue</string>
+    <string name="enter_the_6_digit_code_that_we_ve_sent_to_alexa_geno_gmail_com">Enter the 6 digit code that we\'ve sent to alexa.geno@gmail.com</string>
+    <string name="enter_the_6_digit_code_that_we_ve_sent_to">Enter the 6 digit code that we\'ve sent to </string>
+    <string name="resend_code">Resend Code</string>
+
+    <string name="to_reset_your_password_please_enter_your_registered_email_address_below">To reset your password, please enter your registered email address below.</string>
+
+
+    <string name="students">Students</string>
+    <string name="ratings">Ratings</string>
+    <string name="reviews">Review</string>
+
+    <string name="message">Message</string>
+
+    <string name="please_act_in_accordance_with_the_rules">Please act in accordance with the rules</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="please_update_profile">Please Update Profile first</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="maximum_distance">Maximum distance</string>
+    <string name="fees_range">Fees range</string>
+    <string name="contact">Contact</string>
+    <string name="contact_type">Contact Type</string>
+
+    <string name="please_select_contact_mode">Please select contact mode</string>
+    <string name="please_select_slot_item">Please select slot item</string>
+    <string name="any">Any</string>
+    <string name="online">Online</string>
+    <string name="in_person">In Person</string>
+    <string name="gender">Gender</string>
+    <string name="branch">Branch</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="delete">Delete</string>
+    <string name="saved_cards">Saved Cards</string>
+    <string name="aboutApp">About App</string>
+
+    <string name="duration">Duration</string>
+
+    <string name="write_preferred_address">Write Preferred Address</string>
+    <string name="home">Home</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_tutor">Welcome Tutor</string>
+    <string name="amount">Amount</string>
+    <string name="get_in_touch">Get in touch</string>
+    <string name="faqs">FAQs</string>
+    <string name="add_a_new_card">Add a new card</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="payable_amount">Payable Amount</string>
+    <string name="payment_history">Payment History</string>
+
+    <string name="or_continue_with">OR CONTINUE WITH</string>
+
+    <string name="card_number">Card Number</string>
+    <string name="cvv_code">CVV Code</string>
+    <string name="exp_date">Exp Date</string>
+    <string name="add_card">Add Card</string>
+    <string name="select">Select</string>
+
+    <string name="please_select_gender">Please Select Gender</string>
+
+
+    <string name="please_select_subject">Please Select Subject</string>
+    <string name="please_add_class_grade_first">Please add class or grade first</string>
+    <string name="password_validation">Please Enter password length must be 6 to 20 character  </string>
+    <string name="fee_per_hour">Fee Per Hour</string>
+    <string name="publish">Publish</string>
+    <string name="enter_fee_per_hour">Enter fee per hour</string>
+    <string name="others">Others</string>
+    <string name="address">Address</string>
+    <string name="default_notification_channel_id">default_notification channel schrood app</string>
+
+    <string name="enter_amount">Enter Amount</string>
+
+
+
+    <string name="add">Add</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="no_data_found">No data found!</string>
+    <string name="no_chat_user_yet">No  chat user yet!</string>
+    <string name="no_card_found">No card found!</string>
+    <string name="lets_start_chat">Lest start chat!</string>
+    <string name="no_booking_found">No booking available!</string>
+    <string name="tutor_not_found"> Tutor not found!</string>
+
+    <string name="bank_details">Bank Details</string>
+    <string name="add_bank_details">Add Bank Details</string>
+    <string name="edit_bank_details">Edit Bank Details</string>
+
+    <string name="to_get_your_tuition_payments_please_tell_us_your_bank_details">To get your tuition payments, please tell us your bank details.</string>
+    <string name="account_holder_name">Account Holder Name</string>
+    <string name="account_bank_name">Account Bank Name</string>
+    <string name="account_number">Account Number</string>
+    <string name="bank_routing_number">Bank Routing Number</string>
+    <string name="enter_bank_name">Enter Bank Name</string>
+    <string name="enter_account_number">Enter Account Number</string>
+    <string name="government_issued_id_number">Government Issued Id Number</string>
+    <string name="enter_government_issued_id_number">Enter Government Issued Id Number</string>
+    <string name="student_reviews">Student Reviews</string>
+    <string name="name">Name</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="pick_address">Pick Address</string>
+    <string name="search_here">Search Here</string>
+    <string name="search_tutor">Search Tutor</string>
+    <string name="upcoming_bookings">Upcoming Bookings</string>
+    <string name="see_all">See All</string>
+    <string name="update_slot">Update Slot</string>
+    <string name="today_bookings">Today Bookings</string>
+    <string name="all_bookings">All Bookings</string>
+    <string name="today_evenue">Today Revenue</string>
+    <string name="total_evenue">Total Revenue</string>
+
+    <string name="good_morning">Good Morning</string>
+    <string name="good_afternoon">Good Afternoon</string>
+    <string name="good_evening">Good Evening</string>
+    <string name="good_night">Good Night</string>
+    <string name="do_not_share_your_phone_number_or_email_address_we_cannot_protect_your_money_or_provide_insurance_when_payments_are_not_conducted_through_geno">Do not share your phone number or email address. We cannot protect your money or provide insurance when payments are not conducted through Geno.</string>
+    <string name="day_status_label">Day Status:</string>
+    <string name="please_select_booking_day">Please select booking day</string>
+    <string name="please_enter_address">Please enter address</string>
+    <string name="please_select_slot">Please select slot</string>
+    <string name="tutor_booked_successful">Tutor booked successful !</string>
+    <string name="booking_success">Booking Success</string>
+    <string name="please_enter_message">Please enter message</string>
+    <string name="_10_56_am">10:56 AM</string>
+    <string name="accept">Accept</string>
+    <string name="complete">Complete</string>
+    <string name="cancel">Cancel</string>
+    <string name="completed">Completed</string>
+    <string name="booking_status">Booking Status</string>
+    <string name="cancel_reason">Cancel Reason</string>
+    <string name="cancel_booking">Cancel Booking</string>
+    <string name="pending">Pending</string>
+    <string name="accepted">Accepted</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="paid_amount">Paid Amount</string>
+    <string name="invalid_card">Invalid card</string>
+    <string name="your_rating">Your Ratting</string>
+    <string name="add_review_on_booking">Add Review on Booking</string>
+    <string name="write_a_review">write a review </string>
+    <string name="rating">Rating</string>
+    <string name="select_card">Select Card</string>
+    <string name="enter_address">Enter address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="or">OR</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="sign_up_now">Sign up now!</string>
+    <string name="enter_your_phone_number_to_reset_your_password_instruction">Enter your phone number to reset your password instruction.</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="phone_verification">Phone Verification</string>
+    <string name="enter_your_otp_code_here">Enter your OTP code here</string>
+    <string name="didn_t_you_received_any_otp">Didn\'t you received any OTP?</string>
+    <string name="resend_a_new_otp">Resend a new OTP</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="please_register_yourself_by_giving_below_information_to_use_schrood_app">Please register yourself by giving below information to use Schrood App</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="i_agree_with">I agree with</string>
+    <string name="get_updates_on_your_order_status_allow_push_notifications_to_get_updates_on_your_order_status">Get updates on your order status. Allow push notifications to get updates on your order status.</string>
+    <string name="allow_notification">Allow Notification</string>
+    <string name="stay_notified_about_new_food_updates_menu_and_recipes">Stay notified about new food, updates, menu and recipes.</string>
+    <string name="don_t_allow">Don’t Allow</string>
+    <string name="set_notification">Set Notification</string>
+    <string-array name="gender_array">
+        <item>Select </item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="select_demo">
+        <item>Select </item>
+
+    </string-array>
+    <string-array name="experience_array">
+        <item>Select </item>
+    </string-array>
+
+</resources>
