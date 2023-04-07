@@ -4,19 +4,268 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAppBg"
     tools:context=".ui.fragments.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:background="@drawable/background_appcolor_bottom_radius"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+
+            android:id="@+id/tvLocationLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:inputType="text"
+            android:maxLines="2"
+            android:text="@string/allow_location_access"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:drawableStart="@drawable/ic_location"
+            android:drawableEnd="@drawable/ic_edit"
+            android:drawablePadding="@dimen/dp_5"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:maxLines="2"
+            android:text="Avenue street"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintStart_toEndOf="@id/imgProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLocationLabel" />
+
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:padding="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:src="@drawable/profile_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clvSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@drawable/border_search"
+            android:padding="@dimen/dp_15"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocation">
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_search_fill"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_15"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start|center_vertical"
+                android:hint="@string/search_restaurant_or_food"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.1"
+                android:singleLine="true"
+                android:textColor="@color/textPlaceHolder"
+                android:textColorHint="@color/textPlaceHolder"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSearch"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:id="@+id/rvCategory"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clvSearch"
+            tools:listitem="@layout/list_category_item"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:scrollbars="none"
+
+        android:id="@+id/scrollView"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clvHeader"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_50">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvRecentOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:paddingTop="@dimen/dp_30"
+        android:paddingStart="@dimen/dp_30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/your_recent_orders"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintEnd_toStartOf="@+id/tvSeeAll"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSeeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/show_all"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvRecentOrder"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrder"
+            tools:listitem="@layout/list_order_home_item"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/clvStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="@dimen/dp_20"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clvRecentOrder">
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="@dimen/dp_10"
+
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/show_all"
+            android:background="@color/colorGray"
+
+
+
+            />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvStoreCount"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="136 Restaurants Near You"
+            android:gravity="center"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dp_10"
+
+            android:background="@drawable/button_background_global"
+
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvStore"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/dp_30"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrder"
+            tools:listitem="@layout/list_store_item"/>
+    </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

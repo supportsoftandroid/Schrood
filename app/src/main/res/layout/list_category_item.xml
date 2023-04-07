@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+     >
+    <data>
+        <variable
+            name="modal"
+            type="com.food.schrood.model.CommonDataItem" />
+
+    </data>
+
+<LinearLayout
+    android:layout_width="@dimen/dp_95"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dp_10"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:orientation="vertical">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_75"
+            android:contentDescription="@string/app_name"
+            android:layout_gravity="center"
+            android:src="@drawable/food_category_1"
+              />
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_10"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="Appetizers"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp_13" />
+
+
+
+</LinearLayout>
+</layout>

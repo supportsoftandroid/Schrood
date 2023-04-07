@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:layout_marginTop="@dimen/dp_1"
+     >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnSubmit"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/list_text_item" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="@string/loading"
+        android:textColor="@color/colorTextHint"
+        android:textSize="@dimen/sp_17"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSubmit"
+        android:background="@drawable/border_button_global"
+        android:text="@string/continues"
+        android:textColor="@color/app_color"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/dp_10"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>
+
+

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/dp_20"
+    tools:context=".ui.fragments.HomeFragment">
+        <ImageView
+
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clvSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@drawable/btn_background_gray_radius_5"
+            android:padding="@dimen/dp_15"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBack">
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/textPlaceHolder" />
+
+            <EditText
+                android:id="@+id/tvSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start|center_vertical"
+                android:hint="@string/search_restaurant_or_food"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.1"
+                android:singleLine="true"
+                android:textColor="@color/textPlaceHolder"
+                android:textColorHint="@color/textPlaceHolder"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSearch"
+                app:layout_constraintEnd_toStartOf="@id/imgFilter"
+                app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imgFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_filter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/textPlaceHolder" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_50"
+            android:text="Sandwich"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clvSearch" />
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/rgStatus"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:weightSum="1"
+            >
+
+            <RadioButton
+                android:id="@+id/rbStore"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_45"
+                android:layout_weight="0.5"
+                android:background="@drawable/tab_selecter"
+                android:button="@null"
+                android:checked="true"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center"
+                android:inputType="text"
+                android:padding="@dimen/dp_5"
+                android:text="@string/restaurant"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp_16" />
+
+            <RadioButton
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_45"
+                android:layout_weight="0.5"
+                android:id="@+id/rbProduct"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:checked="false"
+                android:button="@null"
+                android:gravity="center"
+                android:inputType="text"
+                android:textColor="@color/textPlaceHolder"
+                android:padding="@dimen/dp_5"
+                android:textSize="@dimen/sp_16"
+                android:textAllCaps="true"
+                android:background="@drawable/tab_selecter"
+                android:text="Dishes"/>
+
+        </RadioGroup>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rgStatus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/dp_50">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatusList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_status_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp_15"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_search_product_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/rvStatusList"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:visibility="gone"
+                android:textColor="@color/colorTextHint"
+                android:textSize="@dimen/sp_17"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

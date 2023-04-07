@@ -270,6 +270,13 @@
     <string name="stay_notified_about_new_food_updates_menu_and_recipes">Stay notified about new food, updates, menu and recipes.</string>
     <string name="don_t_allow">Don’t Allow</string>
     <string name="set_notification">Set Notification</string>
+    <string name="allow_location_access">Allow Location Access</string>
+    <string name="get_nearby_restaurant_list_by_giving_access_of_your_gps_location">Get Nearby restaurant list by giving access of your GPS location.</string>
+    <string name="location">Location</string>
+    <string name="get_foods_from_you_nearby_favourite_restaurants_by_enabling_gps">Get foods from you nearby favourite restaurants by enabling GPS.</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="search_restaurant_or_food">Search Restaurant or Food</string>
+    <string name="your_recent_orders">Your recent orders</string>
     <string-array name="gender_array">
         <item>Select </item>
         <item>Male</item>
@@ -282,5 +289,16 @@
     <string-array name="experience_array">
         <item>Select </item>
     </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="show_all">Show all</string>
+    <string name="dummy_vendor"><![CDATA[Pizza Italia Restaurant & Cafe]]></string>
+    <string name="sandwich_burger_fast_food">Sandwich • Burger • Fast Food</string>
+    <string name="favourite">Favourite</string>
+    <string name="my_order">My Order</string>
+    <string name="recommended_for_you">Recommended for you</string>
+    <string name="categories">Categories</string>
+    <string name="price">Price</string>
+    <string name="clear_filters">Clear Filters</string>
+    <string name="restaurant">Restaurant</string>
 
 </resources>

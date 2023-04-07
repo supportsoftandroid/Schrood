@@ -31,17 +31,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-          navView = binding.navView
-
+        mContext=this@MainActivity
+        preferenceManager = PreferenceManager(mContext)
+        navView = binding.navView
+      //  navView.inflateMenu(R.menu.bottom_nav_menu)
         binding.let{
             initView()
             clickListener()
+           // navView.menu.findItem(R.id.nav_home).isChecked=true
+            StaticData.replaceFragment(mContext, HomeFragment())
         }
 
 
     }
 
     private fun initView() {
+
+
 
     }
     private fun clickListener() {
@@ -51,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     StaticData.replaceFragment(mContext, HomeFragment())
                     return@setOnItemSelectedListener true
                 }
-                R.id.nav_home -> {
+                R.id.nav_my_order -> {
                     StaticData.replaceFragment(mContext, DashboardFragment())
                     return@setOnItemSelectedListener true
                 }

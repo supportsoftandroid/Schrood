@@ -1,5 +1,7 @@
 package com.food.schrood.ui.activities
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -8,7 +10,6 @@ import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.viewmodel.LoginViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -22,12 +23,40 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         preferenceManager = PreferenceManager(this)
-        val secondsDelayed: Long = 1
-        activityScope.launch {
-            delay(secondsDelayed*1000)
+       binding.let {
+           clickListener()
+           activityScope.launch {
+
+
+
+           }
+       }
+
+
+    }
+    private fun clickListener() {
+
+        binding.btnLogin.setOnClickListener(){
+
+            startActivity(Intent(this,  MainActivity::class.java))
+            finish()
+        }
+        binding.tvForgotPassword.setOnClickListener(){
+
+            startActivity(Intent(this,  ForgotPasswordActivity::class.java))
 
 
         }
+        binding.tvSignUp.setOnClickListener(){
 
+            startActivity(Intent(this,  SignupActivity::class.java))
+            finish()
+        }
+
+    }
+
+    private fun moveNextScreen(java: Class<Activity>) {
+        startActivity(Intent(this,  java::class.java))
+        finish()
     }
 }

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
 
 
-    <style name="Theme.App" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.App" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -16,13 +16,15 @@
         <item name="placeholderTextColor">@color/textPlaceHolder</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+       <!-- <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>-->
 
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="colorOnSurface">@color/colorPrimary</item>
-        <!--  <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
+        <item name="android:statusBarColor">#ffffff</item>
+       <!-- <item name="android:windowLightStatusBar">true</item>-->
+         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
 
 
     </style>
