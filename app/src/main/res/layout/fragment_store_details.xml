@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/colorAppBg"
+     >
+        <ImageView
+
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <include
+            android:id="@+id/viewStoreInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            layout="@layout/layout_store_info"
+
+
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBack">
+
+
+        </include>
+
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewStoreInfo"
+            app:layout_constraintBottom_toBottomOf="parent"
+      >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatusList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_15"
+
+                android:layout_marginTop="@dimen/dp_20"
+                app:spanCount="3"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/list_food_type_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvOrderMode"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/order_mode"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                android:textColor="@color/colorTextHint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvStatusList"
+                />
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/rgServiceType"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOrderMode"
+                android:weightSum="3"
+                >
+
+                <RadioButton
+                    android:id="@+id/rbDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_border_gray_radius_5"
+
+                    android:checked="true"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:padding="@dimen/dp_5"
+                    android:text="Delivery"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_14" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_weight="1"
+                    android:id="@+id/rbTakeAway"
+                    android:fontFamily="@font/poppins_medium"
+                    android:checked="false"
+                    android:background="@drawable/btn_border_gray_radius_5"
+
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:textColor="@color/colorText"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/sp_14"
+                    android:textAllCaps="true"
+
+                    android:text="Take Away"/>
+
+            </RadioGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_search_product_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/rgServiceType"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:visibility="gone"
+                android:textColor="@color/colorTextHint"
+                android:textSize="@dimen/sp_17"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

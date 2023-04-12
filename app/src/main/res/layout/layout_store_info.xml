@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="modalSelected"
+            type="com.food.schrood.model.CommonDataItem" />
+
+        <variable
+            name="modal"
+            type="com.food.schrood.model.CommonDataItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:background="@color/colorE0EAF0"
+        android:paddingHorizontal="@dimen/dp_30"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+
+            android:text="Rainbow Foods"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintEnd_toStartOf="@id/llStoreReview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+        <TextView
+            android:id="@+id/tvMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="@dimen/dp_10"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:text="@string/sandwich_burger_fast_food"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintEnd_toStartOf="@id/llStoreReview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvStoreName" />
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="2"
+            android:text="1C Grand Avenue, Camellia,2142 NSW Australia"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintEnd_toStartOf="@id/llStoreReview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMenu" />
+        <LinearLayout
+            android:id="@+id/llStoreReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/btn_background_radius_5"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:paddingVertical="@dimen/dp_10"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvStoreRatting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_star"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="4.4"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+            <View
+                android:id="@+id/viewBorder1"
+                android:layout_width="@dimen/dp_45"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/dp_5"
+                android:background="@color/colorWhite"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+            <TextView
+                android:id="@+id/tvReviewCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="2,312 \n Reviews"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/dp_15"
+            android:drawableStart="@drawable/ic_location_on_14"
+
+            android:drawablePadding="@dimen/dp_5"
+
+
+            android:drawableTint="@color/app_color"
+
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="250m"
+            android:textColor="@color/colorTextHint"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginStart="@dimen/dp_25"
+            android:drawableStart="@drawable/ic_watch_time"
+            android:drawablePadding="@dimen/dp_5"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dp_5"
+            android:text="40-50 min"
+            android:textColor="@color/colorTextHint"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintStart_toEndOf="@id/tvDistance"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+        <TextView
+            android:id="@+id/tvStoreWorkingHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:visibility="gone"
+
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="Open at 08:00 - 20:00"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDistance" />
+        <LinearLayout
+            android:id="@+id/llButtonOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginStart="@dimen/dp_25"
+           app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" >
+            <ImageView
+                android:id="@+id/imgFav"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/circle_white"
+                android:contentDescription="@string/app_name"
+                android:elevation="2dp"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvList"
+
+
+                app:srcCompat="@drawable/ic_un_favorite" />
+            <ImageView
+                android:id="@+id/imgCall"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_20"
+
+                android:background="@drawable/circle_white"
+                android:contentDescription="@string/app_name"
+                android:elevation="2dp"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvList"
+
+                app:srcCompat="@drawable/ic_un_favorite" />
+            <ImageView
+                android:id="@+id/imgMessage"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_20"
+
+                android:background="@drawable/circle_white"
+                android:contentDescription="@string/app_name"
+                android:elevation="2dp"
+                android:padding="5dp"
+                app:tint="@color/app_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvList"
+
+                app:srcCompat="@drawable/ic_chat" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

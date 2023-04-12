@@ -58,9 +58,9 @@ class StaticData {
         val msgDateFormat="dd-MMM-yyyy HH:mm:ss a"
         const val FCM_BROADCAST: String = "FCM_BROADCAST"
         const val KEY_IS_CHAT = "is_chat"
-        const val CHANNEL_ID  ="GENO"
-        const  val CHANNEL_NAME = "GENO Channel"
-        const  val CHANNEL_DESCRIPTION = "GENO Channel Description"
+        const val CHANNEL_ID  ="schrood"
+        const  val CHANNEL_NAME = "schrood Channel"
+        const  val CHANNEL_DESCRIPTION = "schrood Channel Description"
         const val PERMISSION_REQUEST_CODE = 133
         const val CAMERA_REQUEST_CODE = 201
         const val GALLARY_REQUEST_CODE = 202

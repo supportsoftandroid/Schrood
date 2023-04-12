@@ -82,8 +82,10 @@
     <string name="first_name">First Name</string>
     <string name="by_clicking_submit_you_are_agreeing_to_the">By clicking submit you are agreeing to the</string>
     <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="user_policy">User Policy</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="help_center">Help Center</string>
+    <string name="become_vendor">Become Vendor</string>
+    <string name="send_feedback">Send Feedback</string>
     <string name="logout">Logout</string>
     <string name="upload_profile_image">Please upload profile image</string>
     <string name="enter_first_name">Enter first name</string>
@@ -136,6 +138,7 @@
     <string name="female">Female</string>
     <string name="delete">Delete</string>
     <string name="saved_cards">Saved Cards</string>
+    <string name="saved_address">Saved Address</string>
     <string name="aboutApp">About App</string>
 
     <string name="duration">Duration</string>
@@ -300,5 +303,12 @@
     <string name="price">Price</string>
     <string name="clear_filters">Clear Filters</string>
     <string name="restaurant">Restaurant</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="replace_cart_items">Replace Cart Items</string>
+    <string name="no_keep_existing_items">No, keep existing items</string>
+    <string name="order_mode">Order mode</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="please_enter_name">Please enter name</string>
 
 </resources>

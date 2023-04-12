@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+     >
+    <data>
+        <variable
+            name="modal"
+            type="com.food.schrood.model.CommonDataItem" />
+
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tab_unselected"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/rbTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:background="@drawable/tab_selecter"
+        android:button="@null"
+        android:checked="true"
+        android:maxLines="1"
+        android:padding="@dimen/dp_5"
+        android:text="Veg Items"
+        android:textColor="@color/colorBABBC9"
+        android:textSize="@dimen/sp_12" />
+
+
+
+</LinearLayout>
+</layout>

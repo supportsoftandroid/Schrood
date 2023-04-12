@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "591591939955",
+    "project_id": "schrood-6b9b0",
+    "storage_bucket": "schrood-6b9b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591591939955:android:01b41a4d87bf5d976c2f06",
+        "android_client_info": {
+          "package_name": "com.food.schrood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591591939955-kmeklftr25m8oabo8nr1jq7psdclma0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGDlk_RgyKGroYG1KPjolpWpEi6IKCvhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591591939955-kmeklftr25m8oabo8nr1jq7psdclma0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

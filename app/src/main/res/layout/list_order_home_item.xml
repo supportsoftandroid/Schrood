@@ -42,7 +42,7 @@
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@drawable/order_dummy"
+                    android:src="@drawable/product_dummy"
                     />
             </androidx.cardview.widget.CardView>
             <TextView

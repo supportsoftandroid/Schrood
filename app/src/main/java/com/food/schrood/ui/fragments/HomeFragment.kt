@@ -17,6 +17,7 @@ import com.food.schrood.R
 
 import com.food.schrood.databinding.FragmentHomeBinding
 import com.food.schrood.model.CommonDataItem
+import com.food.schrood.ui.activities.MainActivity
 import com.food.schrood.ui.adapter.*
 import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.HomeViewModel
@@ -110,6 +111,11 @@ class HomeFragment : Fragment() {
     private fun clickListener() {
         binding.clvSearch.setOnClickListener() {
             StaticData.backStackAddFragment(requireActivity(), SearchFragment())
+
+        }
+        binding.imgProfile.setOnClickListener() {
+            MainActivity.hideNavigationTab()
+            StaticData.backStackAddFragment(requireActivity(), ProfileFragment())
 
         }
     }

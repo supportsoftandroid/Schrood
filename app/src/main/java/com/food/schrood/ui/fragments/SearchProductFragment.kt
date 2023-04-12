@@ -59,8 +59,8 @@ class SearchProductFragment : Fragment() {
         recentSearchList.add(CommonDataItem("Pasta", "Pasta", false))
 
         adaper = RecentSearchAdapter(requireActivity(), recentSearchList) { type, pos -> onRecentClick(type, pos) }
-        binding.rvRecentSearch.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvRecentSearch.adapter = adaper
+        binding.rvStatusList.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvStatusList.adapter = adaper
 
         dataList.clear()
         dataList.add(CommonDataItem("Pizza 4P", "Soups", false))
@@ -68,9 +68,9 @@ class SearchProductFragment : Fragment() {
         dataList.add(CommonDataItem("Dessert Journey", "Dessert Journey", false))
 
         adapterProduct = RecommSearchAdapter(requireActivity(), dataList) { type, pos -> onProductClick(type, pos) }
-        binding.v.layoutManager =
-        LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvRecommended.adapter = adapterProduct
+        binding.rvList.layoutManager =
+        LinearLayoutManager(requireActivity())
+        binding.rvList.adapter = adapterProduct
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
                 R.id.rbStore -> {
@@ -99,7 +99,7 @@ class SearchProductFragment : Fragment() {
 
         }
         binding.imgFilter.setOnClickListener() {
-            StaticData.backStackAddFragment(requireActivity(), SearchProductFragment())
+            StaticData.backStackAddFragment(requireActivity(), FilterFragment())
 
         }
     }

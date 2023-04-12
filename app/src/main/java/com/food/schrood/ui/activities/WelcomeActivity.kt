@@ -30,10 +30,10 @@ class WelcomeActivity : AppCompatActivity()  {
     private lateinit var viewModal: WelcomeViewModal
 
     override fun onCreate(savedInstanceState: Bundle?) {
-     //   window.statusBarColor = ContextCompat.getColor(this, R.color.colorLightYellow)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorLightYellow)
 
         // Set the SYSTEM_UI_FLAG_LAYOUT_STABLE and SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN flags
-    //    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         super.onCreate(savedInstanceState)
         binding= ActivityWelcomeBinding.inflate(layoutInflater)

@@ -32,7 +32,7 @@
                 android:contentDescription="@string/app_name"
 
                 android:scaleType="fitXY"
-                android:src="@drawable/order_dummy"
+                android:src="@drawable/product_dummy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

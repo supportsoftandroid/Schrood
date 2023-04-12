@@ -210,7 +210,7 @@
 
             android:inputType="text"
             android:drawableStart="@drawable/ic_google"
-            android:background="@drawable/border_button_global"
+            android:background="@drawable/border_button_gray_global_radius_10"
             android:fontFamily="@font/poppins_regular"
             android:ems="1"
             android:gravity="center"

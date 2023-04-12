@@ -9,6 +9,8 @@ import com.food.schrood.R
 import com.food.schrood.databinding.ActivityMainBinding
 import com.food.schrood.ui.fragments.DashboardFragment
 import com.food.schrood.ui.fragments.HomeFragment
+import com.food.schrood.ui.fragments.MessageFragment
+import com.food.schrood.ui.fragments.MyorderFragment
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.StaticData
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -58,7 +60,14 @@ class MainActivity : AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
                 R.id.nav_my_order -> {
+                    StaticData.replaceFragment(mContext, MyorderFragment())
+                    return@setOnItemSelectedListener true
+                }
+                R.id.nav_favorite -> {
                     StaticData.replaceFragment(mContext, DashboardFragment())
+                    return@setOnItemSelectedListener true
+                }R.id.nav_message -> {
+                    StaticData.replaceFragment(mContext, MessageFragment())
                     return@setOnItemSelectedListener true
                 }
 

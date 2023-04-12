@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnSubmit"
-        android:background="@drawable/border_button_global"
+        android:background="@drawable/border_button_gray_global_radius_10"
         android:text="@string/continues"
         android:textColor="@color/app_color"
         android:textAllCaps="false"

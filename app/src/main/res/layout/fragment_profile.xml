@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBg"
+        android:clickable="true"
+        android:focusable="true"
+        tools:context=".ui.fragments.ProfileFragment">
+
+        <ImageView
+
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dp_20"
+            android:padding="10dp"
+            android:src="@drawable/ic_back"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_120"
+            android:layout_marginTop="@dimen/dp_20"
+             android:background="@drawable/product_dummy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+        <ImageView
+            android:id="@+id/imgCamera"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginStart="-15dp"
+
+
+            android:layout_marginTop="-100dp"
+            android:src="@drawable/ic_camera_round"
+            app:layout_constraintEnd_toEndOf="@+id/imgProfile"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+
+            />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_13"
+            android:fontFamily="@font/poppins_medium"
+            android:singleLine="true"
+            android:text="Michael Smith"
+
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_2"
+            android:background="@color/colorWhite"
+
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            app:layout_constraintBottom_toTopOf="@+id/tvLogout"
+
+            tools:listitem="@layout/list_profile_item" />
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/colorWhite"
+            android:elevation="2dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:minHeight="@dimen/dp_50"
+            android:text="@string/logout"
+            android:textAllCaps="true"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -56,7 +56,7 @@ class SearchFragment : Fragment() {
         recentSearchList.add(CommonDataItem("Pasta", "Pasta", false))
 
         adaper = RecentSearchAdapter(requireActivity(), recentSearchList) { type, pos -> onRecentClick(type, pos) }
-        binding.rvRecentSearch.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvRecentSearch.layoutManager = LinearLayoutManager(requireActivity() )
         binding.rvRecentSearch.adapter = adaper
 
         dataList.clear()

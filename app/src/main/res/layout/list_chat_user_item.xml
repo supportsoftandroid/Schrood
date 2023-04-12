@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="modal"
+            type="com.food.schrood.model.ChatUserItem" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color2F86C6"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_15"
+        android:paddingVertical="@dimen/dp_15">
+        <!--    <androidx.cardview.widget.CardView
+                android:id="@+id/cardProfile"
+                android:layout_width="@dimen/dp_75"
+                android:layout_height="@dimen/dp_85"
+                app:cardCornerRadius="@dimen/dp_5"
+
+                android:src="@drawable/dummy_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/dp_75"
+            android:layout_height="@dimen/dp_85"
+            android:src="@drawable/product_dummy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/txtUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@null"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="start"
+            android:padding="1dp"
+            android:singleLine="true"
+            android:text="@string/dummy_name"
+            android:textAllCaps="false"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintEnd_toStartOf="@+id/tvTime"
+            app:layout_constraintStart_toEndOf="@+id/imgProfile"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/dp_5"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:text="08:30 PM"
+            android:textAllCaps="false"
+            android:textColor="@color/colorACB1C0"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtUserName" />
+
+        <TextView
+            android:id="@+id/tvMessageCount"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:background="@drawable/circle_white"
+            android:backgroundTint="@color/colorGreen"
+            android:fontFamily="@font/poppins_regular"
+
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="3"
+            android:textColor="@color/colorWhite"
+
+
+            android:textSize="@dimen/sp_10"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/tvTime"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+
+            />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@null"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:maxLines="2"
+            android:padding="5dp"
+            android:text="Hey! How's it going?"
+            android:textAllCaps="false"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvTime"
+            app:layout_constraintStart_toEndOf="@+id/imgProfile"
+            app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

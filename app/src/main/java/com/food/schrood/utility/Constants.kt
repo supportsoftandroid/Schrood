@@ -17,7 +17,7 @@ object Constants {
     const val FIREBASE_FCM_URL =
         "https://fcm.googleapis.com/v1/projects/$FCM_PROJECT_ID/messages:send"
     const val SERVER_KEY =
-        "AAAAjIcWvbA:APA91bFPSikcFQ54IVoQxKCo_l-52dcK-WZ-t7D5OsgwItaYfROrOOSRb57t17C3AATWOH1j0BHq3TKiOpgSH7s9pMxHY9NuyBkMAViAfEGcEi96PotMR6HK74aaOJzQE5NuAU_-Y0qv"
+        "AAAAib2gn3M:APA91bF_HQmrI6nRqwMiJ8tuR6g5gRCM-jijxr915s6xo6NNm1pAeQWGLm8M5DHlJFAd5V79gw_4UmXvCVplopTJC-cOk0FYcUyYrvSbEvHKPM1xti3tKeR56_jmXDUxWrmgbdu4aLoj"
 
 
     /*  API CALL CONSTANTS  */
@@ -26,10 +26,8 @@ object Constants {
     const val FCM_JSON_HEADER = "Authorization: key=$SERVER_KEY"
     // const val ACCEPT_JSON_HEADER = "Content-Type: application/json"
     const val  PROFILE_EDIT_REQUEST_KEY="ptofile_edit_tutor"
-    const val API_State_LIST = "statelist"
-    const val API_CLASS_LIST = "classlist"
-    const val API_SUBJECT_LIST = "subjectList"
-    const val API_SUBJECT_BRANCH_LIST = "subjectbranchList"
+
+
     const val API_LOGIN = "login"
     const val API_SIGNUP = "register"
     const val API_FORGOT_PASS = "forgotpassword"
@@ -38,18 +36,8 @@ object Constants {
     const val API_PROFILE_DETAILS = "profile_details"
     const val API_UPLOAD_PROFILE_IMAGE = "uploadimage"
     const val API_EDIT_PROFILE = "edit_profile"
-    const val API_STUDENT_HOME = "nearbytutor"
-    const val API_SEARCH_TUTOR = "searchtutorbyname"
-    const val API_TUTOR_LIST = "subjecttutorList"
     const val API_SEARCH_FILTER = "searchfilter"
-    const val API_TUTOR_DETAILS = "tutor_details"
-    const val API_AVAILABLE_SLOT_LIST = "availableslot"
-    const val API_BOOKING_NOW = "booknow"
-    const val API_MY_BOOKING_LIST = "mybooking"
-    const val API_REVENUE_LIST = "revenuebooking"
-    const val API_BOOKING_Details = "booking_details"
-    const val API_BOOKING_STATUS_UPDATE = "bookingstatus"
-    const val API_CANCEL_BOOKING = "cancelbooking"
+
     const val API_ADD_CARD = "add_new_card"
     const val API_DELETE_CARD = "deletecard"
     const val API_SAVED_CARD = "savedcard"
@@ -58,22 +46,7 @@ object Constants {
     const val API_NOTIFICATION_LIST = "notificationslist"
     const val API_NOTIFICATION_READ = "readnotifications"
     const val API_NOTIFICATION_DELETE = "deletenotifications"
-    const val API_TUTOR_HOME = "tutor_dashboard"
-    const val API_TIME_SLOT_LIST = "timeslotlist"
-
-    const val API_UPDATE_TIME_SLOT = "UpdateTimeslotTutor"
-    const val API_ADD_BANK = "add_bank"
-    const val API_BANK_LIST = "banklist"
-    const val API_EDIT_BANK = "edit_bank"
-    const val API_DELETE_BANK = "deletebank"
     const val API_CHANGE_PASSWORD = "change_password"
-
-
-    const val API_CHAT_USER = "messages/chats"
-    const val API_DELETE_CHAT_USER = "messages/delete-chat"
-
-    const val API_POST_REVIEW = "post-review"
-    const val API_USER_REVIEWS = "user-reviews"
 
     const val API_PRIVACY_POLICY = "privacypolicy"
     const val API_ABOUT_APP = "about_app"

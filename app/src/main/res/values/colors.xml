@@ -15,14 +15,18 @@
     <color name="colorMaroon">#F54B64</color>
     <color name="colorGreenLight">#39C267</color>
     <color name="colorGreenVeryLight">#E1F6E8</color>
-    <color name="colorMaroonLight">#F5E1E4</color>
+    <color name="colorMaroonLight">#F5E1E4</color>#FFEBEB
+    <color name="colorMaroonVeryLight">#FFEBEB</color>
     <color name="colorNavyBlueDark">#333366</color>
-    <color name="colorText">#3D2E3D</color>
+    <color name="colorText">#444444</color>
     <color name="color1C1932">#1C1932</color>
+    <color name="colorBABBC9">#BABBC9</color>
 
     <color name="colorAppBg">#FAFAFA</color>
-    <color name="colorTextHint">#3F5974</color>
+    <color name="colorTextHint">#0C0B52</color>
+    <color name="color244495">#244495</color>
     <color name="colorEditTextBg">#EDEFF5</color>
+    <color name="colorTextLabel">#333333</color>
     <color name="textPlaceHolder">#777777</color>
     <color name="colorTextLabelLight">#A9A1B0</color>
     <color name="colorDarkGray">#656565</color>
@@ -34,7 +38,7 @@
     <color name="colorACB1C0">#ACB1C0</color>
     <color name="colorVeryLightGray">#F4F6FC</color>
     <color name="colorDDDDDD">#DDDDDD</color>
-    <color name="colorTextLabel">#333333</color>
+
     <color name="colorA3A2A2">#A3A2A2</color>
     <color name="colorAppIcon1c1932">#1c1932</color>
     <color name="colorSlotBg40404D">#40404D</color>

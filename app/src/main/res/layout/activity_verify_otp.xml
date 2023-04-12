@@ -10,7 +10,7 @@
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.activities.LoginActivity">
 
     <ImageView
@@ -82,14 +82,15 @@
             android:layout_marginTop="@dimen/dp_20"
             app:pinWidth="@dimen/dp_60"
             app:pinHeight="@dimen/dp_60"
+
             app:pinLength="4"
             android:gravity="center"
             app:cursorVisible="false"
             app:forceKeyboard="true"
-            app:hint="0"
+            app:hint="-"
 
             app:textSize="@dimen/sp_12"
-            app:inputType="text"
+            app:inputType="number"
             app:password="false"/>
 
 
@@ -132,7 +133,7 @@
             android:padding="@dimen/dp_10"
             android:singleLine="true"
             android:inputType="text"
-            android:text="@string/send_otp"
+            android:text="@string/verify_otp"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/sp_16"

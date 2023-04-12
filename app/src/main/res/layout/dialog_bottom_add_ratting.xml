@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@drawable/background_white_top_radius"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/dp_5"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@+id/imgClose"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="@string/add_review_on_booking"
+            android:textColor="@color/colorTextLabel"
+            android:textSize="@dimen/sp_22"
+            android:fontFamily="@font/jost_bold"
+            app:layout_constraintTop_toBottomOf="@+id/imgClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="@dimen/dp_45"
+
+            android:layout_height="@dimen/dp_45"
+            android:layout_alignParentEnd="true"
+
+            android:background="@null"
+            android:padding="@dimen/dp_5"
+            android:layout_gravity="end"
+            android:contentDescription="Cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+    </RelativeLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="70dp"
+    android:layout_marginHorizontal="@dimen/dp_15"
+    android:orientation="horizontal">
+    <RatingBar
+        android:id="@+id/ratingBar"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+
+        android:max="5"
+        android:stepSize="0.5"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_rating"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textSize="@dimen/sp_13"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintBottom_toBottomOf="@id/ratingBar"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+</LinearLayout>
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jost_medium"
+        android:gravity="start"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginHorizontal="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/messages"
+        android:textColor="@color/colorText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
+    <EditText
+        android:id="@+id/edMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/bg_edit_text"
+        android:hint="@string/enter_message"
+        android:maxLines="3"
+        android:minHeight="@dimen/dp_100"
+        android:padding="10dp"
+        android:text=""
+         android:gravity="start"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+
+        android:layout_marginHorizontal="@dimen/dp_25"
+
+        android:background="@drawable/button_background_global"
+        android:fontFamily="@font/jost_regular"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginBottom="@dimen/dp_60"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvResend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+
+        android:layout_marginBottom="@dimen/dp_20"
+        android:fontFamily="@font/jost_semi_bold"
+        android:layout_marginHorizontal="@dimen/dp_25"
+        android:text="@string/resend_code"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
+        />
+
+</LinearLayout>
