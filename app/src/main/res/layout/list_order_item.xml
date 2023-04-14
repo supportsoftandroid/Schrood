@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="modal"
+            type="com.food.schrood.model.CommonDataItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginBottom="@dimen/dp_20"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/dp_110"
+            android:layout_height="@dimen/dp_115"
+            app:cardCornerRadius="@dimen/dp_7"
+            android:orientation="vertical"
+            android:id="@id/cardImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/product_dummy" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:text="Order ID: SC00001"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvOrderId"
+
+            android:gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardImage"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:text="23 Mar 23"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:id="@+id/tvDate"
+            android:maxLines="1"
+            android:drawablePadding="@dimen/dp_7"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.7dp"
+            android:background="@color/colorGray"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            android:id="@+id/view1"
+
+            app:layout_constraintTop_toBottomOf="@id/tvOrderId"
+            app:layout_constraintStart_toEndOf="@+id/cardImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:text="Cheese Pizza with Coke"
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvFoodName"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            android:maxLines="1"
+            android:gravity="start"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view1"
+            app:layout_constraintStart_toEndOf="@id/cardImage"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextHint"
+            android:text="Medium"
+
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvVariant"
+
+            android:maxLines="1"
+
+            android:gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintTop_toBottomOf="@id/tvFoodName"
+            app:layout_constraintStart_toEndOf="@id/cardImage"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:text="$150 - 1 item"
+            android:layout_marginEnd="@dimen/dp_25"
+            android:id="@+id/tvItem"
+
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintTop_toBottomOf="@id/tvFoodName"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMaroon"
+            android:text="@string/pay_now"
+            android:layout_marginEnd="@dimen/dp_5"
+
+
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvPayNow"
+            android:paddingVertical="@dimen/dp_5"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:background="@drawable/border_red_radius_5"
+
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintTop_toBottomOf="@id/tvVariant"
+            app:layout_constraintStart_toEndOf="@id/tvRate"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorYellow"
+            android:text="@string/preparing"
+            android:textAllCaps="true"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvOrderStatus"
+            android:paddingVertical="@dimen/dp_5"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintTop_toBottomOf="@id/tvVariant"
+            app:layout_constraintStart_toEndOf="@id/cardImage"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:minWidth="@dimen/dp_50"
+            android:text="@string/rate"
+            android:visibility="gone"
+            android:paddingVertical="@dimen/dp_5"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:background="@drawable/border_dark_gray_radius_5"
+
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvRate"
+            android:maxLines="1"
+
+            android:gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintTop_toBottomOf="@id/tvVariant"
+            app:layout_constraintStart_toEndOf="@id/cardImage"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMaroon"
+            android:text="@string/re_order"
+            android:layout_marginEnd="@dimen/dp_5"
+
+            android:layout_marginStart="@dimen/dp_10"
+            android:id="@+id/tvReOrder"
+            android:paddingVertical="@dimen/dp_5"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:maxLines="1"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:background="@drawable/border_red_radius_5"
+
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintTop_toBottomOf="@id/tvVariant"
+            app:layout_constraintStart_toEndOf="@id/cardImage"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

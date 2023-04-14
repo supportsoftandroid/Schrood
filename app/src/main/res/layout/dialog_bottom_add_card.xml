@@ -83,6 +83,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:textSize="@dimen/sp_12"
+        android:text="@string/save_this_credit_card"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginHorizontal="@dimen/dp_20"
+
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

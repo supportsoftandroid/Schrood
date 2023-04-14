@@ -4,38 +4,91 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+
 import androidx.fragment.app.Fragment
+
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.food.schrood.R
 import com.food.schrood.databinding.FragmentNotificationsBinding
+import com.food.schrood.model.CommonDataItem
+import com.food.schrood.ui.adapter.NotificationAdapter
+import com.food.schrood.utility.PreferenceManager
+import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.NotificationsViewModel
 
 class NotificationsFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
+    lateinit var viewModal: NotificationsViewModel
+    lateinit var adaper: NotificationAdapter
+    var dataList = mutableListOf<CommonDataItem>()
+    lateinit var preferenceManager: PreferenceManager
+    lateinit var utilsManager: UtilsManager
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
+        viewModal =
             ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
                 NotificationsViewModel::class.java
             )
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        preferenceManager = PreferenceManager(requireActivity())
+        utilsManager = UtilsManager(requireActivity())
+        initView()
+        clickListener()
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
+    }
+
+    private fun clickListener() {
+        binding.viewHeader.imgBack.setOnClickListener() {
+            requireActivity().onBackPressed()
+        }
+
+        binding.viewHeader.btnCheckSwitch.visibility = View.VISIBLE
+
+    }
+
+    fun initView() {
+        binding.viewHeader.txtTitle.text=requireActivity().getString(R.string.notifications)
+        dataList.clear()
+
+        dataList.add(CommonDataItem("JCO Restaurant", "", false))
+        dataList.add(CommonDataItem("Starbuck Ambarukmo Plaza", "", false))
+        dataList.add(CommonDataItem("Dunkin Donuts Ambarukmo P..", "", false))
+
+        dataList.add(CommonDataItem("JCO Restaurant", "", false))
+        dataList.add(CommonDataItem("Starbuck Ambarukmo Plaza", "", false))
+        dataList.add(CommonDataItem("Dunkin Donuts Ambarukmo P..", "", false))
+
+        dataList.add(CommonDataItem("JCO Restaurant", "", false))
+        dataList.add(CommonDataItem("Starbuck Ambarukmo Plaza", "", false))
+        dataList.add(CommonDataItem("Dunkin Donuts Ambarukmo P..", "", false))
+
+
+        binding.viewBody.tvMessage.visibility = View.VISIBLE
+        adaper =
+            NotificationAdapter(
+                requireActivity(),
+                dataList,
+                { pos, type -> onAdapterClick(pos, type) })
+        binding.viewBody.rvList.layoutManager = LinearLayoutManager(requireActivity())
+        binding.viewBody.rvList.adapter = adaper
+        binding.viewBody.tvMessage.visibility = View.GONE
+
+        binding.viewBody.swipeRefreshLayout.setOnRefreshListener {
+            binding.viewBody.swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    private fun onAdapterClick(pos: Int, type: String) {
+
     }
 
     override fun onDestroyView() {

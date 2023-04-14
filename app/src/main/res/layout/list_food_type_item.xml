@@ -11,24 +11,23 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/tab_unselected"
+    android:id="@+id/llMain"
+    android:paddingVertical="@dimen/dp_5"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/rbTitle"
+        android:id="@+id/tvTilte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/poppins_semi_bold"
         android:gravity="center"
+        android:paddingVertical="@dimen/dp_10"
         android:paddingHorizontal="@dimen/dp_10"
-        android:background="@drawable/tab_selecter"
-        android:button="@null"
-        android:checked="true"
         android:maxLines="1"
         android:padding="@dimen/dp_5"
         android:text="Veg Items"
-        android:textColor="@color/colorBABBC9"
+        android:textColor="@color/textPlaceHolder"
         android:textSize="@dimen/sp_12" />
 
 

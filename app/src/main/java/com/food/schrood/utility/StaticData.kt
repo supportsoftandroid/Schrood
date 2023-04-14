@@ -143,6 +143,32 @@ class StaticData {
             return isGranted
         }
 
+       fun changeStatusBarColor(context: Context,from:String){
+           // Set the status bar color
+           val window=(context as Activity).window
+           var colorValue=ContextCompat.getColor(context, R.color.app_color)
+           when (from){
+               "home"->{
+                   colorValue=ContextCompat.getColor(context, R.color.app_color)
+               }
+               "message"->{
+                   colorValue=ContextCompat.getColor(context, R.color.colorLightGray)
+               }
+           }
+         //  window.decorView(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+           window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+            window.statusBarColor =colorValue
+
+
+           // Set the SYSTEM_UI_FLAG_LAYOUT_STABLE and SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN flags
+        //   window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
+
+
+       }
+
 
 
         fun requestFileAccessPermission(activity: Activity) {

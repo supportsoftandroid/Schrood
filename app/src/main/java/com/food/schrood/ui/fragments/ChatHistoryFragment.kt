@@ -9,18 +9,15 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.text.TextUtils
- 
 import android.view.*
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
 import com.food.schrood.databinding.FragmentChatHistoryBinding
-import com.food.schrood.interfaces.CommonClickListener
 import com.food.schrood.model.ChatUserItem
 import com.food.schrood.model.LoginResponse
 import com.food.schrood.model.MessageItem
@@ -36,8 +33,6 @@ import com.food.schrood.utility.StaticData.Companion.showToast
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.ChatMessageViewModel
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import java.io.File
 
 
@@ -73,7 +68,7 @@ class ChatHistoryFragment : Fragment() {
     lateinit var userChatItem: ChatUserItem
     lateinit var friendItem: ChatUserItem
     lateinit var messageItem: MessageItem
-    lateinit var threadId: String
+      var threadId: String=""
     var firebase_token: String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -91,7 +86,7 @@ class ChatHistoryFragment : Fragment() {
       //  threadId = friendItem.thread_id
         viewModelStore.clear()
 
-       // initRecycleView()
+         initRecycleView()
         clickListener()
        /* if (!StaticData.hasPermissions(requireActivity(), *StaticData.PERMISSIONSList)) {
             ActivityCompat.requestPermissions( requireActivity(),StaticData.PERMISSIONSList,StaticData.PERMISSION_ALL
@@ -108,7 +103,7 @@ class ChatHistoryFragment : Fragment() {
         binding.viewHeader.txtTitle.text = arguments?.getString("title")
         binding.viewHeader.txtTitle.gravity = Gravity.START
         dataList.clear()
-        adaper = ChatMessageAdapter(requireActivity(), userDetails.id, dataList)
+        adaper = ChatMessageAdapter(requireActivity(), "1" , dataList)
         binding.viewBody.rvList.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.viewBody.rvList.adapter = adaper
@@ -117,7 +112,7 @@ class ChatHistoryFragment : Fragment() {
         binding.viewBody.swipeRefreshLayout.setOnRefreshListener {
             binding.viewBody.swipeRefreshLayout.isRefreshing = false
         }
-        val lastLame = if (TextUtils.isEmpty(userDetails.l_name)) "" else " " + userDetails.l_name
+       /* val lastLame = if (TextUtils.isEmpty(userDetails.l_name)) "" else " " + userDetails.l_name
         val userType = if (friendItem.type.equals("tutor")) "student" else "tutor"
 
         userChatItem = ChatUserItem(
@@ -137,7 +132,7 @@ class ChatHistoryFragment : Fragment() {
         getChatMessageList()
         getFriendChatItem()
         getUserChatItem()
-        getSingleMessageItem()
+        getSingleMessageItem()*/
 
         requireActivity().onBackPressedDispatcher.addCallback(requireActivity(),
             object : OnBackPressedCallback(true) {
@@ -157,7 +152,7 @@ class ChatHistoryFragment : Fragment() {
 
     private fun initChatMessageItem() {
         messageItem = MessageItem(
-            "", "", "", "",
+            "", "1", "", "",
             "", "", "2", threadId, getCurrentTimestamp()
         )
        /* messageItem = MessageItem(
@@ -246,7 +241,7 @@ class ChatHistoryFragment : Fragment() {
 
             }
         }
-        binding.etReply.setOnTouchListener(View.OnTouchListener { v, event ->
+   /*     binding.etReply.setOnTouchListener(View.OnTouchListener { v, event ->
             val DRAWABLE_LEFT = 0
             val DRAWABLE_TOP = 1
             val DRAWABLE_RIGHT = 2
@@ -262,7 +257,7 @@ class ChatHistoryFragment : Fragment() {
                 }
             }
             false
-        })
+        })*/
     }
 
     private fun addMessage(messageItem: MessageItem) {

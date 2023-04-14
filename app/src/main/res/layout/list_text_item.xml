@@ -15,7 +15,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintStar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_10"
         android:layout_marginBottom="@dimen/dp_10"
@@ -23,11 +23,12 @@
 
         <TextView
             android:id="@+id/tvTilte"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_5"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
+
             android:includeFontPadding="false"
             android:minHeight="@dimen/dp_30"
             android:text="@string/app_name"

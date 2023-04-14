@@ -1,20 +1,23 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.food.schrood.R
+import com.food.schrood.databinding.ListFoodTypeItemBinding
 import com.food.schrood.databinding.ListTextItemBinding
-import com.food.schrood.interfaces.FoodClickListener
 import com.food.schrood.model.CommonDataItem
 
 
-class FoodTypeFilterAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val onFoodClick: ( String, Int) -> Unit) :
-    RecyclerView.Adapter<FoodTypeFilterAdapter.MainViewHolder>()  {
+class FoodTypeFilterAdapter(
+    mContext: Context,
+    categoryList: MutableList<CommonDataItem>,
+    val onViewItemClick: ( Int,String) -> Unit
+) :
+    RecyclerView.Adapter<FoodTypeFilterAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
 
 
@@ -28,16 +31,36 @@ class FoodTypeFilterAdapter(mContext: Context, categoryList: MutableList<CommonD
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListTextItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListTextItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
-        holder.binding.tvTilte.text=current.title
-        holder.itemView.setOnClickListener(){
-            onFoodClick(dataList[position].type,position)
+        holder.binding.tvTilte.text = current.title
+        if (current.is_selected) {
+            holder.binding.constraintStar.setBackgroundResource(R.drawable.btn_background_app_color_radius_8)
+            holder.binding.tvTilte.setTextColor(
+                ContextCompat.getColor(
+                    mContext,
+                    R.color.colorWhite
+                )
+            )
+
+        } else {
+            holder.binding.constraintStar.setBackgroundResource(R.drawable.btn_background_light_gray_radius_8)
+            holder.binding.tvTilte.setTextColor(ContextCompat.getColor(mContext, R.color.colorText))
+        }
+        holder.itemView.setOnClickListener() {
+            if (current.is_selected){
+                dataList[position].is_selected=false
+            }else{
+                dataList[position].is_selected=true
+            }
+            onViewItemClick(position,dataList[position].type)
+            notifyDataSetChanged()
         }
 
 

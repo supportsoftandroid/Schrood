@@ -18,10 +18,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.food.schrood.R
 import com.food.schrood.databinding.DialogViewChatItemBinding
-
 import com.food.schrood.databinding.ListChatFriendMessageItemBinding
 import com.food.schrood.databinding.ListChatMyMessageItemBinding
-import com.food.schrood.interfaces.CommonClickListener
 import com.food.schrood.model.MessageItem
 import com.food.schrood.utility.StaticData.Companion.printLog
 

@@ -4,21 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.SeekBar
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.food.schrood.R
-
 import com.food.schrood.databinding.FragmentHomeBinding
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.ui.activities.MainActivity
-import com.food.schrood.ui.adapter.*
+import com.food.schrood.ui.adapter.CategoryHomeAdapter
+import com.food.schrood.ui.adapter.RecentOrderAdapter
+import com.food.schrood.ui.adapter.StoreItemAdapter
 import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.HomeViewModel
 
@@ -32,19 +26,18 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var adaper: CategoryHomeAdapter
     lateinit var orderAdaper: RecentOrderAdapter
-    lateinit var adapterStore: StoreAdapter
+    lateinit var adapterStore: StoreItemAdapter
     var categoryList = mutableListOf<CommonDataItem>()
     var orderList = mutableListOf<CommonDataItem>()
     var storeList = mutableListOf<CommonDataItem>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        homeViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(HomeViewModel::class.java)
+
+        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.let {
             clickListener()
@@ -65,10 +58,10 @@ class HomeFragment : Fragment() {
         categoryList.add(CommonDataItem("Pasta", "Pasta", false))
 
 
-        adaper = CategoryHomeAdapter(requireActivity(), categoryList) { type, pos ->
-            onCategoryClick(
-                type,
-                pos
+        adaper = CategoryHomeAdapter(requireActivity(), categoryList) {  pos ,type->
+            onCategoryClick( pos,
+                type
+
             )
         }
         binding.rvCategory.layoutManager =
@@ -80,10 +73,9 @@ class HomeFragment : Fragment() {
         orderList.add(CommonDataItem("Spaghetti Land", "Spaghetti Land", false))
         orderList.add(CommonDataItem("Dessert Journey", "Dessert Journey", false))
 
-        orderAdaper = RecentOrderAdapter(requireActivity(), orderList) { type, pos ->
-            onOrderClick(
-                type,
-                pos
+        orderAdaper = RecentOrderAdapter(requireActivity(), orderList) { pos,
+                                                                         type ->
+            onOrderClick(pos, type
             )
         }
         binding.rvRecentOrder.layoutManager =
@@ -96,12 +88,15 @@ class HomeFragment : Fragment() {
         storeList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
         storeList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
         storeList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+        storeList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        storeList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        storeList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        storeList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
 
 
-        adapterStore = StoreAdapter(
-            requireActivity(),
-            storeList,
-            { type, pos -> onStoreClick(type, pos) })
+        adapterStore = StoreItemAdapter(
+            requireActivity(), storeList,
+            {  pos,type -> onStoreClick( pos,type) })
         binding.rvStore.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvStore.adapter = adapterStore
 
@@ -125,15 +120,16 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun onCategoryClick(type: String, position: Int) {
+    private fun onCategoryClick(position: Int,type: String) {
 
     }
 
-    private fun onOrderClick(type: String, position: Int) {
+    private fun onOrderClick(position: Int,type: String) {
 
     }
 
-    private fun onStoreClick(type: String, position: Int) {
-
+    private fun onStoreClick( position: Int,type: String) {
+        MainActivity.hideNavigationTab()
+        StaticData.backStackAddFragment(requireActivity(),StoreDetailsFragment.newInstance(storeList[position].title))
     }
 }

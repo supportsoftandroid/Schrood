@@ -1,34 +1,20 @@
 package com.food.schrood.viewmodel
 
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
-import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.food.schrood.model.*
-import com.food.schrood.network.ApiInterface
-import com.food.schrood.utility.Constants.SERVER_KEY
-import com.food.schrood.utility.StaticData
+import com.food.schrood.model.ChatUserItem
+import com.food.schrood.model.MessageItem
 import com.food.schrood.utility.StaticData.Companion.printLog
-import com.food.schrood.utility.StaticData.Companion.showToast
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.google.gson.Gson
-import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
-import java.util.*
 
 
 class ChatMessageViewModel : ViewModel() {

@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-
 import androidx.lifecycle.ViewModelProvider
 import com.food.schrood.R
 import com.food.schrood.databinding.FragmentEditProfileBinding
-import com.food.schrood.model.LoginResponse
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.ChangePasswordViewModal

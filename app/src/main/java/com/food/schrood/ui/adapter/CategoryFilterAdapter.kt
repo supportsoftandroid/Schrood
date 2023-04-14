@@ -5,16 +5,18 @@ package com.food.schrood.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 
 
 import androidx.recyclerview.widget.RecyclerView
+import com.food.schrood.R
 import com.food.schrood.databinding.ListTextItemBinding
 import com.food.schrood.model.CommonDataItem
 
 
 class CategoryFilterAdapter(
     mContext: Context, categoryList: MutableList<CommonDataItem>,
-    val onCategoryClick: ( String, Int) -> Unit
+    val onViewItemClick: ( Int,String ) -> Unit
 ) :
     RecyclerView.Adapter<CategoryFilterAdapter.MainViewHolder>()  {
     var dataList = mutableListOf<CommonDataItem>()
@@ -37,8 +39,27 @@ class CategoryFilterAdapter(
         val current = dataList[position]
         holder.bind(current)
         holder.binding.tvTilte.text=current.title
-        holder.itemView.setOnClickListener(){
-            onCategoryClick(dataList[position].type,position)
+        if (current.is_selected) {
+            holder.binding.constraintStar.setBackgroundResource(R.drawable.btn_background_app_color_radius_8)
+            holder.binding.tvTilte.setTextColor(
+                ContextCompat.getColor(
+                    mContext,
+                    R.color.colorWhite
+                )
+            )
+
+        } else {
+            holder.binding.constraintStar.setBackgroundResource(R.drawable.btn_background_light_gray_radius_8)
+            holder.binding.tvTilte.setTextColor(ContextCompat.getColor(mContext, R.color.colorText))
+        }
+        holder.itemView.setOnClickListener() {
+            if (current.is_selected){
+                dataList[position].is_selected=false
+            }else{
+                dataList[position].is_selected=true
+            }
+            onViewItemClick(position,dataList[position].type)
+            notifyDataSetChanged()
         }
 
 

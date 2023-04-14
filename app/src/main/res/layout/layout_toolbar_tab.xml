@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/actionBarSize"
-    android:background="@color/colorWhite"
-    android:elevation="@dimen/dp_1"
-
+    android:layout_height="wrap_content"
+    android:background="@color/colorAppBg"
+    android:elevation="0.2dp"
     android:padding="@dimen/dp_15">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +35,7 @@
             android:singleLine="true"
             android:text="@string/app_name"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/sp_18"
+            android:textSize="@dimen/sp_17"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvEdit"
             app:layout_constraintStart_toEndOf="@+id/img_back"
@@ -49,7 +48,7 @@
             android:text="@string/edit"
             android:visibility="gone"
             android:textColor="@color/app_color"
-            android:paddingHorizontal="@dimen/dp_15"
+            android:paddingHorizontal="@dimen/dp_10"
             android:paddingVertical="@dimen/dp_5"
             android:gravity="center"
 
@@ -75,9 +74,9 @@
 
         <ImageView
             android:id="@+id/imgMenu1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+           android:src="@drawable/ic_profile_gray_round"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

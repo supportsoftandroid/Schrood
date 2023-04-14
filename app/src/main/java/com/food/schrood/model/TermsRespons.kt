@@ -1,6 +1,6 @@
 package com.food.schrood.model
 
-data class TermsResponse(
+data class TermsRespons(
     val `data`: String,
     val message: String,
     val status:  Boolean

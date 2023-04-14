@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
-
-import com.food.schrood.databinding.FragmentHomeBinding
-import com.food.schrood.databinding.FragmentSearchBinding
 import com.food.schrood.databinding.FragmentSearchFoodStoreBinding
 import com.food.schrood.model.CommonDataItem
-import com.food.schrood.ui.adapter.*
+import com.food.schrood.ui.adapter.ProductItemAdapter
+import com.food.schrood.ui.adapter.StoreItemAdapter
 import com.food.schrood.utility.StaticData
-import com.food.schrood.viewmodel.HomeViewModel
 import com.food.schrood.viewmodel.SearchViewModel
 
 class SearchProductFragment : Fragment() {
@@ -28,10 +24,10 @@ class SearchProductFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    var recentSearchList = mutableListOf<CommonDataItem>()
-    var dataList = mutableListOf<CommonDataItem>()
-    lateinit var adaper: RecentSearchAdapter
-    lateinit var adapterProduct: RecommSearchAdapter
+    var productList = mutableListOf<CommonDataItem>()
+    var storeList = mutableListOf<CommonDataItem>()
+    lateinit var adaper: ProductItemAdapter
+    lateinit var adapterStore: StoreItemAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,40 +46,37 @@ class SearchProductFragment : Fragment() {
 
     fun initView() {
 
+          //Status
+        productList.clear()
+        productList.add(CommonDataItem("Appetizers", "all", true))
+        productList.add(CommonDataItem("Breakfast", "breakfast", false))
+        productList.add(CommonDataItem("Lunch", "Lunch", false))
+        productList.add(CommonDataItem("Dinner", "Dinner", false))
+        productList.add(CommonDataItem("Pasta", "Pasta", false))
 
-        recentSearchList.clear()
-        recentSearchList.add(CommonDataItem("Appetizers", "all", true))
-        recentSearchList.add(CommonDataItem("Breakfast", "breakfast", false))
-        recentSearchList.add(CommonDataItem("Lunch", "Lunch", false))
-        recentSearchList.add(CommonDataItem("Dinner", "Dinner", false))
-        recentSearchList.add(CommonDataItem("Pasta", "Pasta", false))
+        adaper = ProductItemAdapter(requireActivity(), productList) {pos,type -> onRecentClick(pos,type) }
+        binding.rvStatusList.layoutManager = LinearLayoutManager(requireActivity())
+        storeList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        storeList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        storeList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        storeList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
 
-        adaper = RecentSearchAdapter(requireActivity(), recentSearchList) { type, pos -> onRecentClick(type, pos) }
-        binding.rvStatusList.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvStatusList.adapter = adaper
+        adapterStore = StoreItemAdapter(requireActivity(), storeList) { pos,type -> onStoreClick(pos,type) }
+        binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
 
-        dataList.clear()
-        dataList.add(CommonDataItem("Pizza 4P", "Soups", false))
-        dataList.add(CommonDataItem("Spaghetti Land", "Spaghetti Land", false))
-        dataList.add(CommonDataItem("Dessert Journey", "Dessert Journey", false))
-
-        adapterProduct = RecommSearchAdapter(requireActivity(), dataList) { type, pos -> onProductClick(type, pos) }
-        binding.rvList.layoutManager =
-        LinearLayoutManager(requireActivity())
-        binding.rvList.adapter = adapterProduct
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
                 R.id.rbStore -> {
                     binding.rbStore.setTextColor(ContextCompat.getColor(requireActivity(),R.color.app_color))
                     binding.rbProduct.setTextColor(ContextCompat.getColor(requireActivity(),R.color.colorText))
-
+                    binding.rvList.adapter = adapterStore
 
                 }
                 R.id.rbProduct -> {
 
                     binding.rbProduct.setTextColor(ContextCompat.getColor(requireActivity(),R.color.app_color))
                     binding.rbStore.setTextColor(ContextCompat.getColor(requireActivity(),R.color.textPlaceHolder))
-
+                    binding.rvList.adapter = adaper
                 }
 
             }
@@ -104,12 +97,12 @@ class SearchProductFragment : Fragment() {
         }
     }
 
-    private fun onRecentClick(type: String, position: Int) {
+    private fun onRecentClick( position: Int,type: String) {
 
     }
 
-    private fun onProductClick(type: String, position: Int) {
-
+    private fun onStoreClick(position: Int,type: String) {
+        StaticData.backStackAddFragment(requireActivity(),StoreDetailsFragment.newInstance(storeList[position].title))
     }
 
     override fun onDestroyView() {

@@ -1,17 +1,13 @@
 package com.food.schrood.viewmodel
 
-import android.content.ContentValues
-import android.text.TextUtils
-import android.util.Log
+/*import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase*/
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.food.schrood.model.ChatUserItem
-import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.printLog
-/*import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase*/
 import java.text.SimpleDateFormat
 import java.util.*
 

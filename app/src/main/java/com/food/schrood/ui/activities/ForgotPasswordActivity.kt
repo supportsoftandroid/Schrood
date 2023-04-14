@@ -1,30 +1,21 @@
 package com.food.schrood.ui.activities
 
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.food.schrood.R
 import com.food.schrood.databinding.ActivityForgotPasswordBinding
-import com.food.schrood.databinding.ActivityLoginBinding
 import com.food.schrood.databinding.ActivityVerifyOtpBinding
-import com.food.schrood.databinding.DialogAllowLocationsBinding
 import com.food.schrood.databinding.DialogResetPasswordBinding
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.UtilsManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class ForgotPasswordActivity : AppCompatActivity() {
 

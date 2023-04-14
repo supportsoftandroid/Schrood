@@ -14,21 +14,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.food.schrood.R
 import com.food.schrood.databinding.FragmentFilterBinding
-import com.food.schrood.interfaces.CommonClickListener
-import com.food.schrood.interfaces.FoodClickListener
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.model.LoginResponse
 import com.food.schrood.ui.adapter.CategoryFilterAdapter
 import com.food.schrood.ui.adapter.FoodTypeFilterAdapter
 import com.food.schrood.utility.PreferenceManager
-
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.FilterViewModel
 
 
 class FilterFragment : Fragment() {
     companion object {
-        const val Filter_REQUEST_KEY = "filter_tutor"
+        const val Filter_REQUEST_KEY = "filter"
         fun newInstance(title: String): FilterFragment {
             val args = Bundle()
             args.putString("title", title)
@@ -62,7 +59,7 @@ class FilterFragment : Fragment() {
     var foodTypeList = mutableListOf<CommonDataItem>()
     lateinit var preferenceManager: PreferenceManager
     lateinit var utilsManager: UtilsManager
-    lateinit var loginResponse: LoginResponse
+   // lateinit var loginResponse: LoginResponse
     private var price_range = 10
 
     override fun onCreateView(
@@ -76,7 +73,7 @@ class FilterFragment : Fragment() {
         preferenceManager = PreferenceManager(requireActivity())
         utilsManager = UtilsManager(requireActivity())
         val root: View = binding.root
-        loginResponse = preferenceManager.getLoginData()!!
+      //  loginResponse = preferenceManager.getLoginData()!!
         initView()
         clickListener()
         return root
@@ -88,7 +85,7 @@ class FilterFragment : Fragment() {
         }
         binding.btnApply.setOnClickListener() {
 
-
+            requireActivity().onBackPressed()
             /* val jsonObject = JsonObject()
             jsonObject.addProperty("max_distance", max_distance)
             jsonObject.addProperty("price_range", price_range)
@@ -123,10 +120,9 @@ class FilterFragment : Fragment() {
         categoryList.add(CommonDataItem("Pizza", "Pizza", false))
         categoryList.add(CommonDataItem("Salads", "Salads", false))
         categoryList.add(CommonDataItem("Soups", "Soups", false))
-        adaper = CategoryFilterAdapter(requireActivity(), categoryList) { type, pos ->
+        adaper = CategoryFilterAdapter(requireActivity(), categoryList) { pos, type ->
             onCategoryClick(
-                type,
-                pos
+                pos, type,
             )
         }
         binding.rvCategory.layoutManager = GridLayoutManager(requireActivity(), 3)
@@ -143,7 +139,7 @@ class FilterFragment : Fragment() {
         adapterFoodType = FoodTypeFilterAdapter(
             requireActivity(),
             foodTypeList,
-            { type, pos -> onFoodClick(type, pos) })
+            {  pos ,type-> onFoodClick(pos,type) })
         binding.rvFoodType.layoutManager = GridLayoutManager(requireActivity(), 2)
         binding.rvFoodType.adapter = adapterFoodType
 
@@ -157,7 +153,7 @@ class FilterFragment : Fragment() {
             }
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                // TODO Auto-generated method stub
+
                 price_range = progress
                 binding.tvMaxPrice.setText(requireActivity().getString(R.string.currency_symbol) + price_range.toString())
 
@@ -174,11 +170,11 @@ class FilterFragment : Fragment() {
     }
 
 
-    fun onCategoryClick(type: String, position: Int) {
+    fun onCategoryClick(position: Int,type: String) {
 
     }
 
-    fun onFoodClick(type: String, position: Int) {
+    fun onFoodClick( position: Int,type: String) {
 
     }
 

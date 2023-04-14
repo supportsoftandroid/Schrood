@@ -24,7 +24,7 @@
         <item name="colorOnSurface">@color/colorPrimary</item>
         <item name="android:statusBarColor">#ffffff</item>
        <!-- <item name="android:windowLightStatusBar">true</item>-->
-         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+          <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
 
 
     </style>
@@ -63,7 +63,10 @@
     <style name="customRatingBar"
         parent="android:style/Widget.Material.RatingBar.Small">
     </style>
-
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorD9D9D9</item>
+        <item name="colorControlActivated">@color/colorYellow</item>
+    </style>
     <style name="full_screen_dialog" parent="@android:style/Theme.Translucent">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>

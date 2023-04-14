@@ -1,4 +1,4 @@
-package com.education.geno.model
+package com.food.schrood.model
 
 data class TermsResponse(
     val `data`: String,

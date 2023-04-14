@@ -11,30 +11,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-
+import com.food.schrood.R
+import com.food.schrood.databinding.FragmentProfileBinding
 import com.food.schrood.model.CommonDataItem
-import com.food.schrood.model.LoginResponse
 import com.food.schrood.model.UserDetails
-
-
-
+import com.food.schrood.ui.activities.MainActivity
+import com.food.schrood.ui.activities.StaticPagesActivity
+import com.food.schrood.ui.adapter.ProfileAdapter
 import com.food.schrood.utility.Constants
 import com.food.schrood.utility.Constants.PROFILE_EDIT_REQUEST_KEY
-
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.showToast
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.ProfileViewModal
-import com.food.schrood.R
-import com.food.schrood.databinding.FragmentProfileBinding
-import com.food.schrood.ui.activities.MainActivity
-import com.food.schrood.ui.adapter.ProfileAdapter
 import com.github.dhaval2404.imagepicker.ImagePicker
 
 
@@ -46,7 +40,7 @@ class ProfileFragment : Fragment() {
     var dataList = mutableListOf<CommonDataItem>()
     lateinit var preferenceManager: PreferenceManager
     lateinit var utilsManager: UtilsManager
-  //  private lateinit var loginResponse: LoginResponse
+    //  private lateinit var loginResponse: LoginResponse
 
     lateinit var userType: String
     override fun onCreateView(
@@ -68,7 +62,7 @@ class ProfileFragment : Fragment() {
 
     private fun clickListener() {
         binding.imgBack.setOnClickListener() {
-             requireActivity().onBackPressed()
+            requireActivity().onBackPressed()
 
         }
 
@@ -100,23 +94,23 @@ class ProfileFragment : Fragment() {
           }
       }*/
 
-  /*  private fun updateProfile(imagePath: String) {
+    /*  private fun updateProfile(imagePath: String) {
 
-        if (utilsManager.isNetworkConnected()) {
-            viewModal.updateProfileImage(
-                requireActivity(),
-                preferenceManager.getString(Constants.KEY_ACCESS_TOKEN).toString(), imagePath
-            ).observe(requireActivity(), Observer { res ->
-                StaticData.printLog("updare profile", "--->" + res)
-                showToast(requireActivity(), res.message)
-                if (res.status) {
-                    loadImage(imagePath)
-                }
+          if (utilsManager.isNetworkConnected()) {
+              viewModal.updateProfileImage(
+                  requireActivity(),
+                  preferenceManager.getString(Constants.KEY_ACCESS_TOKEN).toString(), imagePath
+              ).observe(requireActivity(), Observer { res ->
+                  StaticData.printLog("updare profile", "--->" + res)
+                  showToast(requireActivity(), res.message)
+                  if (res.status) {
+                      loadImage(imagePath)
+                  }
 
 
-            })
-        }
-    }*/
+              })
+          }
+      }*/
 
     private fun setProfileData(userData: UserDetails) {
 
@@ -139,61 +133,75 @@ class ProfileFragment : Fragment() {
 
 
     fun setData() {
-     //   setProfileData(loginResponse.data)
+        //   setProfileData(loginResponse.data)
         dataList.clear()
 
-        dataList.add(CommonDataItem(getString(R.string.edit_profile), "EditProfile",false))
-        dataList.add(CommonDataItem(getString(R.string.change_password), "ChangePassword",false))
-        dataList.add(CommonDataItem(getString(R.string.saved_cards), "SavedCards",false))
-        dataList.add(CommonDataItem(getString(R.string.saved_address), "SavedAddress",false))
-        dataList.add(CommonDataItem(getString(R.string.notifications), "Notifications",false))
+        dataList.add(CommonDataItem(getString(R.string.edit_profile), "EditProfile", false))
+        dataList.add(CommonDataItem(getString(R.string.change_password), "ChangePassword", false))
+        dataList.add(CommonDataItem(getString(R.string.saved_cards), "SavedCards", false))
+        dataList.add(CommonDataItem(getString(R.string.saved_address), "SavedAddress", false))
+        dataList.add(CommonDataItem(getString(R.string.notifications), "Notifications", false))
 
 
-        dataList.add(CommonDataItem(getString(R.string.terms_and_conditions), "Terms",false))
-        dataList.add(CommonDataItem(getString(R.string.user_policy), "UserPolicy",false))
-        dataList.add(CommonDataItem(getString(R.string.faqs), "FAQs",false))
-        dataList.add(CommonDataItem(getString(R.string.become_vendor), "BecomeVendor",false))
-        dataList.add(CommonDataItem(getString(R.string.send_feedback), "SendFeedback",false))
-        dataList.add(CommonDataItem(getString(R.string.about), "About",false))
+        dataList.add(CommonDataItem(getString(R.string.terms_and_conditions), "Terms", false))
+        dataList.add(CommonDataItem(getString(R.string.user_policy), "UserPolicy", false))
+        dataList.add(CommonDataItem(getString(R.string.faqs), "FAQs", false))
+        dataList.add(CommonDataItem(getString(R.string.become_vendor), "BecomeVendor", false))
+        dataList.add(CommonDataItem(getString(R.string.send_feedback), "SendFeedback", false))
+        dataList.add(CommonDataItem(getString(R.string.about), "About", false))
 
 
         adaper =
-            ProfileAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(  pos,type) })
+            ProfileAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adaper
         setFragmentResultListener(PROFILE_EDIT_REQUEST_KEY) { key, bundle ->
             // Any type can be passed via to the bundle
             val from = bundle.getString("from").toString()
             if (from.equals("edit_profile")) {
-               // getProfileData()
+                // getProfileData()
             }
             // Do something with the result...
         }
     }
 
-    private fun onAdapterClick( pos: Int,type: String) {
+    private fun onAdapterClick(pos: Int, type: String) {
         when (type) {
             "EditProfile" -> {
-                 moveToNextFragment(EditProfileFragment())
+                moveToNextFragment(EditProfileFragment())
             }
 
             "ChangePassword" -> {
                 moveToNextFragment(ChangePasswordFragment())
             }
-            "SavedCards"->{
-                moveToNextFragment(SavesCardListFragment.newInstance("profile",dataList[pos].title))
+            "SavedCards" -> {
+                moveToNextFragment(
+                    SavesCardListFragment.newInstance(
+                        "profile",
+                        dataList[pos].title
+                    )
+                )
             }
-     "SavedAddress"->{
-                moveToNextFragment(SavesCardListFragment.newInstance("profile",dataList[pos].title))
+            "SavedAddress" -> {
+                moveToNextFragment(
+                    SavesCardListFragment.newInstance(
+                        "profile",
+                        dataList[pos].title
+                    )
+                )
+            }"Notifications" -> {
+                moveToNextFragment(
+                    NotificationsFragment()
+                )
             }
 
-            /*else -> {
+            else -> {
                 val intent = Intent(requireActivity(), StaticPagesActivity::class.java)
                 intent.putExtra(StaticPagesActivity.PAGE_TYPE, type)
-                intent.putExtra(StaticPagesActivity.PAGE_Title, dataList[position!!].title)
+                intent.putExtra(StaticPagesActivity.PAGE_Title, dataList[pos].title)
                 startActivity(intent)
 
-            }*/
+            }
         }
     }
 

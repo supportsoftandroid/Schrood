@@ -5,17 +5,14 @@ package com.food.schrood.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-
 import androidx.recyclerview.widget.RecyclerView
 import com.food.schrood.databinding.ListCommnTextItemBinding
-import com.food.schrood.databinding.ListTextItemBinding
 import com.food.schrood.model.CommonDataItem
 
 
 class RecentSearchAdapter(
     mContext: Context, categoryList: MutableList<CommonDataItem>,
-    val onItemClick: ( String, Int) -> Unit
+    val onItemClick: (Int, String ) -> Unit
 ) :
     RecyclerView.Adapter<RecentSearchAdapter.MainViewHolder>()  {
     var dataList = mutableListOf<CommonDataItem>()
@@ -39,7 +36,7 @@ class RecentSearchAdapter(
         holder.bind(current)
         holder.binding.tvTitle.text=current.title
         holder.itemView.setOnClickListener(){
-            onItemClick(dataList[position].type,position)
+            onItemClick(position,dataList[position].type)
         }
 
 

@@ -4,13 +4,11 @@ package com.food.schrood.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-
-
 import androidx.recyclerview.widget.RecyclerView
-
-import com.food.schrood.model.CommonDataItem
 import com.food.schrood.databinding.ListProfileItemBinding
+import com.food.schrood.model.CommonDataItem
 
 
 class ProfileAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>,val listenerClick: ( Int,String) -> Unit ) :
@@ -35,6 +33,9 @@ class ProfileAdapter(mContext: Context, categoryList: MutableList<CommonDataItem
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
+        if (position==1||position==3){
+            holder.binding.viewDivider.visibility= View.VISIBLE
+        }
         holder.binding.tvTitle.text=current.title
         holder.itemView.setOnClickListener(){
             listenerClick( position,dataList[position].type)

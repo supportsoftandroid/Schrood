@@ -157,9 +157,6 @@ public interface ApiInterface {
         @Header("Authorization") authorization: String?,
         @Body body: JsonObject): Call<CommonResponse>
 
-
-
-
     @Headers(Constants.ACCEPT_JSON_HEADER)
     @POST(Constants.API_CHANGE_PASSWORD)
     fun change_password(
@@ -169,13 +166,13 @@ public interface ApiInterface {
 
 
     @GET(Constants.API_PRIVACY_POLICY)
-    fun getPrivacyPolicy(  ): Call<TermsResponse>
+    fun getPrivacyPolicy(  ): Call<TermsRespons>
 
     @GET(Constants.API_TERMS_CONDITION)
-    fun getTermsCond( ): Call<TermsResponse>
+    fun getTermsCond( ): Call<TermsRespons>
 
     @GET(Constants.API_ABOUT_APP)
-    fun getAboutApp(  ): Call<TermsResponse>
+    fun getAboutApp(  ): Call<TermsRespons>
 
   /* @GET(Constants.API_FAQ)
     fun getFAQPolicy(  ): Call<FaqResponse>

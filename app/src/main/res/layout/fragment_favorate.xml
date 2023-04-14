@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/colorAppBg"
+     >
+        <include
+            android:id="@+id/viewHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/layout_toolbar_tab"
+
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/rgStatus"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewHeader"
+            android:weightSum="1"
+            >
+
+            <RadioButton
+                android:id="@+id/rbStore"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_45"
+                android:layout_weight="0.5"
+                android:background="@drawable/tab_selecter"
+                android:button="@null"
+                android:checked="true"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center"
+                android:inputType="text"
+                android:padding="@dimen/dp_5"
+                android:text="@string/restaurant"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp_16" />
+
+            <RadioButton
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_45"
+                android:layout_weight="0.5"
+                android:id="@+id/rbProduct"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:checked="false"
+                android:button="@null"
+                android:gravity="center"
+                android:inputType="text"
+                android:textColor="@color/textPlaceHolder"
+                android:padding="@dimen/dp_5"
+                android:textSize="@dimen/sp_16"
+                android:textAllCaps="true"
+                android:background="@drawable/tab_selecter"
+                android:text="@string/dishes"/>
+
+        </RadioGroup>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/dp_20"
+            app:layout_constraintTop_toBottomOf="@id/rgStatus"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_store_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:visibility="gone"
+
+                android:textColor="@color/colorTextHint"
+                android:textSize="@dimen/sp_17"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvStatusList" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

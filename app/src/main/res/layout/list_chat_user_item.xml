@@ -15,7 +15,6 @@
         android:id="@+id/clvMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/color2F86C6"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/dp_15"
         android:paddingVertical="@dimen/dp_15">

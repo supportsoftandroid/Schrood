@@ -12,6 +12,7 @@
     <color name="colorBlack">#FF000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightYellow">#FFF896</color>
+    <color name="colorYellow">#FABC41</color>
     <color name="colorMaroon">#F54B64</color>
     <color name="colorGreenLight">#39C267</color>
     <color name="colorGreenVeryLight">#E1F6E8</color>
@@ -29,6 +30,8 @@
     <color name="colorTextLabel">#333333</color>
     <color name="textPlaceHolder">#777777</color>
     <color name="colorTextLabelLight">#A9A1B0</color>
+    <color name="color747D8C">#747D8C</color>
+    <color name="color2E3034">#2E3034</color>
     <color name="colorDarkGray">#656565</color>
     <color name="colorGray">#e1e1e1</color>
     <color name="colorA6A6AF">#A6A6AF</color>
@@ -36,6 +39,7 @@
     <color name="color3E3B51">#3E3B51</color>
     <color name="colorLightGray">#ECECEC</color>
     <color name="colorACB1C0">#ACB1C0</color>
+    <color name="colorD9D9D9">#D9D9D9</color>
     <color name="colorVeryLightGray">#F4F6FC</color>
     <color name="colorDDDDDD">#DDDDDD</color>
 
@@ -43,7 +47,7 @@
     <color name="colorAppIcon1c1932">#1c1932</color>
     <color name="colorSlotBg40404D">#40404D</color>
 
-    <color name="colorE6E6E6">#E6E6E6</color>
+    <color name="colorFAF9FE">#FAF9FE</color>
     <color name="color2F86C6">#2F86C6</color>
     <color name="colorE4DFDF">#E4DFDF</color>
     <color name="color3310B7AC">#3310B7AC</color>

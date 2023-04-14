@@ -20,7 +20,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/dp_40"
+            android:paddingVertical="@dimen/dp_10"
             android:fontFamily="@font/poppins_regular"
             android:includeFontPadding="false"
             android:textColor="@color/colorText"
@@ -48,7 +48,7 @@
             />
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_height="@dimen/dp_2"
             android:id="@+id/viewDivider"
             android:visibility="gone"
             android:background="@color/colorLightGray"

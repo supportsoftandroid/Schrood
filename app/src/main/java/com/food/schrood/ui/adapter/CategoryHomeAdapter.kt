@@ -5,16 +5,12 @@ package com.food.schrood.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-
 import androidx.recyclerview.widget.RecyclerView
 import com.food.schrood.databinding.ListCategoryItemBinding
-import com.food.schrood.databinding.ListTextItemBinding
-import com.food.schrood.interfaces.CommonClickListener
 import com.food.schrood.model.CommonDataItem
 
 
-class CategoryHomeAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val onCategoryClick: ( String, Int) -> Unit ) :
+class CategoryHomeAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val onCategoryClick: (   Int,String) -> Unit ) :
     RecyclerView.Adapter<CategoryHomeAdapter.MainViewHolder>()  {
     var dataList = mutableListOf<CommonDataItem>()
     var mContext: Context
@@ -33,7 +29,7 @@ class CategoryHomeAdapter(mContext: Context, categoryList: MutableList<CommonDat
         holder.bind(current)
         holder.binding.tvTitle.text=current.title
         holder.itemView.setOnClickListener(){
-            onCategoryClick(dataList[position].type,position)
+            onCategoryClick(position,dataList[position].type)
         }
 
 

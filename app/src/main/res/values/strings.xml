@@ -246,7 +246,8 @@
     <string name="paid_amount">Paid Amount</string>
     <string name="invalid_card">Invalid card</string>
     <string name="your_rating">Your Ratting</string>
-    <string name="add_review_on_booking">Add Review on Booking</string>
+    <string name="rate_restaurant">Rate Restaurant</string>
+    <string name="write_review">Write Review </string>
     <string name="write_a_review">write a review </string>
     <string name="rating">Rating</string>
     <string name="select_card">Select Card</string>
@@ -310,5 +311,31 @@
     <string name="order_mode">Order mode</string>
     <string name="card_holder_name">Card Holder Name</string>
     <string name="please_enter_name">Please enter name</string>
+    <string name="save_this_credit_card">Save this credit card</string>
+    <string name="share_your_experience">Share your experience</string>
+    <string name="publish_review">Publish Review</string>
+    <string name="dishes">Dishes</string>
+    <string name="ongoing">Ongoing</string>
+    <string name="history">History</string>
+    <string name="rate">Rate</string>
+    <string name="re_order">Re-order</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="preparing">Preparing</string>
+    <string name="recent_search">Recent search</string>
+    <string name="delivery_successful">Delivery Successful</string>
+    <string name="your_order_has_been_delivered_successfully_please_rate_it_now">Your order has been delivered successfully.<b> Please rate it now</b></string>
+    <string name="rate_your_order">Rate your order</string>
+    <string name="rate_items">Rate Items</string>
+    <string name="we_would_love_to_hear_more_about_your_experience">We would love to hear more about your experience!</string>
+    <string name="order_successful">Order successful!</string>
+    <string name="your_order_id_sc0001">Your order ID:   <font color="#AC2785">SC0001</font></string>
+    <string name="your_order_cost">Order cost: <b>$29.37</b></string>
+    <string name="view_order">View Order</string>
+    <string name="back_to_menu">Back to menu</string>
+    <string name="special_instructions">Special Instructions</string>
+    <string name="type_special_instructions">Type special instructions</string>
+    <string name="take_away">Take Away</string>
+    <string name="delivery">Delivery</string>
+
 
 </resources>

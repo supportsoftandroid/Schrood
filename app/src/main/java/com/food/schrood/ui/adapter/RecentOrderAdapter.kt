@@ -5,16 +5,13 @@ package com.food.schrood.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-
 import androidx.recyclerview.widget.RecyclerView
 import com.food.schrood.databinding.ListOrderHomeItemBinding
-import com.food.schrood.databinding.ListTextItemBinding
-import com.food.schrood.interfaces.CommonClickListener
 import com.food.schrood.model.CommonDataItem
 
 
-class RecentOrderAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>,val onOrderClick: (type:String,position:Int) -> Unit) :
+class RecentOrderAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>,
+                         val onOrderClick: (position:Int,type:String) -> Unit) :
     RecyclerView.Adapter<RecentOrderAdapter.MainViewHolder>()  {
     var dataList = mutableListOf<CommonDataItem>()
 
@@ -38,7 +35,7 @@ class RecentOrderAdapter(mContext: Context, categoryList: MutableList<CommonData
         holder.bind(current)
         holder.binding.tvTitle.text=current.title
         holder.itemView.setOnClickListener(){
-            onOrderClick(dataList[position].type,position)
+            onOrderClick(position,dataList[position].type)
         }
 
 

@@ -4,12 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.food.schrood.R
-import com.food.schrood.databinding.ActivityLoginBinding
 import com.food.schrood.databinding.ActivitySignUpBinding
 import com.food.schrood.databinding.ActivityVerifyOtpBinding
 import com.food.schrood.databinding.DialogAllowLocationsBinding
@@ -20,7 +17,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-
 import kotlinx.coroutines.launch
 
 class SignupActivity : AppCompatActivity() {

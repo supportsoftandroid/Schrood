@@ -6,17 +6,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.food.schrood.R
-
 import com.food.schrood.databinding.ListChatUserItemBinding
 import com.food.schrood.interfaces.CommonClickListener
 import com.food.schrood.model.ChatUserItem
 
 
-
-class ChatAdapter(mContext: Context, dataList: MutableList<ChatUserItem>, listener: CommonClickListener ) :
-    RecyclerView.Adapter<ChatAdapter.MainViewHolder>()
+class ChatUserAdapter(mContext: Context, dataList: MutableList<ChatUserItem>, listener: CommonClickListener ) :
+    RecyclerView.Adapter<ChatUserAdapter.MainViewHolder>()
      {
     var dataList = mutableListOf<ChatUserItem>()
       var listener:CommonClickListener
@@ -42,7 +39,7 @@ class ChatAdapter(mContext: Context, dataList: MutableList<ChatUserItem>, listen
         if (position/2==0){
             holder.binding.clvMain.setBackgroundColor(mContext.resources.getColor( R.color.colorWhite))
         }else{
-            holder.binding.clvMain.setBackgroundColor(mContext.resources.getColor( R.color.colorE6E6E6))
+            holder.binding.clvMain.setBackgroundColor(mContext.resources.getColor( R.color.colorFAF9FE))
         }
 
      /*   holder.binding.tvMessage.text=current.last_chat_message

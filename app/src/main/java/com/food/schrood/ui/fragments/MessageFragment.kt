@@ -13,7 +13,7 @@ import com.food.schrood.interfaces.CommonClickListener
 import com.food.schrood.model.ChatUserItem
 import com.food.schrood.model.LoginResponse
 import com.food.schrood.ui.activities.MainActivity
-import com.food.schrood.ui.adapter.ChatAdapter
+import com.food.schrood.ui.adapter.ChatUserAdapter
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.printLog
@@ -37,7 +37,7 @@ class MessageFragment : Fragment(), CommonClickListener {
     private val binding get() = _binding!!
 
     private val viewModel by lazy { ViewModelProvider(requireActivity())[MessageViewModel::class.java] }
-    lateinit var adaper: ChatAdapter
+    lateinit var adaper: ChatUserAdapter
     var dataList = mutableListOf<ChatUserItem>()
 
     lateinit var preferenceManager: PreferenceManager
@@ -48,6 +48,7 @@ class MessageFragment : Fragment(), CommonClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentMessageBinding.inflate(inflater, container, false)
         val root: View = binding.root
         preferenceManager = PreferenceManager(requireActivity())
@@ -55,6 +56,7 @@ class MessageFragment : Fragment(), CommonClickListener {
 //        loginResponse = preferenceManager.getLoginData()!!
 
         initRecycleView()
+        clickListener()
         initFirebaseDatabase()
         return root
     }
@@ -63,7 +65,14 @@ class MessageFragment : Fragment(), CommonClickListener {
 
 
     }
+    private fun clickListener() {
 
+        binding.viewHeader.imgMenu1.setOnClickListener() {
+            MainActivity.hideNavigationTab()
+            StaticData.backStackAddFragment(requireActivity(), ProfileFragment())
+
+        }
+    }
     fun initRecycleView() {
 
         binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.messages)
@@ -89,7 +98,7 @@ class MessageFragment : Fragment(), CommonClickListener {
         userItem.name="Café Corner"
         dataList.add(userItem)
 
-        adaper = ChatAdapter(requireActivity(), dataList, this)
+        adaper = ChatUserAdapter(requireActivity(), dataList, this)
         binding.viewBody.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.viewBody.rvList.adapter = adaper
         binding.viewBody.tvMessage.visibility = View.GONE

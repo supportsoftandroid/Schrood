@@ -4,17 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.food.schrood.databinding.FragmentHomeBinding
 import com.food.schrood.databinding.FragmentSearchBinding
 import com.food.schrood.model.CommonDataItem
-import com.food.schrood.ui.adapter.*
+import com.food.schrood.ui.adapter.ProductItemAdapter
+import com.food.schrood.ui.adapter.RecentSearchAdapter
 import com.food.schrood.utility.StaticData
-import com.food.schrood.viewmodel.HomeViewModel
 import com.food.schrood.viewmodel.SearchViewModel
 
 class SearchFragment : Fragment() {
@@ -28,7 +25,7 @@ class SearchFragment : Fragment() {
     var recentSearchList = mutableListOf<CommonDataItem>()
     var dataList = mutableListOf<CommonDataItem>()
     lateinit var adaper: RecentSearchAdapter
-    lateinit var adapterProduct: RecommSearchAdapter
+    lateinit var adapterProduct: ProductItemAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,7 +52,7 @@ class SearchFragment : Fragment() {
         recentSearchList.add(CommonDataItem("Dinner", "Dinner", false))
         recentSearchList.add(CommonDataItem("Pasta", "Pasta", false))
 
-        adaper = RecentSearchAdapter(requireActivity(), recentSearchList) { type, pos -> onRecentClick(type, pos) }
+        adaper = RecentSearchAdapter(requireActivity(), recentSearchList) {pos,type -> onRecentClick(pos,type) }
         binding.rvRecentSearch.layoutManager = LinearLayoutManager(requireActivity() )
         binding.rvRecentSearch.adapter = adaper
 
@@ -64,9 +61,8 @@ class SearchFragment : Fragment() {
         dataList.add(CommonDataItem("Spaghetti Land", "Spaghetti Land", false))
         dataList.add(CommonDataItem("Dessert Journey", "Dessert Journey", false))
 
-        adapterProduct = RecommSearchAdapter(requireActivity(), dataList) { type, pos -> onProductClick(type, pos) }
-        binding.rvRecommended.layoutManager =
-        LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        adapterProduct = ProductItemAdapter(requireActivity(), dataList) { pos,type,  -> onProductClick( pos,type) }
+        binding.rvRecommended.layoutManager =LinearLayoutManager(requireActivity())
         binding.rvRecommended.adapter = adapterProduct
 
 
@@ -87,11 +83,11 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun onRecentClick(type: String, position: Int) {
+    private fun onRecentClick( position: Int ,type: String) {
 
     }
 
-    private fun onProductClick(type: String, position: Int) {
+    private fun onProductClick( position: Int,type: String) {
 
     }
 

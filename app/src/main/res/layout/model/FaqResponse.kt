@@ -1,4 +1,4 @@
-package com.education.geno.model
+package com.food.schrood.model
 
 data class FaqResponse(
     val `data`: ArrayList<FaqItem>,

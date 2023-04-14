@@ -3,50 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAppBg"
-    >
+    android:background="@color/colorAppBg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="@color/colorAppBg"
         android:elevation="@dimen/dp_1"
-
-        android:paddingEnd="@dimen/dp_15"
-        android:paddingStart="@dimen/dp_5"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="@dimen/dp_45"
             android:layout_height="@dimen/dp_45"
+            android:paddingHorizontal="@dimen/dp_13"
+
             android:src="@drawable/ic_back"
-            android:padding="@dimen/dp_12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/txt_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_15"
+            android:layout_marginEnd="@dimen/dp_5"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="start"
-            android:layout_marginStart="@dimen/dp_15"
             android:includeFontPadding="false"
-            android:layout_marginEnd="@dimen/dp_5"
             android:singleLine="true"
             android:text="@string/app_name"
             android:textColor="@color/colorText"
             android:textSize="@dimen/sp_22"
 
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgMenu2"
+            app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toBottomOf="@id/img_back" />
 
@@ -54,19 +51,31 @@
             android:id="@+id/imgMenu2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_notifications_black_24dp"
             android:layout_marginEnd="@dimen/dp_10"
+            android:src="@drawable/ic_notifications_black_24dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgMenu1"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/img_back"
-            />
+            app:layout_constraintTop_toBottomOf="@id/img_back" />
 
         <ImageView
             android:id="@+id/imgMenu1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:layout_marginEnd="@dimen/dp_15"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_back" />
+        <CheckBox
+            android:id="@+id/btnCheckSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/dp_15"
+
+            android:background="@drawable/switch_selecter"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,74 +83,75 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/clvSearch"
-        android:visibility="gone"
-        android:background="@color/colorWhite"
         android:elevation="@dimen/dp_1"
         android:paddingHorizontal="@dimen/dp_7"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+
+
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgBackSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
             android:paddingHorizontal="@dimen/dp_10"
+            android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/imgBackSearch"
-            android:id="@+id/clEdit"
             android:layout_margin="@dimen/dp_2"
-            android:padding="@dimen/dp_10"
             android:layout_marginStart="@dimen/dp_10"
             android:background="@drawable/border_search"
-
-            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/dp_10"
             app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgBackSearch"
+            app:layout_constraintTop_toTopOf="parent"
 
 
             >
-        <EditText
-            android:id="@+id/ediSearch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="start|center_vertical"
-            android:includeFontPadding="false"
-            android:layout_marginHorizontal="@dimen/dp_5"
-            android:background="@null"
-            android:singleLine="true"
-            android:hint="@string/search_here"
-            android:textColor="@color/colorText"
-            android:textSize="@dimen/sp_14"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgClose"
 
-            app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/ediSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_5"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start|center_vertical"
+                android:hint="@string/search_here"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgClose"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-
-        <ImageView
-            android:id="@+id/imgClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:tint="@color/colorBlack"
-            android:src="@drawable/ic_search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorBlack" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
