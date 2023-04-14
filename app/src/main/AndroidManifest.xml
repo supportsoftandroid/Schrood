@@ -19,7 +19,7 @@
 
 
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -61,13 +61,13 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App" />
-        <!--  <activity
+          <activity
               android:name=".ui.activities.MainActivity"
               android:exported="false"
               android:label="@string/app_name"
               android:screenOrientation="portrait"
               android:theme="@style/Theme.App"
-              android:windowSoftInputMode="adjustResize" />-->
+              android:windowSoftInputMode="adjustResize" />
 
 
 

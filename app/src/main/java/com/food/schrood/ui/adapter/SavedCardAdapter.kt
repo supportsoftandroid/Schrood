@@ -47,16 +47,14 @@ class SavedCardAdapter(mContext: Context, categoryList: MutableList<CardData>, u
             listenerClick(position,"view")
         }
         if (isDelete){
-            holder.binding.tvDelete.visibility=View.VISIBLE
             holder.binding.imgRight.visibility=View.GONE
         }else{
-            holder.binding.tvDelete.visibility=View.GONE
             holder.binding.imgRight.visibility=View.VISIBLE
         }
         holder.binding.imgRight.setOnClickListener(){
             listenerClick(position,"view")
         }
-        holder.binding.tvDelete.setOnClickListener(){
+        holder.binding.imgDelete.setOnClickListener(){
             listenerClick(position,"delete")
         }
 

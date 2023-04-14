@@ -65,6 +65,7 @@ class MessageFragment : Fragment(), CommonClickListener {
 
 
     }
+
     private fun clickListener() {
 
         binding.viewHeader.imgMenu1.setOnClickListener() {
@@ -73,30 +74,31 @@ class MessageFragment : Fragment(), CommonClickListener {
 
         }
     }
+
     fun initRecycleView() {
 
         binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.messages)
         dataList.clear()
-        val userItem= ChatUserItem()
-        userItem.name="Ittalia Pizza Corner"
-        dataList.add(userItem)
-        userItem.name="Chicken Corner"
-        dataList.add(userItem)
+        addItemInList("Ittalia Pizza Corner")
+        addItemInList("Chicken Corner")
+        addItemInList("Burger Center")
+        addItemInList("Café Corner")
+        addItemInList("Ittalia Pizza Corner")
+        addItemInList("Chicken Corner")
+        addItemInList("Burger Center")
+        addItemInList("Café Corner")
+        addItemInList("Ittalia Pizza Corner")
+        addItemInList("Chicken Corner")
+        addItemInList("Burger Center")
+        addItemInList("Café Corner")
 
-        userItem.name="Burger Center"
-        dataList.add(userItem)
-        userItem.name="Café Corner"
-        dataList.add(userItem)
 
-        userItem.name="Ittalia Pizza Corner"
-        dataList.add(userItem)
-        userItem.name="Chicken Corner"
-        dataList.add(userItem)
 
-        userItem.name="Burger Center"
-        dataList.add(userItem)
-        userItem.name="Café Corner"
-        dataList.add(userItem)
+
+
+
+
+
 
         adaper = ChatUserAdapter(requireActivity(), dataList, this)
         binding.viewBody.rvList.layoutManager = LinearLayoutManager(requireActivity())
@@ -112,22 +114,29 @@ class MessageFragment : Fragment(), CommonClickListener {
         }
 
 
-       // intViewModal()
+        // intViewModal()
 
+    }
+
+    fun addItemInList(name: String) {
+        var userItem = ChatUserItem()
+        userItem.name = name
+        dataList.add(userItem)
     }
 
     fun intViewModal() {
         binding.viewBody.tvMessage.visibility = View.VISIBLE
-        viewModel.chatUserList.observe(viewLifecycleOwner){it->
+        viewModel.chatUserList.observe(viewLifecycleOwner) { it ->
 
-            printLog("chat list final",it.size.toString())
+            printLog("chat list final", it.size.toString())
 
             if (it.isEmpty()) {
                 dataList.clear()
-                binding.viewBody.tvMessage.text = requireActivity().getString(R.string.no_chat_user_yet)
+                binding.viewBody.tvMessage.text =
+                    requireActivity().getString(R.string.no_chat_user_yet)
             } else {
-               // dataList = dataList.sortBy { it.last_chat_time } as MutableList<ChatUserItem>
-                dataList =   it
+                // dataList = dataList.sortBy { it.last_chat_time } as MutableList<ChatUserItem>
+                dataList = it
                 binding.viewBody.tvMessage.visibility = View.GONE
             }
             adaper.update(dataList)
@@ -142,7 +151,12 @@ class MessageFragment : Fragment(), CommonClickListener {
         val chatUserItem = dataList[position]
         StaticData.backStackAddFragment(
             requireActivity(),
-            ChatHistoryFragment.newInstance("user",chatUserItem.name, chatUserItem.id, chatUserItem)
+            ChatHistoryFragment.newInstance(
+                "user",
+                chatUserItem.name,
+                chatUserItem.id,
+                chatUserItem
+            )
         )
 
     }

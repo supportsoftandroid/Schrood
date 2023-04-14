@@ -105,12 +105,18 @@ class HomeFragment : Fragment() {
 
     private fun clickListener() {
         binding.clvSearch.setOnClickListener() {
+            MainActivity.hideNavigationTab()
             StaticData.backStackAddFragment(requireActivity(), SearchFragment())
 
         }
         binding.imgProfile.setOnClickListener() {
             MainActivity.hideNavigationTab()
             StaticData.backStackAddFragment(requireActivity(), ProfileFragment())
+
+        }
+        binding.tvLocation.setOnClickListener() {
+            MainActivity.hideNavigationTab()
+            StaticData.backStackAddFragment(requireActivity(), AddressListFragment())
 
         }
     }

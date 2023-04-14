@@ -13,8 +13,8 @@ import com.food.schrood.model.FaqItem
 import com.food.schrood.utility.StaticData.Companion.printLog
 
 
-class FaqAdapter(mContext: Context, categoryList: MutableList<FaqItem> ) :
-    RecyclerView.Adapter<FaqAdapter.MainViewHolder>(),
+class ProductImageAdapter(mContext: Context, categoryList: MutableList<FaqItem> ) :
+    RecyclerView.Adapter<ProductImageAdapter.MainViewHolder>(),
     View.OnClickListener {
     var dataList = mutableListOf<FaqItem>()
 

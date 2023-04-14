@@ -44,7 +44,7 @@
     <string name="strong_password_message">Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number, one special character</string>
     <string name="enter_conform_password">Enter confirm password</string>
     <string name="current_password_and_new_password_different">Current password and your new password must be different</string>
-    <string name="conform_password_not_match">Password and Confirm password should be same</string>
+    <string name="confirm_password_not_match">Password and Confirm password should be same</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">Submit</string>
     <string name="currency_symbol">$</string>
@@ -336,6 +336,27 @@
     <string name="type_special_instructions">Type special instructions</string>
     <string name="take_away">Take Away</string>
     <string name="delivery">Delivery</string>
+    <string name="contact_information">Contact Information</string>
+    <string name="work">Work</string>
+    <string name="deliver_to_door">Deliver to door</string>
+    <string name="pickup_outside">Pickup outside</string>
+    <string name="add_new_delivery_address">Add New Delivery Address</string>
+    <string name="feedbacks">Feedbacks</string>
+    <string name="write_your_suggestion_here">Write your suggestion here</string>
+    <string name="we_would_love_to_hear_more_about_your_experience_tell_us_about_your_experience">We would love to hear more about your experience!. Tell us about your experience</string>
+    <string name="give_us_feedback">Give us feedback</string>
+    <string name="my_cart">My Cart</string>
+    <string name="add_more_items">+ Add more items</string>
+    <string name="offers_benefits"><![CDATA[Offers& Benefits]]></string>
+    <string name="apply_coupon">Apply Coupon</string>
+    <string name="special_cooking_instructions">Special cooking instructions</string>
+    <string name="bill_details">Bill Details</string>
+    <string name="item_total">Item Total</string>
+    <string name="gst_charges">GST Charges</string>
+    <string name="delivery_charge">Delivery Charge</string>
+    <string name="to_pay">To Pay</string>
+    <string name="payment_option">Payment Option</string>
+    <string name="add_new_card_label">+ Add new card</string>
 
 
 </resources>

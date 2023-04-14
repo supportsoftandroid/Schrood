@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="modalSelected"
+            type="com.food.schrood.model.CommonDataItem" />
+
+        <variable
+            name="modal"
+            type="com.food.schrood.model.CommonDataItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintStar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+       >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:minHeight="@dimen/dp_30"
+            android:text="Mountain Dew"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginEnd="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/llAddToCart"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:id="@+id/llAddToCart"
+            android:orientation="horizontal"
+            android:backgroundTint="@color/colorGray"
+            android:background="@drawable/border_button_gray_global_radius_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tvMinus"
+                android:text="-"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="@dimen/dp_7"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/sp_25"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:id="@+id/tvCount"
+                android:text="1"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:background="@color/colorWhite"
+
+                android:gravity="center"
+
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/sp_14"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tvPlus"
+
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="@dimen/dp_7"
+                android:text="+"
+
+                android:gravity="center"
+
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/sp_25"/>
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Regular"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_8"
+            android:layout_marginEnd="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"/>
+        <TextView
+            android:id="@+id/tvEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="@dimen/dp_7"
+            android:gravity="center"
+            android:text="@string/edit"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableEnd="@drawable/ic_edit"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/sp_12"
+            android:layout_marginEnd="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvType"/>
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="@dimen/dp_7"
+            android:gravity="center"
+            android:text="$20.00"
+            android:drawablePadding="@dimen/dp_10"
+
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/sp_16"
+            android:layout_marginEnd="@dimen/dp_5"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvType"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/view1"
+            android:background="@color/colorLightGray"
+            app:layout_constraintTop_toBottomOf="@+id/tvEdit"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

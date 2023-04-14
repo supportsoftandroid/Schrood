@@ -63,7 +63,7 @@ class SearchProductFragment : Fragment() {
 
         adapterStore = StoreItemAdapter(requireActivity(), storeList) { pos,type -> onStoreClick(pos,type) }
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
-
+        binding.rvList.adapter = adapterStore
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
                 R.id.rbStore -> {

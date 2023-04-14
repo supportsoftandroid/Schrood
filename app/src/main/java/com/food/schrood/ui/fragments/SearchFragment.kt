@@ -84,11 +84,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun onRecentClick( position: Int ,type: String) {
-
+        StaticData.backStackAddFragment(requireActivity(), SearchProductFragment())
     }
 
     private fun onProductClick( position: Int,type: String) {
-
+        StaticData.backStackAddFragment(requireActivity(), SearchProductFragment())
     }
 
     override fun onDestroyView() {

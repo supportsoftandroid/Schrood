@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.*
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -23,7 +22,6 @@ import com.food.schrood.model.LoginResponse
 import com.food.schrood.model.MessageItem
 import com.food.schrood.model.UserDetails
 import com.food.schrood.ui.adapter.ChatMessageAdapter
-import com.food.schrood.utility.Constants
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.KEY_IS_CHAT
@@ -107,11 +105,14 @@ class ChatHistoryFragment : Fragment() {
         binding.viewBody.rvList.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.viewBody.rvList.adapter = adaper
-        binding.viewBody.tvMessage.visibility = View.GONE
+       // binding.viewBody.tvMessage.visibility = View.GONE
 
         binding.viewBody.swipeRefreshLayout.setOnRefreshListener {
             binding.viewBody.swipeRefreshLayout.isRefreshing = false
         }
+
+      //  binding.viewBody.tvMessage.text = requireActivity().getString(R.string.lets_start_chat)
+        notifyMessageList()
        /* val lastLame = if (TextUtils.isEmpty(userDetails.l_name)) "" else " " + userDetails.l_name
         val userType = if (friendItem.type.equals("tutor")) "student" else "tutor"
 
@@ -237,6 +238,7 @@ class ChatHistoryFragment : Fragment() {
 
                  dataList.add(messageItem)
      notifyMessageList()
+
                // addMessage(messageItem)
 
             }

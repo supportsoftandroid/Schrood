@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.food.schrood.R
-import com.food.schrood.databinding.ListFoodTypeItemBinding
 import com.food.schrood.databinding.ListTextItemBinding
 import com.food.schrood.model.CommonDataItem
 

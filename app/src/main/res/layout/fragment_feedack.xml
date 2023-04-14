@@ -27,78 +27,90 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginBottom="@dimen/dp_50"
+            android:layout_marginBottom="@dimen/dp_20"
             android:paddingHorizontal="@dimen/dp_20"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:textColor="@color/textPlaceHolder"
+     android:layout_marginTop="@dimen/dp_10"
+     android:fontFamily="@font/poppins_medium"
+     android:textSize="@dimen/sp_14"
+     android:text="@string/we_would_love_to_hear_more_about_your_experience_tell_us_about_your_experience"/>
 
-
-            <EditText
-                android:id="@+id/edCurrentPassword"
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:background="@drawable/bg_edit_text"
-                android:drawableEnd="@drawable/ic_password_visibility"
-                android:drawablePadding="@dimen/dp_12"
-                android:hint="@string/current_password"
-                android:imeOptions="actionNext"
-                android:inputType="textPassword"
-                android:padding="15dp"
-                android:singleLine="true"
-                android:text=""
-                android:textAlignment="gravity"
-                android:textColor="@color/colorText"
-                android:textColorHint="@color/textPlaceHolder"
-                android:textSize="@dimen/sp_14"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/rgFeedback"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginHorizontal="@dimen/dp_5"
                 app:layout_constraintStart_toStartOf="parent"
-                 />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewHeader"
+                android:weightSum="3"
+                >
 
+                <RadioButton
+                    android:id="@+id/rbHappy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_weight="1"
+                    android:button="@drawable/emoji_happy_selecter"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+
+                      />
+                <RadioButton
+                    android:id="@+id/rbOk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/emoji_ok_selecter"
+                    android:fontFamily="@font/poppins_regular"
+                     />
+                <RadioButton
+                    android:id="@+id/rbSad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/emoji_sad_selecter"
+                    android:fontFamily="@font/poppins_regular"
+                     />
+
+
+
+            </RadioGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorText"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginTop="@dimen/dp_30"
+
+                android:text="@string/give_us_feedback"/>
 
             <EditText
-                android:id="@+id/edNewPassword"
+                android:id="@+id/edMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_20"
+                android:minHeight="@dimen/dp_100"
+                android:gravity="start"
                 android:background="@drawable/bg_edit_text"
-                android:drawableEnd="@drawable/ic_password_visibility"
-                android:drawablePadding="@dimen/sp_14"
-                android:hint="@string/new_password"
-                android:imeOptions="actionNext"
+                android:hint="@string/write_your_suggestion_here"
+                android:maxLines="4"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 android:padding="@dimen/dp_15"
-                android:singleLine="true"
-                android:text=""
-                android:textAlignment="gravity"
-                android:textColor="@color/colorText"
-                android:textColorHint="@color/textPlaceHolder"
-                android:textSize="@dimen/sp_14"
-                app:layout_constraintBottom_toTopOf="@+id/edCurrentPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                 />
 
-
-            <EditText
-                android:id="@+id/edConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:background="@drawable/bg_edit_text"
-                android:drawableEnd="@drawable/ic_password_visibility"
-                android:drawablePadding="@dimen/sp_14"
-                android:hint="@string/confirm_password"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:padding="@dimen/dp_15"
-                android:singleLine="true"
                 android:text=""
                 android:textAlignment="gravity"
                 android:textColor="@color/colorText"

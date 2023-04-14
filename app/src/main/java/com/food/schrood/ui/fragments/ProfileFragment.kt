@@ -151,8 +151,7 @@ class ProfileFragment : Fragment() {
         dataList.add(CommonDataItem(getString(R.string.about), "About", false))
 
 
-        adaper =
-            ProfileAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
+        adaper = ProfileAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adaper
         setFragmentResultListener(PROFILE_EDIT_REQUEST_KEY) { key, bundle ->
@@ -183,15 +182,16 @@ class ProfileFragment : Fragment() {
                 )
             }
             "SavedAddress" -> {
-                moveToNextFragment(
-                    SavesCardListFragment.newInstance(
-                        "profile",
-                        dataList[pos].title
-                    )
-                )
-            }"Notifications" -> {
+                moveToNextFragment(AddressListFragment.newInstance(dataList[pos].title))
+            }
+            "Notifications" -> {
                 moveToNextFragment(
                     NotificationsFragment()
+                )
+            }
+            "SendFeedback" -> {
+                moveToNextFragment(
+                    FeedBackFragment()
                 )
             }
 

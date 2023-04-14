@@ -57,7 +57,7 @@
                 android:layout_weight="0.5"
                 android:id="@+id/rbProduct"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:checked="false"
+
                 android:button="@null"
                 android:gravity="center"
                 android:inputType="text"

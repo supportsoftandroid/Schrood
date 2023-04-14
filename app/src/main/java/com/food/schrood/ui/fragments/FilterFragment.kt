@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.food.schrood.R
 import com.food.schrood.databinding.FragmentFilterBinding
 import com.food.schrood.model.CommonDataItem
-import com.food.schrood.model.LoginResponse
 import com.food.schrood.ui.adapter.CategoryFilterAdapter
 import com.food.schrood.ui.adapter.FoodTypeFilterAdapter
 import com.food.schrood.utility.PreferenceManager
@@ -128,7 +127,6 @@ class FilterFragment : Fragment() {
         binding.rvCategory.layoutManager = GridLayoutManager(requireActivity(), 3)
         binding.rvCategory.adapter = adaper
 
-
         foodTypeList.clear()
         foodTypeList.add(CommonDataItem("Any", "Any", false))
         foodTypeList.add(CommonDataItem("Vegetarian", "Vegetarian", true))
@@ -140,7 +138,7 @@ class FilterFragment : Fragment() {
             requireActivity(),
             foodTypeList,
             {  pos ,type-> onFoodClick(pos,type) })
-        binding.rvFoodType.layoutManager = GridLayoutManager(requireActivity(), 2)
+        binding.rvFoodType.layoutManager = GridLayoutManager(requireActivity(), 4)
         binding.rvFoodType.adapter = adapterFoodType
 
         binding.seekPrice.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {

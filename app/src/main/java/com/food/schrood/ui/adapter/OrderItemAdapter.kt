@@ -6,12 +6,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
 import androidx.recyclerview.widget.RecyclerView
-
 import com.food.schrood.databinding.ListOrderItemBinding
-
 import com.food.schrood.model.CommonDataItem
 
 
@@ -42,6 +38,8 @@ class OrderItemAdapter(mContext: Context, categoryList: MutableList<CommonDataIt
             holder.binding.tvReOrder.visibility=View.VISIBLE
             holder.binding.tvOrderStatus.visibility=View.GONE
         }else{
+            holder.binding.tvRate.visibility=View.GONE
+            holder.binding.tvReOrder.visibility=View.GONE
             holder.binding.tvOrderStatus.visibility=View.VISIBLE
         }
      //   holder.binding.tvName.text=current.title

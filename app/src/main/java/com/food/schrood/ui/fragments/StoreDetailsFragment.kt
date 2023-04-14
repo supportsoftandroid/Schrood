@@ -1,22 +1,20 @@
 package com.food.schrood.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
-
 import com.food.schrood.databinding.FragmentStoreDetailsBinding
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.ui.adapter.ProductItemAdapter
 import com.food.schrood.ui.adapter.TypeAdapter
+import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.StoreDetailsViewModel
 
 class StoreDetailsFragment : Fragment() {
@@ -60,6 +58,10 @@ class StoreDetailsFragment : Fragment() {
     private fun clickListener() {
         binding.imgBack.setOnClickListener() {
             requireActivity().onBackPressed()
+
+        }
+        binding.viewStoreInfo.llStoreReview.setOnClickListener() {
+            StaticData.backStackAddFragment(requireActivity(),ReviewsFragment())
 
         }
 

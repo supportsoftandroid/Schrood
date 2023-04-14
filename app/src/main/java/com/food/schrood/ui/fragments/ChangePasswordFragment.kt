@@ -48,7 +48,7 @@ class ChangePasswordFragment : Fragment() {
 
 
     private fun clickListener() {
-        binding.header.imgBack.setOnClickListener(){
+        binding.viewHeader.imgBack.setOnClickListener(){
             requireActivity().onBackPressed()
         }
         binding.btnSubmit.setOnClickListener(){
@@ -59,7 +59,7 @@ class ChangePasswordFragment : Fragment() {
     }
 
     private fun setData() {
-        binding.header.txtTitle.text=requireActivity().resources.getString(R.string.change_password)
+        binding.viewHeader.txtTitle.text=requireActivity().resources.getString(R.string.change_password)
         StaticData.passWordEditText( requireActivity(),false,binding.edCurrentPassword)
         StaticData.passWordEditText( requireActivity(),false,binding.edNewPassword)
         StaticData.passWordEditText( requireActivity(),false,binding.edConfirmPassword)
@@ -89,7 +89,7 @@ class ChangePasswordFragment : Fragment() {
             binding.edNewPassword.clearFocus()
             binding.edConfirmPassword.requestFocus()
         } else if (!newPassword.equals(confPassword)) {
-            showToast(requireActivity(),requireActivity().getString(R.string.conform_password_not_match))
+            showToast(requireActivity(),requireActivity().getString(R.string.confirm_password_not_match))
             binding.edNewPassword.clearFocus()
             binding.edConfirmPassword.requestFocus()
         } else {
