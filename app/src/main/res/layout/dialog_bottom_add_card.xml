@@ -49,40 +49,39 @@
     </RelativeLayout>
 
 
-<com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/card_holder_name"
-    android:padding="@dimen/dp_5"
-    android:fontFamily="@font/poppins_regular"
-    android:textColorHint="@color/colorA6A6AF"
-    android:layout_marginHorizontal="@dimen/dp_15"
-    android:layout_marginTop="@dimen/dp_30">
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ediName"
-        android:inputType="text"
-        android:fontFamily="@font/poppins_regular"
-        android:textColorHint="@color/colorA6A6AF"
-        android:singleLine="true"
-        android:paddingVertical="@dimen/dp_15"
-        android:textSize="@dimen/sp_17"
-        android:layout_marginBottom="@dimen/dp_5"/>
-
-</com.google.android.material.textfield.TextInputLayout>
 
     <com.stripe.android.view.CardMultilineWidget
         android:id="@+id/card_input_widget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_30"
         style="@style/Theme.App"
 
         android:layout_marginHorizontal="@dimen/dp_15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/card_holder_name"
+        android:padding="@dimen/dp_5"
+        android:fontFamily="@font/poppins_regular"
+        android:textColorHint="@color/colorA6A6AF"
+        android:layout_marginHorizontal="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ediName"
+            android:inputType="text"
+            android:fontFamily="@font/poppins_regular"
+            android:textColorHint="@color/colorA6A6AF"
+            android:singleLine="true"
+            android:textSize="@dimen/sp_17"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -91,7 +90,7 @@
         android:textSize="@dimen/sp_12"
         android:text="@string/save_this_credit_card"
         android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_15"
         android:layout_marginHorizontal="@dimen/dp_20"
 
         />

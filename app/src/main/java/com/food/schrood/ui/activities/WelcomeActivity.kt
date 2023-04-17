@@ -14,6 +14,7 @@ import com.food.schrood.R
 import com.food.schrood.databinding.ActivityWelcomeBinding
 import com.food.schrood.model.SliderItem
 import com.food.schrood.ui.adapter.WelcomePagerAdapter
+import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.getURLForResource
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.WelcomeViewModal
@@ -30,6 +31,7 @@ class WelcomeActivity : AppCompatActivity()  {
     private lateinit var viewModal: WelcomeViewModal
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        StaticData.changeStatusBarColor(this,"message")
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorLightYellow)
 
         // Set the SYSTEM_UI_FLAG_LAYOUT_STABLE and SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN flags

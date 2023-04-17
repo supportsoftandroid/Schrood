@@ -12,6 +12,8 @@ import com.food.schrood.databinding.ActivityVerifyOtpBinding
 import com.food.schrood.databinding.DialogAllowLocationsBinding
 import com.food.schrood.databinding.DialogAllowNotificationsBinding
 import com.food.schrood.utility.PreferenceManager
+import com.food.schrood.utility.StaticData
+import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.SignUpViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -23,16 +25,17 @@ class SignupActivity : AppCompatActivity() {
     lateinit var preferenceManager: PreferenceManager
     lateinit var binding: ActivitySignUpBinding
     private lateinit var dialogVerify: BottomSheetDialog
-    private lateinit var dialogNotfic: BottomSheetDialog
-    private lateinit var dialogLocation: BottomSheetDialog
+    lateinit var utilsManager: UtilsManager
     val activityScope = CoroutineScope(Dispatchers.Main)
     lateinit var viewModal: SignUpViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
+        StaticData.changeStatusBarColor(this,"message")
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         viewModal = ViewModelProvider(this).get(SignUpViewModel::class.java)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         preferenceManager = PreferenceManager(this)
+        utilsManager = UtilsManager(this)
 
         activityScope.launch {
             clickListener()
@@ -43,6 +46,9 @@ class SignupActivity : AppCompatActivity() {
 
     private fun clickListener() {
 
+        binding.imgBack.setOnClickListener {
+           finish()
+        }
         binding.btnSubmit.setOnClickListener {
             showVerifyBottomSheet()
         }
@@ -72,78 +78,32 @@ class SignupActivity : AppCompatActivity() {
         dialogVerify.show()
         dialogBinding.imgBack.visibility = View.VISIBLE
         dialogBinding.imgBack.setOnClickListener {
-            // Delete code here;
+
             dialogVerify.dismiss()
         }
         dialogBinding.btnSubmit.setOnClickListener {
 
             dialogVerify.dismiss()
-
-            showNotificationsBottomSheet()
-        }
-
-    }
-
-    private fun showNotificationsBottomSheet() {
-        val dialogBinding =
-            DialogAllowNotificationsBinding.inflate(LayoutInflater.from(this), null, false)
-        dialogNotfic = BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
-        val sheetView = dialogBinding.root
-        dialogNotfic.setContentView(sheetView)
-        dialogNotfic.setCancelable(false)
-
-        val screenHeight = resources.displayMetrics.heightPixels
-        val layoutParams = sheetView.layoutParams
-        layoutParams.height = screenHeight
-        sheetView.layoutParams = layoutParams
-
-        // Set the bottom sheet to be fullscreen
-        dialogNotfic.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        dialogNotfic.show()
-
-
-
-        dialogBinding.imgBack.visibility = View.VISIBLE
-        dialogBinding.imgBack.setOnClickListener {
-            // Delete code here;
-            dialogNotfic.dismiss()
-        }
-        dialogBinding.btnAllow.setOnClickListener {
-            dialogNotfic.dismiss()
-            showLocationBottomSheet()
+            utilsManager.showLocationBottomSheet(this@SignupActivity, {  type,dialog-> onNotificAllowClick(type,dialog) })
 
         }
 
     }
-    private fun showLocationBottomSheet() {
-        val dialogBinding =
-            DialogAllowLocationsBinding.inflate(LayoutInflater.from(this), null, false)
-        dialogLocation = BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
-        val sheetView = dialogBinding.root
-        dialogLocation.setContentView(sheetView)
-        dialogLocation.setCancelable(false)
 
-        val screenHeight = resources.displayMetrics.heightPixels
-        val layoutParams = sheetView.layoutParams
-        layoutParams.height = screenHeight
-        sheetView.layoutParams = layoutParams
-
-        // Set the bottom sheet to be fullscreen
-        dialogLocation.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        dialogLocation.show()
-
-
-
-        dialogBinding.imgBack.visibility = View.VISIBLE
-        dialogBinding.imgBack.setOnClickListener {
-            // Delete code here;
-            dialogLocation.dismiss()
-        }
-        dialogBinding.btnAllow.setOnClickListener {
-            dialogLocation.dismiss()
-
+    private fun onNotificAllowClick(type: String,dialog: BottomSheetDialog) {
+        utilsManager.showLocationBottomSheet(this@SignupActivity, {  type,dialog-> onLocationAllowClick(type,dialog) })
+    }
+    private fun onLocationAllowClick(type: String,dialog: BottomSheetDialog) {
+        if (type.equals("allow")) {
             moveToNextClass()
+        }else{
+            utilsManager.showManualLocationDialog(this@SignupActivity, {  type,dialog-> onManualLocationClick(type,dialog) })
         }
+    }
+    private fun onManualLocationClick(type: String,dialog: BottomSheetDialog) {
+
+        moveToNextClass()
 
     }
+
 }

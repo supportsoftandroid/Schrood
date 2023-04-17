@@ -78,6 +78,7 @@
     <string name="declineMessage">Are you sure wants to decline?</string>
     <string name="logout_message">Are you sure want to Logout.</string>
     <string name="cancel_message">Are you wants to cancel this</string>
+    <string name="delete_account_message">Are you wants to delete account?</string>
     <string name="state">State</string>
     <string name="first_name">First Name</string>
     <string name="by_clicking_submit_you_are_agreeing_to_the">By clicking submit you are agreeing to the</string>
@@ -265,7 +266,7 @@
     <string name="didn_t_you_received_any_otp">Didn\'t you received any OTP?</string>
     <string name="resend_a_new_otp">Resend a new OTP</string>
     <string name="reset_password">Reset Password</string>
-    <string name="sign_up">Sign up</string>
+    <string name="sign_up_label">Sign up</string>
     <string name="please_register_yourself_by_giving_below_information_to_use_schrood_app">Please register yourself by giving below information to use Schrood App</string>
     <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
     <string name="i_agree_with">I agree with</string>
@@ -357,6 +358,8 @@
     <string name="to_pay">To Pay</string>
     <string name="payment_option">Payment Option</string>
     <string name="add_new_card_label">+ Add new card</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="enter_manually">Enter Manually</string>
 
 
 </resources>

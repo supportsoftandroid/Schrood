@@ -27,6 +27,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     lateinit var preferenceManager: PreferenceManager
     private lateinit var utilsManager: UtilsManager
     override fun onCreate(savedInstanceState: Bundle?) {
+        StaticData.changeStatusBarColor(this,"message")
         binding=ActivityForgotPasswordBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -42,6 +43,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     private fun clickListener() {
 
+        binding.imgBack.setOnClickListener {
+         finish()
+
+        }
         binding.btnSubmit.setOnClickListener {
           showVerifyBottomSheet()
 
@@ -63,29 +68,26 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         // Set the bottom sheet to be fullscreen
         dialogVerify.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        dialogVerify.show()
 
 
-
-
-        binding.imgBack.visibility = View.VISIBLE
-        binding.imgBack.setOnClickListener {
+        dialogBinding.imgBack.visibility = View.VISIBLE
+        dialogBinding.imgBack.setOnClickListener {
             // Delete code here;
             dialogVerify.dismiss()
         }
-        binding.btnSubmit.setOnClickListener {
+        dialogBinding.btnSubmit.setOnClickListener {
 
             dialogVerify.dismiss()
             showResetPasswordBottomSheet()
 
         }
+        dialogVerify.show()
 
     }
     private fun showResetPasswordBottomSheet() {
         dialogResetPass= BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
         val dialogBinding = DialogResetPasswordBinding.inflate(LayoutInflater.from(this), null, false)
         val sheetView = dialogBinding.root
-
         dialogResetPass.setContentView(sheetView)
         dialogResetPass.setCancelable(false)
         val screenHeight = resources.displayMetrics.heightPixels
@@ -94,12 +96,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         sheetView.layoutParams = layoutParams
 
         // Set the bottom sheet to be fullscreen
-        dialogVerify.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        dialogResetPass.show()
-
-
-
-
+        dialogResetPass.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         StaticData.passWordEditText( mContext,false,dialogBinding.edPassword)
         StaticData.passWordEditText( mContext,false,dialogBinding.edConPassword)
@@ -109,10 +106,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
             dialogResetPass.dismiss()
         }
         dialogBinding.btnSubmit.setOnClickListener {
-
             dialogResetPass.dismiss()
             finish()
         }
-
+        dialogResetPass.show()
     }
 }

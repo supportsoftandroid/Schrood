@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.food.schrood.viewmodel.LoginViewModel" />
+            type="com.food.schrood.viewmodel.SignUpViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="start"
-            android:text="@string/sign_up"
+            android:text="@string/sign_up_label"
             android:textColor="@color/colorText"
             android:textSize="@dimen/sp_28"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +123,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-
+                android:maxLines="9"
                 android:background="@drawable/bg_edit_text"
                 android:drawablePadding="@dimen/dp_12"
                 android:fontFamily="@font/poppins_regular"
@@ -239,7 +239,8 @@
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/sp_14"
                 android:fontFamily="@font/poppins_regular"
-                /> <TextView
+                />
+            <TextView
             android:id="@+id/tvTermsConditions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -263,7 +264,7 @@
             android:padding="@dimen/dp_10"
             android:singleLine="true"
             android:inputType="text"
-            android:text="@string/sign_up"
+            android:text="@string/sign_up_label"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/sp_16"

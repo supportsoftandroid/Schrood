@@ -126,13 +126,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tvCancel"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="start"
             android:layout_gravity="center"
             android:textSize="@dimen/sp_14"
             android:layout_marginTop="@dimen/dp_10"
             android:textColor="@color/colorC32C46"
-            android:text="@string/don_t_allow"
+            android:text="@string/enter_manually"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvLogin" />

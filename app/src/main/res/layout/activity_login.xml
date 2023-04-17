@@ -92,7 +92,7 @@
             android:textColor="@color/colorText"
             android:textColorHint="@color/textPlaceHolder"
             android:textSize="@dimen/sp_16"
-            android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUserNamelable"
@@ -129,7 +129,7 @@
             android:textColor="@color/colorBlack"
             android:textColorHint="@color/textPlaceHolder"
             android:textSize="@dimen/sp_16"
-            android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPasswordlable"

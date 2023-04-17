@@ -17,12 +17,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.food.schrood.R
+import com.food.schrood.databinding.ActivityVerifyOtpBinding
+import com.food.schrood.databinding.DialogAllowLocationsBinding
+import com.food.schrood.databinding.DialogAllowNotificationsBinding
+import com.food.schrood.databinding.DialogBottomlocationSearchBinding
 import com.food.schrood.databinding.DialogImageUploadBinding
 import com.food.schrood.ui.activities.LoginActivity
 
 import com.food.schrood.utility.Constants.ERROR_ALERT
 import com.food.schrood.utility.StaticData.Companion.IMAGE_CROP_REQUEST_CODE
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -192,6 +197,104 @@ class UtilsManager(private val context: Context) {
     fun callToUser(mobileNo: String?) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +mobileNo.toString().trim()))
        context.startActivity(intent)
+    }
+
+      fun showNotificationBottomSheet(context: Context,  onItemClick: ( type:String,dlg:BottomSheetDialog) -> Unit) {
+       val dialog= BottomSheetDialog(context, R.style.CustomBottomSheetStyle)
+        val dialogBinding = DialogAllowNotificationsBinding.inflate(LayoutInflater.from(context), null, false)
+        val sheetView = dialogBinding.root
+        dialog.setContentView(sheetView)
+        dialog.setCancelable(false)
+
+        val screenHeight = context.resources.displayMetrics.heightPixels
+        val layoutParams = sheetView.layoutParams
+        layoutParams.height = screenHeight
+        sheetView.layoutParams = layoutParams
+
+        // Set the bottom sheet to be fullscreen
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+
+        dialogBinding.imgBack.visibility = View.VISIBLE
+        dialogBinding.imgBack.setOnClickListener {
+            // Delete code here;
+            dialog.dismiss()
+        }
+        dialogBinding.btnAllow.setOnClickListener {
+
+            onItemClick("allow",dialog)
+
+        }
+        dialogBinding.tvCancel.setOnClickListener {
+            onItemClick("cancel",dialog)
+
+        }
+        dialog.show()
+
+    }
+      fun showLocationBottomSheet(context: Context,  onItemClick: ( type:String,dlg:BottomSheetDialog) -> Unit) {
+       val dialog= BottomSheetDialog(context, R.style.CustomBottomSheetStyle)
+        val dialogBinding = DialogAllowLocationsBinding.inflate(LayoutInflater.from(context), null, false)
+        val sheetView = dialogBinding.root
+        dialog.setContentView(sheetView)
+        dialog.setCancelable(false)
+
+        val screenHeight = context.resources.displayMetrics.heightPixels
+        val layoutParams = sheetView.layoutParams
+        layoutParams.height = screenHeight
+        sheetView.layoutParams = layoutParams
+
+        // Set the bottom sheet to be fullscreen
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+
+        dialogBinding.imgBack.visibility = View.VISIBLE
+        dialogBinding.imgBack.setOnClickListener {
+            // Delete code here;
+            dialog.dismiss()
+        }
+        dialogBinding.btnAllow.setOnClickListener {
+
+            onItemClick("allow",dialog)
+
+        }
+        dialogBinding.tvCancel.setOnClickListener {
+
+            onItemClick("manually",dialog)
+
+        }
+        dialog.show()
+
+    }
+      fun showManualLocationDialog(context: Context,  onItemClick: ( type:String,dlg:BottomSheetDialog) -> Unit) {
+       val dialog= BottomSheetDialog(context, R.style.CustomBottomSheetStyle)
+        val dialogBinding = DialogBottomlocationSearchBinding.inflate(LayoutInflater.from(context), null, false)
+        val sheetView = dialogBinding.root
+        dialog.setContentView(sheetView)
+        dialog.setCancelable(false)
+
+        val screenHeight = context.resources.displayMetrics.heightPixels
+        val layoutParams = sheetView.layoutParams
+        layoutParams.height = screenHeight
+        sheetView.layoutParams = layoutParams
+
+        // Set the bottom sheet to be fullscreen
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+
+        dialogBinding.imgClose.visibility = View.VISIBLE
+        dialogBinding.imgClose.setOnClickListener {
+            // Delete code here;
+            dialog.dismiss()
+        }
+        dialogBinding.btnSubmit.setOnClickListener {
+
+            onItemClick("allow",dialog)
+
+        }
+
+        dialog.show()
+
     }
 
     fun showInvalidTokenError(activity: Activity) {

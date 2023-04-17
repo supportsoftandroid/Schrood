@@ -36,6 +36,7 @@ class FavoriteFragment : Fragment() {
             this,
             ViewModelProvider.NewInstanceFactory()
         ).get(FavoriteViewModel::class.java)
+        StaticData.changeStatusBarColor(requireActivity(), "other")
         _binding = FragmentFavorateBinding.inflate(inflater, container, false)
         val root: View = binding.root
         binding.let {

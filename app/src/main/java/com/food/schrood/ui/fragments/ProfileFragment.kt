@@ -67,8 +67,18 @@ class ProfileFragment : Fragment() {
         }
 
 
+
+
         binding.imgCamera.setOnClickListener {
             //  utilsManager.showGallaryBottomModelSheet(requireActivity())
+        }
+        binding.tvLogout.setOnClickListener() {
+            logOutFromApp()
+
+        }
+        binding.tvDelete.setOnClickListener() {
+           deleteAccount()
+
         }
     }
 
@@ -221,6 +231,22 @@ class ProfileFragment : Fragment() {
         val builder = AlertDialog.Builder(requireActivity())
         // builder.setTitle(R.string.app_name)
         builder.setMessage(R.string.logout_message)
+
+        builder.setPositiveButton(getString(R.string.yes)) { dialogInterface, which ->
+            preferenceManager.saveBoolean(Constants.KEY_CHECK_LOGIN, false)
+            StaticData.logoutFromApp(requireActivity())
+
+        }
+        //performing negative action
+        builder.setNegativeButton(getString(R.string.no)) { dialogInterface, which -> }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+    }
+    private fun deleteAccount() {
+        val builder = AlertDialog.Builder(requireActivity())
+        // builder.setTitle(R.string.app_name)
+        builder.setMessage(R.string.delete_account_message)
 
         builder.setPositiveButton(getString(R.string.yes)) { dialogInterface, which ->
             preferenceManager.saveBoolean(Constants.KEY_CHECK_LOGIN, false)

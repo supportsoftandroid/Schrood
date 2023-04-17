@@ -37,6 +37,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.food.schrood.BuildConfig
 import com.food.schrood.R
+import com.food.schrood.ui.activities.LoginActivity
 import com.food.schrood.ui.activities.WelcomeActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -151,7 +152,7 @@ class StaticData {
                "home"->{
                    colorValue=ContextCompat.getColor(context, R.color.app_color)
                }
-               "message"->{
+              else->{
                    colorValue=ContextCompat.getColor(context, R.color.colorLightGray)
                }
            }
@@ -631,7 +632,7 @@ class StaticData {
                 Constants.KEY_CHECK_LOGIN,
                 false
             )
-            val intent = Intent(activity, WelcomeActivity::class.java)
+            val intent = Intent(activity, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             activity.startActivity(intent)
             activity.finish()

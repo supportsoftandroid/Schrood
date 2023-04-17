@@ -14,14 +14,11 @@ import com.food.schrood.model.CommonDataItem
 class OrderItemAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val onItemClick: ( position:Int,type:String) -> Unit) :
     RecyclerView.Adapter<OrderItemAdapter.MainViewHolder>()  {
     var dataList = mutableListOf<CommonDataItem>()
-
-
     var mContext: Context
 
     init {
         this.dataList = categoryList
         this.mContext = mContext
-
 
     }
 
@@ -44,7 +41,16 @@ class OrderItemAdapter(mContext: Context, categoryList: MutableList<CommonDataIt
         }
      //   holder.binding.tvName.text=current.title
         holder.itemView.setOnClickListener(){
-            onItemClick(position,dataList[position].type)
+            onItemClick(position,"view")
+        }
+        holder.binding.tvRate.setOnClickListener(){
+            onItemClick(position,"rate")
+        }
+        holder.binding.tvReOrder.setOnClickListener(){
+            onItemClick(position,"reorder")
+        }
+        holder.binding.tvPayNow.setOnClickListener(){
+            onItemClick(position,"pay")
         }
 
 

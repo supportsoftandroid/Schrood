@@ -9,12 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
+import com.food.schrood.databinding.DialogBottomAddCardBinding
+import com.food.schrood.databinding.DialogBottomAddRateProductBinding
 import com.food.schrood.databinding.FragmentMyOrdersBinding
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.ui.activities.MainActivity
 import com.food.schrood.ui.adapter.OrderItemAdapter
 import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.MyOrderViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MyOrderFragment : Fragment() {
 
@@ -34,7 +37,11 @@ class MyOrderFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModal = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MyOrderViewModel::class.java)
+        StaticData.changeStatusBarColor(requireActivity(), "other")
+        viewModal = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(MyOrderViewModel::class.java)
         _binding = FragmentMyOrdersBinding.inflate(inflater, container, false)
         val root: View = binding.root
         binding.let {
@@ -47,7 +54,7 @@ class MyOrderFragment : Fragment() {
 
     fun initView() {
 
-        binding.viewHeader.txtTitle.text=requireActivity().getString(R.string.my_order)
+        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.my_order)
         orderOngoingList.clear()
         orderOngoingList.add(CommonDataItem("Cheese Pizza with Coke", "all", true))
         orderOngoingList.add(CommonDataItem("Pizza Cheese  with Coke", "breakfast", false))
@@ -77,24 +84,45 @@ class MyOrderFragment : Fragment() {
         orderCompletedList.add(CommonDataItem("Cheese Pizza with Coke", "Dessert Journey", true))
         orderCompletedList.add(CommonDataItem("Spaghetti with Coke", "Dessert Journey", true))
         dataList.clear()
-        dataList=orderOngoingList
+        dataList = orderOngoingList
 
-        adapter = OrderItemAdapter(requireActivity(), dataList) { pos, type-> onOrderClick(pos,type) }
+        adapter =
+            OrderItemAdapter(requireActivity(), dataList) { pos, type -> onOrderClick(pos, type) }
         binding.rvList.layoutManager =
-        LinearLayoutManager(requireActivity())
+            LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adapter
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
+            when (checkedId) {
                 R.id.rbOngoing -> {
-                    binding.rbOngoing.setTextColor(ContextCompat.getColor(requireActivity(),R.color.app_color))
-                    binding.rbHistory.setTextColor(ContextCompat.getColor(requireActivity(),R.color.colorText))
+                    binding.rbOngoing.setTextColor(
+                        ContextCompat.getColor(
+                            requireActivity(),
+                            R.color.app_color
+                        )
+                    )
+                    binding.rbHistory.setTextColor(
+                        ContextCompat.getColor(
+                            requireActivity(),
+                            R.color.colorText
+                        )
+                    )
                     dataList.clear()
                     dataList.addAll(orderOngoingList)
                     adapter.notifyDataSetChanged()
                 }
                 R.id.rbHistory -> {
-                    binding.rbHistory.setTextColor(ContextCompat.getColor(requireActivity(),R.color.app_color))
-                    binding.rbOngoing.setTextColor(ContextCompat.getColor(requireActivity(),R.color.textPlaceHolder))
+                    binding.rbHistory.setTextColor(
+                        ContextCompat.getColor(
+                            requireActivity(),
+                            R.color.app_color
+                        )
+                    )
+                    binding.rbOngoing.setTextColor(
+                        ContextCompat.getColor(
+                            requireActivity(),
+                            R.color.textPlaceHolder
+                        )
+                    )
                     dataList.clear()
                     dataList.addAll(orderCompletedList)
                     adapter.notifyDataSetChanged()
@@ -115,11 +143,31 @@ class MyOrderFragment : Fragment() {
 
         }
     }
-
-
-    private fun onOrderClick(position: Int,type: String) {
+    private fun onOrderClick(position: Int, type: String) {
+        if (type.equals("rate")){
+            dialogRateProduct()
+        }
 
     }
+    fun dialogRateProduct() {
+        val dialogBinding =
+            DialogBottomAddRateProductBinding.inflate(LayoutInflater.from(requireActivity()), null, false)
+        val dialogRate = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
+        dialogRate.setContentView(dialogBinding.root)
+
+        dialogBinding.imgClose.setOnClickListener {
+            dialogRate.dismiss()
+        }
+        dialogBinding.btnSubmit.setOnClickListener {
+
+            dialogRate.dismiss()
+
+
+        }
+        dialogRate.show()
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        StaticData.changeStatusBarColor(requireActivity(), "home")
         homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.let {
@@ -58,8 +58,9 @@ class HomeFragment : Fragment() {
         categoryList.add(CommonDataItem("Pasta", "Pasta", false))
 
 
-        adaper = CategoryHomeAdapter(requireActivity(), categoryList) {  pos ,type->
-            onCategoryClick( pos,
+        adaper = CategoryHomeAdapter(requireActivity(), categoryList) { pos, type ->
+            onCategoryClick(
+                pos,
                 type
 
             )
@@ -75,7 +76,8 @@ class HomeFragment : Fragment() {
 
         orderAdaper = RecentOrderAdapter(requireActivity(), orderList) { pos,
                                                                          type ->
-            onOrderClick(pos, type
+            onOrderClick(
+                pos, type
             )
         }
         binding.rvRecentOrder.layoutManager =
@@ -96,7 +98,7 @@ class HomeFragment : Fragment() {
 
         adapterStore = StoreItemAdapter(
             requireActivity(), storeList,
-            {  pos,type -> onStoreClick( pos,type) })
+            { pos, type -> onStoreClick(pos, type) })
         binding.rvStore.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvStore.adapter = adapterStore
 
@@ -105,18 +107,27 @@ class HomeFragment : Fragment() {
 
     private fun clickListener() {
         binding.clvSearch.setOnClickListener() {
+            StaticData.changeStatusBarColor(requireActivity(), "other")
             MainActivity.hideNavigationTab()
             StaticData.backStackAddFragment(requireActivity(), SearchFragment())
 
         }
         binding.imgProfile.setOnClickListener() {
+            StaticData.changeStatusBarColor(requireActivity(), "other")
             MainActivity.hideNavigationTab()
             StaticData.backStackAddFragment(requireActivity(), ProfileFragment())
 
         }
         binding.tvLocation.setOnClickListener() {
+            StaticData.changeStatusBarColor(requireActivity(), "other")
             MainActivity.hideNavigationTab()
             StaticData.backStackAddFragment(requireActivity(), AddressListFragment())
+
+        }
+        binding.cartViewBody.llViewCart.setOnClickListener() {
+            StaticData.changeStatusBarColor(requireActivity(), "other")
+            MainActivity.hideNavigationTab()
+            StaticData.backStackAddFragment(requireActivity(), CartFragment())
 
         }
     }
@@ -126,16 +137,23 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun onCategoryClick(position: Int,type: String) {
-
-    }
-
-    private fun onOrderClick(position: Int,type: String) {
-
-    }
-
-    private fun onStoreClick( position: Int,type: String) {
+    private fun onCategoryClick(position: Int, type: String) {
         MainActivity.hideNavigationTab()
-        StaticData.backStackAddFragment(requireActivity(),StoreDetailsFragment.newInstance(storeList[position].title))
+        StaticData.backStackAddFragment(
+            requireActivity(),
+            StoreDetailsFragment.newInstance(storeList[position].title)
+        )
+    }
+
+    private fun onOrderClick(position: Int, type: String) {
+
+    }
+
+    private fun onStoreClick(position: Int, type: String) {
+        MainActivity.hideNavigationTab()
+        StaticData.backStackAddFragment(
+            requireActivity(),
+            StoreDetailsFragment.newInstance(storeList[position].title)
+        )
     }
 }
