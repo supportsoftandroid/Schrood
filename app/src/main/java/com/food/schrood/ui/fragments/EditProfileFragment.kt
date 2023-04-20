@@ -19,43 +19,41 @@ class EditProfileFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var viewModal: ChangePasswordViewModal
     lateinit var preferenceManager: PreferenceManager
-   // private lateinit var loginResponse: LoginResponse
+
+    // private lateinit var loginResponse: LoginResponse
     lateinit var utilsManager: UtilsManager
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModal =  ViewModelProvider(this).get(ChangePasswordViewModal::class.java)
+        viewModal = ViewModelProvider(this).get(ChangePasswordViewModal::class.java)
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
         preferenceManager = PreferenceManager(requireActivity())
         utilsManager = UtilsManager(requireActivity())
-     //   loginResponse= preferenceManager.getLoginData()!!
+        //   loginResponse= preferenceManager.getLoginData()!!
         setData()
         clickListener()
         return root
     }
 
 
-
-
     private fun clickListener() {
-        binding.header.imgBack.setOnClickListener(){
+        binding.header.imgBack.setOnClickListener() {
             requireActivity().onBackPressed()
         }
-        binding.btnUpdate.setOnClickListener(){
-                requireActivity().onBackPressed()
-          //  checkValidation()
+        binding.btnUpdate.setOnClickListener() {
+            requireActivity().onBackPressed()
+            //  checkValidation()
         }
 
     }
 
     private fun setData() {
-        binding.header.txtTitle.text=requireActivity().resources.getString(R.string.edit_profile)
+        binding.header.txtTitle.text = requireActivity().resources.getString(R.string.edit_profile)
 
     }
-
 
 
     override fun onDestroyView() {

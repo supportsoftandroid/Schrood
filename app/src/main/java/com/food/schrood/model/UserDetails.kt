@@ -1,6 +1,6 @@
 package com.food.schrood.model
 
-   class UserDetails(
+class UserDetails(
     val name: String,
     val l_name: String,
     val about: String,
@@ -30,4 +30,4 @@ package com.food.schrood.model
     val updated_at: String,
 
 
-)
+    )

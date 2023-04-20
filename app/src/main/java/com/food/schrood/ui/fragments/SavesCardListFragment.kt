@@ -86,7 +86,7 @@ class SavesCardListFragment : Fragment() {
         if (from.equals("payment")) {
             isDelete = false
         } else {
-            isDelete = true
+            isDelete = false
         }
         _binding.let {
             initRecycleView()

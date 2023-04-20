@@ -14,15 +14,15 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private const val RETROFIT_LOGGER = "Result"
-    private const val INVALID_SESSION = "{"+"message"+":"+"Unauthenticated."+"}"
-    val result="{\"message\":\"Unauthenticated.\"}"
-    private const val connectionTimeOUT:Long=60
+    private const val INVALID_SESSION = "{" + "message" + ":" + "Unauthenticated." + "}"
+    val result = "{\"message\":\"Unauthenticated.\"}"
+    private const val connectionTimeOUT: Long = 60
 
     val retrofitClient: Retrofit.Builder by lazy {
         val levelType: Level
         if (BuildConfig.BUILD_TYPE.contentEquals("debug"))
             levelType = Level.BODY else levelType = Level.NONE
-          val logging = HttpLoggingInterceptor(object : Logger {
+        val logging = HttpLoggingInterceptor(object : Logger {
 
             override fun log(message: String) {
                 if (BuildConfig.DEBUG) {

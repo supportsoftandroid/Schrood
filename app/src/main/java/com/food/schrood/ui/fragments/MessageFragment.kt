@@ -43,7 +43,11 @@ class MessageFragment : Fragment(), CommonClickListener {
     lateinit var preferenceManager: PreferenceManager
     lateinit var utilsManager: UtilsManager
     lateinit var loginResponse: LoginResponse
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         StaticData.changeStatusBarColor(requireActivity(), "message")
         _binding = FragmentMessageBinding.inflate(inflater, container, false)
         val root: View = binding.root

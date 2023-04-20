@@ -35,7 +35,8 @@ class PermissionUtilityUpdated {
                         StringBuilder("You need to grant access to " + permissionsNeeded.get(0))
                     for (i in 1 until permissionsNeeded.size)
                         message.append(", ").append(permissionsNeeded.get(i))
-                    showMessageOKCancel(message.toString()
+                    showMessageOKCancel(
+                        message.toString()
                     ) { dialog, which ->
                         ActivityCompat.requestPermissions(
                             context as Activity, permissionsList.toTypedArray(),

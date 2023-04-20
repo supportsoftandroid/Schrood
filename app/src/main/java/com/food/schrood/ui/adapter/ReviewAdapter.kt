@@ -1,7 +1,6 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,8 +11,12 @@ import com.food.schrood.databinding.ListReviewItemBinding
 import com.food.schrood.model.CommonDataItem
 
 
-class ReviewAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val listenerClick: (Int, String) -> Unit ) :
-    RecyclerView.Adapter<ReviewAdapter.MainViewHolder>()  {
+class ReviewAdapter(
+    mContext: Context,
+    categoryList: MutableList<CommonDataItem>,
+    val listenerClick: (Int, String) -> Unit
+) :
+    RecyclerView.Adapter<ReviewAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
     var mContext: Context
 
@@ -25,7 +28,8 @@ class ReviewAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListReviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListReviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
@@ -33,9 +37,9 @@ class ReviewAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>
         val current = dataList[position]
         holder.bind(current)
 
-        holder.binding.tvName.text=current.title
-        holder.itemView.setOnClickListener(){
-            listenerClick( position,dataList[position].type)
+        holder.binding.tvName.text = current.title
+        holder.itemView.setOnClickListener() {
+            listenerClick(position, dataList[position].type)
         }
 
 
@@ -45,7 +49,8 @@ class ReviewAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>
         return dataList.size
     }
 
-    class MainViewHolder(val binding: ListReviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainViewHolder(val binding: ListReviewItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(modal: CommonDataItem) {
             binding.modal = modal
         }

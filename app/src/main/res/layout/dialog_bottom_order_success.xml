@@ -14,7 +14,7 @@
         android:layout_marginHorizontal="@dimen/dp_15"
         android:layout_gravity="center_horizontal"
         android:gravity="start"
-        android:src="@drawable/delivery_complete"
+        android:src="@drawable/order_succes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
     <RelativeLayout
@@ -63,7 +63,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_65"
+        android:layout_marginHorizontal="@dimen/dp_50"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp_10"
@@ -130,7 +130,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_10"
-
         android:layout_marginBottom="@dimen/dp_20"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"

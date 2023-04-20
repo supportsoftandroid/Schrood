@@ -44,7 +44,6 @@ class CircleImageView : AppCompatImageView {
     }
 
 
-
     private fun init() {
         super.setScaleType(SCALE_TYPE)
         mReady = true

@@ -1,7 +1,6 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +9,11 @@ import com.food.schrood.databinding.ListOrderHomeItemBinding
 import com.food.schrood.model.CommonDataItem
 
 
-class RecentOrderAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>,
-                         val onOrderClick: (position:Int,type:String) -> Unit) :
-    RecyclerView.Adapter<RecentOrderAdapter.MainViewHolder>()  {
+class RecentOrderAdapter(
+    mContext: Context, categoryList: MutableList<CommonDataItem>,
+    val onOrderClick: (position: Int, type: String) -> Unit
+) :
+    RecyclerView.Adapter<RecentOrderAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
 
 
@@ -26,16 +27,17 @@ class RecentOrderAdapter(mContext: Context, categoryList: MutableList<CommonData
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListOrderHomeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListOrderHomeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
-        holder.binding.tvTitle.text=current.title
-        holder.itemView.setOnClickListener(){
-            onOrderClick(position,dataList[position].type)
+        holder.binding.tvTitle.text = current.title
+        holder.itemView.setOnClickListener() {
+            onOrderClick(position, dataList[position].type)
         }
 
 
@@ -45,7 +47,8 @@ class RecentOrderAdapter(mContext: Context, categoryList: MutableList<CommonData
         return dataList.size
     }
 
-    class MainViewHolder(val binding: ListOrderHomeItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainViewHolder(val binding: ListOrderHomeItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(modal: CommonDataItem) {
             binding.modal = modal
         }

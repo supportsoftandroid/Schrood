@@ -31,9 +31,12 @@ class LoginRepository(
         password: String,
         is_role: String,
 
-        device_token: String): MutableLiveData<LoginResponse> {
-        val  call = RetrofitClient.apiInterface.userLogin(email,password,is_role,
-            Constants.DEVICE_TYPE,device_token)
+        device_token: String
+    ): MutableLiveData<LoginResponse> {
+        val call = RetrofitClient.apiInterface.userLogin(
+            email, password, is_role,
+            Constants.DEVICE_TYPE, device_token
+        )
 
         setProgressDialog()
         call.enqueue(object : Callback<LoginResponse> {
@@ -51,7 +54,7 @@ class LoginRepository(
                             context, response.message(),
                         )
                     }
-                }else{
+                } else {
                     showToast(
                         context, response.message(),
                     )

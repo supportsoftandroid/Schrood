@@ -3,7 +3,7 @@ package com.food.schrood.model
 import android.os.Parcel
 import android.os.Parcelable
 
-  class ChatUserItem(
+class ChatUserItem(
     val id: String,
     var name: String,
     var image: String,
@@ -24,13 +24,15 @@ import android.os.Parcelable
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readString().toString())
-      constructor() : this("", "","","","","","","","") {
-          // constructor code
-      }
+        parcel.readString().toString()
+    )
 
-      override fun describeContents(): Int {
-         return 0
+    constructor() : this("", "", "", "", "", "", "", "", "") {
+        // constructor code
+    }
+
+    override fun describeContents(): Int {
+        return 0
     }
 
 

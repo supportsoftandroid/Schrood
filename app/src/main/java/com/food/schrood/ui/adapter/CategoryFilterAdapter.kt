@@ -1,7 +1,6 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,9 +15,9 @@ import com.food.schrood.model.CommonDataItem
 
 class CategoryFilterAdapter(
     mContext: Context, categoryList: MutableList<CommonDataItem>,
-    val onViewItemClick: ( Int,String ) -> Unit
+    val onViewItemClick: (Int, String) -> Unit
 ) :
-    RecyclerView.Adapter<CategoryFilterAdapter.MainViewHolder>()  {
+    RecyclerView.Adapter<CategoryFilterAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
 
     var mContext: Context
@@ -31,14 +30,15 @@ class CategoryFilterAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListTextItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListTextItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
-        holder.binding.tvTilte.text=current.title
+        holder.binding.tvTilte.text = current.title
         if (current.is_selected) {
             holder.binding.constraintStar.setBackgroundResource(R.drawable.btn_background_app_color_radius_8)
             holder.binding.tvTilte.setTextColor(
@@ -53,12 +53,12 @@ class CategoryFilterAdapter(
             holder.binding.tvTilte.setTextColor(ContextCompat.getColor(mContext, R.color.colorText))
         }
         holder.itemView.setOnClickListener() {
-            if (current.is_selected){
-                dataList[position].is_selected=false
-            }else{
-                dataList[position].is_selected=true
+            if (current.is_selected) {
+                dataList[position].is_selected = false
+            } else {
+                dataList[position].is_selected = true
             }
-            onViewItemClick(position,dataList[position].type)
+            onViewItemClick(position, dataList[position].type)
             notifyDataSetChanged()
         }
 

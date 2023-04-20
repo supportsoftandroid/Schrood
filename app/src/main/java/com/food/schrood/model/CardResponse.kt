@@ -7,5 +7,5 @@ data class CardResponse(
     val STRIPE_SECRET: String,
     val data: CardData,
 
-):SuperCastClass()
+    ) : SuperCastClass()
 

@@ -10,12 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
+import com.food.schrood.databinding.DialogAllowNotificationsBinding
+import com.food.schrood.databinding.DialogBottomAddRateStoreBinding
+import com.food.schrood.databinding.DialogBottomAllowNotificationsBinding
 import com.food.schrood.databinding.FragmentNotificationsBinding
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.ui.adapter.NotificationAdapter
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.NotificationsViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class NotificationsFragment : Fragment() {
 
@@ -56,7 +60,7 @@ class NotificationsFragment : Fragment() {
     }
 
     fun initView() {
-        binding.viewHeader.txtTitle.text=requireActivity().getString(R.string.notifications)
+        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.notifications)
         dataList.clear()
 
         dataList.add(CommonDataItem("JCO Restaurant", "", false))
@@ -85,8 +89,40 @@ class NotificationsFragment : Fragment() {
         binding.viewBody.swipeRefreshLayout.setOnRefreshListener {
             binding.viewBody.swipeRefreshLayout.isRefreshing = false
         }
+        binding.viewHeader.btnCheckSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            // do something when the checkbox state changes
+            if (isChecked) {
+                showAllowNotificationBottomSheet()
+                // checkbox is checked
+            } else {
+                // checkbox is unchecked
+            }
+        }
     }
+    private fun showAllowNotificationBottomSheet() {
+        val dialog = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
+        val dialogBinding = DialogBottomAllowNotificationsBinding.inflate(
+            LayoutInflater.from(requireActivity()),
+            null,
+            false
+        )
+        val sheetView = dialogBinding.root
+        dialog.setContentView(sheetView)
+        dialog.setCancelable(false)
+        dialog.show()
+        dialogBinding.imgBack.setOnClickListener {
+            // Delete code here;
+            dialog.dismiss()
+        }
+        dialogBinding.btnAllow.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.tvCancel.setOnClickListener {
+            binding.viewHeader.btnCheckSwitch.isChecked=false
+            dialog.dismiss()
+        }
 
+    }
     private fun onAdapterClick(pos: Int, type: String) {
 
     }

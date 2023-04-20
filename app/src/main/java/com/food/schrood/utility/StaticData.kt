@@ -38,7 +38,6 @@ import androidx.fragment.app.FragmentTransaction
 import com.food.schrood.BuildConfig
 import com.food.schrood.R
 import com.food.schrood.ui.activities.LoginActivity
-import com.food.schrood.ui.activities.WelcomeActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -54,14 +53,14 @@ import java.util.regex.Pattern
 
 class StaticData {
 
-    companion object   {
+    companion object {
         const val MILLIS_PER_DAY = 24 * 60 * 60 * 1000L
-        val msgDateFormat="dd-MMM-yyyy HH:mm:ss a"
+        val msgDateFormat = "dd-MMM-yyyy HH:mm:ss a"
         const val FCM_BROADCAST: String = "FCM_BROADCAST"
         const val KEY_IS_CHAT = "is_chat"
-        const val CHANNEL_ID  ="schrood"
-        const  val CHANNEL_NAME = "schrood Channel"
-        const  val CHANNEL_DESCRIPTION = "schrood Channel Description"
+        const val CHANNEL_ID = "schrood"
+        const val CHANNEL_NAME = "schrood Channel"
+        const val CHANNEL_DESCRIPTION = "schrood Channel Description"
         const val PERMISSION_REQUEST_CODE = 133
         const val CAMERA_REQUEST_CODE = 201
         const val GALLARY_REQUEST_CODE = 202
@@ -73,8 +72,9 @@ class StaticData {
         const val PERMISSION_ALL = 2296
         val PERMISSIONSList = getPermission()
         val PERMISSIONS_CAMERA_STORAGE_LIST = getCameraStoragePermission()
-      /*  val  regex =("^[+]{1}(?:[0-9\\-\\(\\)\\/"
-        "\\.]\\s?){6, 15}[0-9]{1}$");*/
+
+        /*  val  regex =("^[+]{1}(?:[0-9\\-\\(\\)\\/"
+          "\\.]\\s?){6, 15}[0-9]{1}$");*/
         fun getTimeZoneId(): String {
             val tz = TimeZone.getDefault()
             return tz.id
@@ -112,11 +112,11 @@ class StaticData {
                 permissionList.add(Manifest.permission.READ_MEDIA_IMAGES)
 
             }
-           /* else if (SDK_INT >= Build.VERSION_CODES.R) {
-                permissionList.add(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
-            } else {
-                permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            }*/
+            /* else if (SDK_INT >= Build.VERSION_CODES.R) {
+                 permissionList.add(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
+             } else {
+                 permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+             }*/
             // val array: Array<String> = permissionList.toTypedArray()
             return permissionList.toTypedArray()
         }
@@ -133,43 +133,41 @@ class StaticData {
         fun checkFileAccessPermission(context: Context): Boolean {
             var isGranted = true
             checkStorageAndCameraPermission(context)
-           /* if (SDK_INT >= Build.VERSION_CODES.R) {
-                isGranted = Environment.isExternalStorageManager()
-                if (isGranted) {
-                    checkStorageAndCameraPermission(context)
-                }
-            } else {
-                isGranted = checkStorageAndCameraPermission(context)
-            }*/
+            /* if (SDK_INT >= Build.VERSION_CODES.R) {
+                 isGranted = Environment.isExternalStorageManager()
+                 if (isGranted) {
+                     checkStorageAndCameraPermission(context)
+                 }
+             } else {
+                 isGranted = checkStorageAndCameraPermission(context)
+             }*/
             return isGranted
         }
 
-       fun changeStatusBarColor(context: Context,from:String){
-           // Set the status bar color
-           val window=(context as Activity).window
-           var colorValue=ContextCompat.getColor(context, R.color.app_color)
-           when (from){
-               "home"->{
-                   colorValue=ContextCompat.getColor(context, R.color.app_color)
-               }
-              else->{
-                   colorValue=ContextCompat.getColor(context, R.color.colorLightGray)
-               }
-           }
-         //  window.decorView(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        fun changeStatusBarColor(context: Context, from: String) {
+            // Set the status bar color
+            val window = (context as Activity).window
+            var colorValue = ContextCompat.getColor(context, R.color.app_color)
+            when (from) {
+                "home" -> {
+                    colorValue = ContextCompat.getColor(context, R.color.app_color)
+                }
+                else -> {
+                    colorValue = ContextCompat.getColor(context, R.color.colorLightGray)
+                }
+            }
+            //  window.decorView(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-           window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
-            window.statusBarColor =colorValue
-
-
-           // Set the SYSTEM_UI_FLAG_LAYOUT_STABLE and SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN flags
-        //   window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.statusBarColor = colorValue
 
 
+            // Set the SYSTEM_UI_FLAG_LAYOUT_STABLE and SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN flags
+            //   window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
-       }
 
+        }
 
 
         fun requestFileAccessPermission(activity: Activity) {
@@ -223,30 +221,39 @@ class StaticData {
             }
             return true
         }
-      /* fun getChatMessageDate(): StartupTime {
-          val date = now()
-           return date
-       }*/
+        /* fun getChatMessageDate(): StartupTime {
+            val date = now()
+             return date
+         }*/
 
 
-        fun getCurrentTimestamp(): String{
-            return SimpleDateFormat("dd-MMM-yyyy HH:mm:ss a",Locale.US).format(Calendar.getInstance().time)
+        fun getCurrentTimestamp(): String {
+            return SimpleDateFormat(
+                "dd-MMM-yyyy HH:mm:ss a",
+                Locale.US
+            ).format(Calendar.getInstance().time)
         }
-        fun getTimeFromDate(inpDate: String): String{
+
+        fun getTimeFromDate(inpDate: String): String {
             if (TextUtils.isEmpty(inpDate)) {
                 return ""
             }
 
-            val inputFormat = SimpleDateFormat(msgDateFormat,Locale.US)
-            var output = SimpleDateFormat("HH:mm a",Locale.US)
+            val inputFormat = SimpleDateFormat(msgDateFormat, Locale.US)
+            var output = SimpleDateFormat("HH:mm a", Locale.US)
 
-            val sdf = SimpleDateFormat(msgDateFormat,Locale.US)
+            val sdf = SimpleDateFormat(msgDateFormat, Locale.US)
             val old = sdf.parse(inpDate)
-            val current = sdf.parse(SimpleDateFormat(msgDateFormat,Locale.US).format(Calendar.getInstance().time).toString())
+            val current = sdf.parse(
+                SimpleDateFormat(
+                    msgDateFormat,
+                    Locale.US
+                ).format(Calendar.getInstance().time).toString()
+            )
 
             val moreThanDay: Boolean = Math.abs(current.time - old.time) > MILLIS_PER_DAY
-            if (moreThanDay){
-                output = SimpleDateFormat("dd-MMM-yyyy",Locale.US)
+            if (moreThanDay) {
+                output = SimpleDateFormat("dd-MMM-yyyy", Locale.US)
             }
 
             println(moreThanDay)
@@ -256,13 +263,16 @@ class StaticData {
             return formatted
 
         }
+
         fun getMessageCurrentDate(): String {
-            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss",Locale.US)
+            val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
             val currentDate = sdf.format(Date())
             return currentDate
 
-        } fun changeLastChatDate(inputDate:String): String {
-            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss",Locale.US)
+        }
+
+        fun changeLastChatDate(inputDate: String): String {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
             val output = SimpleDateFormat("HH:mm a")
             var d: Date? = inputFormat.parse(inputDate)
             val formatted: String = output.format(d)
@@ -270,22 +280,23 @@ class StaticData {
             return formatted
 
         }
-       /* fun searchGoogleAddress(context: Context) {
-            val fields = Arrays.asList(
-                Place.Field.ID,
-                Place.Field.NAME,
-                Place.Field.ADDRESS,
-                Place.Field.LAT_LNG,
-                Place.Field.ADDRESS_COMPONENTS
-            )
-            // Start the autocomplete intent.
-            val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
-                .setTypeFilter(TypeFilter.ADDRESS)
-                 .setCountry(Constants.COUNTRY_NAME)
-                .build(context)
-            (context as Activity).startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
-        }
-*/
+
+        /* fun searchGoogleAddress(context: Context) {
+             val fields = Arrays.asList(
+                 Place.Field.ID,
+                 Place.Field.NAME,
+                 Place.Field.ADDRESS,
+                 Place.Field.LAT_LNG,
+                 Place.Field.ADDRESS_COMPONENTS
+             )
+             // Start the autocomplete intent.
+             val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                 .setTypeFilter(TypeFilter.ADDRESS)
+                  .setCountry(Constants.COUNTRY_NAME)
+                 .build(context)
+             (context as Activity).startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+         }
+ */
         fun getURLForResource(resourceId: Int): String {
             //use BuildConfig.APPLICATION_ID instead of R.class.getPackage().getName() if both are not same
             return Uri.parse("android.resource://" + R::class.java.getPackage().name + "/" + resourceId)
@@ -303,10 +314,15 @@ class StaticData {
             activity.startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE)
             return cameraImagePath
         }
+
         fun createNotificationChannel(context: Context) {
             // the NotificationChannel class is new and not in the support library
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
+                val channel = NotificationChannel(
+                    CHANNEL_ID,
+                    CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_HIGH
+                )
                 channel.description = CHANNEL_DESCRIPTION
                 // Register the channel with the system; you can't change the importance
                 // or other notification behaviors after this
@@ -315,6 +331,7 @@ class StaticData {
 
             }
         }
+
         fun pickImageFromGallary(activity: Activity) {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             activity.startActivityForResult(intent, GALLARY_REQUEST_CODE)
@@ -333,49 +350,57 @@ class StaticData {
             return day
 
         }
+
         fun getCurrentDate(): String {
-            val sdf = SimpleDateFormat("dd-MM-yyyy",Locale.US)
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.US)
             val currentDate = sdf.format(Date())
-          printLog("currentDate",currentDate)
+            printLog("currentDate", currentDate)
             return currentDate
 
         }
+
         fun toCamelCase(str: String): String {
             val parts = str.split("_", " ", "-")
             val camelCaseString = StringBuilder()
             for (part in parts) {
                 if (part.isNotEmpty()) {
-                    camelCaseString.append(part.substring(0, 1).toUpperCase() + part.substring(1).toLowerCase())
+                    camelCaseString.append(
+                        part.substring(0, 1).toUpperCase() + part.substring(1).toLowerCase()
+                    )
                 }
             }
             return camelCaseString.toString()
         }
-        fun getCamelCaseString(inputText:String): String {
-            var text=inputText
+
+        fun getCamelCaseString(inputText: String): String {
+            var text = inputText
             if (!TextUtils.isEmpty(text.trim())) {
-                val parts = inputText.split("_","-")
+                val parts = inputText.split("_", "-")
                 val camelCaseString = StringBuilder()
                 for (part in parts) {
                     if (part.isNotEmpty()) {
-                        camelCaseString.append(part.substring(0, 1).toUpperCase() + part.substring(1))
+                        camelCaseString.append(
+                            part.substring(0, 1).toUpperCase() + part.substring(1)
+                        )
                     }
                 }
                 text = camelCaseString.toString()
 
-              return  text
-                }else{
+                return text
+            } else {
 
-                return  ""
-                }
+                return ""
+            }
 
         }
+
         fun getGreetingDate(context: Context): String {
             val date = Date()
             val cal = Calendar.getInstance()
             cal.time = date
             val hour = cal[Calendar.HOUR_OF_DAY]
             //Set greeting
-            var greeting: String =  context.getString(R.string.good_morning)
+            var greeting: String = context.getString(R.string.good_morning)
             if (hour >= 6 && hour < 12) {
                 greeting = context.getString(R.string.good_morning)
             } else if (hour >= 12 && hour < 17) {
@@ -383,7 +408,7 @@ class StaticData {
             } else if (hour >= 17 && hour < 21) {
                 greeting = context.getString(R.string.good_evening)
             } else if (hour >= 21 && hour < 24) {
-                greeting =  context.getString(R.string.good_night)
+                greeting = context.getString(R.string.good_night)
             }
             return greeting
 
@@ -626,7 +651,7 @@ class StaticData {
         }
 
         fun logoutFromApp(activity: Activity) {
-         //  FirebaseMessaging.getInstance().deleteToken()
+            //  FirebaseMessaging.getInstance().deleteToken()
             val preferenceManager = PreferenceManager(activity)
             preferenceManager.saveBoolean(
                 Constants.KEY_CHECK_LOGIN,
@@ -637,24 +662,28 @@ class StaticData {
             activity.startActivity(intent)
             activity.finish()
         }
+
         fun isStrongPassword(password: String): Boolean {
-           /* val regex = Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
-            return password.matches(regex)*/
-           /* val PASSWORD_PATTERN = Pattern.compile(
-                "^" +
-                        "(?=.*[@#$%^&+=])" +  // at least 1 special character
-                        "(?=\\S+$)" +  // no white spaces
-                        ".{8,}" +  // at least 8 characters
-                        "$"
-            )*/
+            /* val regex = Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
+             return password.matches(regex)*/
+            /* val PASSWORD_PATTERN = Pattern.compile(
+                 "^" +
+                         "(?=.*[@#$%^&+=])" +  // at least 1 special character
+                         "(?=\\S+$)" +  // no white spaces
+                         ".{8,}" +  // at least 8 characters
+                         "$"
+             )*/
             if (password.length < 8) return false
             if (password.filter { it.isDigit() }.firstOrNull() == null) return false
-            if (password.filter { it.isLetter() }.filter { it.isUpperCase() }.firstOrNull() == null) return false
-            if (password.filter { it.isLetter() }.filter { it.isLowerCase() }.firstOrNull() == null) return false
+            if (password.filter { it.isLetter() }.filter { it.isUpperCase() }
+                    .firstOrNull() == null) return false
+            if (password.filter { it.isLetter() }.filter { it.isLowerCase() }
+                    .firstOrNull() == null) return false
             if (password.filter { !it.isLetterOrDigit() }.firstOrNull() == null) return false
 
             return true
         }
+
         fun getBusinessHrsTimeOpeningHrs(date: String?): String {
             val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
             var testDate: Date? = null
@@ -685,8 +714,9 @@ class StaticData {
             }
             return str!!
         }
+
         fun dateChangeInDDMMYYYY(inpuStrDate: String): String {
-         //   val inputPattern = "dd-MM-yyyy"
+            //   val inputPattern = "dd-MM-yyyy"
             val inputPattern = "yyyy-MM-dd"
             val outputPattern = "EEE,dd MMM yyyy"
             val inputFormat = SimpleDateFormat(inputPattern, Locale.getDefault())
@@ -725,9 +755,10 @@ class StaticData {
             return str.toString()
 
         }
+
         fun dateChangeDateDay_Date(inpuStrDate: String): String {
 
-            printLog("inpuStrDate", inpuStrDate )
+            printLog("inpuStrDate", inpuStrDate)
             val inputPattern = "dd-MM-yyyy"
             val outputPattern = "EEE,dd-MMM-yyyy"
             val inputFormat = SimpleDateFormat(inputPattern, Locale.getDefault())
@@ -783,9 +814,9 @@ class StaticData {
                 geocoder.getFromLocation(
                     latitude,
                     longitude,
-                    1,object : Geocoder.GeocodeListener {
+                    1, object : Geocoder.GeocodeListener {
                         override fun onGeocode(addresses: MutableList<Address>) {
-                            setAddressFrom(context,addresses)
+                            setAddressFrom(context, addresses)
                         }
                     }
                 )
@@ -795,7 +826,7 @@ class StaticData {
                     longitude,
                     1,
                 ) as MutableList<Address>
-                setAddressFrom(context,addresses)
+                setAddressFrom(context, addresses)
             }
 
 
@@ -805,7 +836,8 @@ class StaticData {
 
         fun setAddressFrom(context: Context, addresses: MutableList<Address>) {
             if (addresses.size > 0) {
-              val  address = addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                val address =
+                    addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
 
                 val houseNo = addresses[0].featureName
                 val thoroughfare = addresses[0].thoroughfare
@@ -979,31 +1011,30 @@ class StaticData {
             return inSampleSize
         }
 
-    /*    fun searchPlace(activity: Activity) {
-            val fields = Arrays.asList(
-                Place.Field.ID,
-                Place.Field.NAME,
-                Place.Field.ADDRESS,
-                Place.Field.LAT_LNG,
-                Place.Field.ADDRESS_COMPONENTS
-            )
-            val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
-                .setTypeFilter(TypeFilter.ADDRESS)
-                 .setCountry(Constants.COUNTRY_NAME)
-                .build(activity)
-            activity.startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
-        }*/
-
+        /*    fun searchPlace(activity: Activity) {
+                val fields = Arrays.asList(
+                    Place.Field.ID,
+                    Place.Field.NAME,
+                    Place.Field.ADDRESS,
+                    Place.Field.LAT_LNG,
+                    Place.Field.ADDRESS_COMPONENTS
+                )
+                val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                    .setTypeFilter(TypeFilter.ADDRESS)
+                     .setCountry(Constants.COUNTRY_NAME)
+                    .build(activity)
+                activity.startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+            }*/
 
 
         fun InvalidSession(context: Context, message: String) {
-            showToast(context,message)
+            showToast(context, message)
             logoutFromApp(context as Activity)
 
         }
 
         fun setDateAndMonth(inputDate: String, tvDate: TextView, tvMonth: TextView) {
-           // printLog("inputDate",inputDate)
+            // printLog("inputDate",inputDate)
             val inputPattern = "dd-MM-yyyy"
             val inputFormat = SimpleDateFormat(inputPattern, Locale.getDefault())
             val date: Date? = inputFormat.parse(inputDate)
@@ -1013,7 +1044,6 @@ class StaticData {
             tvMonth.setText(month)
 
         }
-
 
 
     }

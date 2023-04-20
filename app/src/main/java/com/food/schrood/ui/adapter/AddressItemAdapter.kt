@@ -1,7 +1,6 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,8 +10,12 @@ import com.food.schrood.databinding.ListAddressItemBinding
 import com.food.schrood.model.CommonDataItem
 
 
-class AddressItemAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val listenerClick: (Int, String) -> Unit ) :
-    RecyclerView.Adapter<AddressItemAdapter.MainViewHolder>()  {
+class AddressItemAdapter(
+    mContext: Context,
+    categoryList: MutableList<CommonDataItem>,
+    val listenerClick: (Int, String) -> Unit
+) :
+    RecyclerView.Adapter<AddressItemAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
     var mContext: Context
 
@@ -24,7 +27,8 @@ class AddressItemAdapter(mContext: Context, categoryList: MutableList<CommonData
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListAddressItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListAddressItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
@@ -32,9 +36,9 @@ class AddressItemAdapter(mContext: Context, categoryList: MutableList<CommonData
         val current = dataList[position]
         holder.bind(current)
 
-        holder.binding.tvName.text=current.title
-        holder.itemView.setOnClickListener(){
-            listenerClick( position,dataList[position].type)
+        holder.binding.tvName.text = current.title
+        holder.itemView.setOnClickListener() {
+            listenerClick(position, dataList[position].type)
         }
 
 
@@ -44,7 +48,8 @@ class AddressItemAdapter(mContext: Context, categoryList: MutableList<CommonData
         return dataList.size
     }
 
-    class MainViewHolder(val binding: ListAddressItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainViewHolder(val binding: ListAddressItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(modal: CommonDataItem) {
             binding.modal = modal
         }

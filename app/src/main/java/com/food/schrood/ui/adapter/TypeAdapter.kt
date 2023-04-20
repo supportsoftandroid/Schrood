@@ -14,14 +14,14 @@ import com.food.schrood.model.CommonDataItem
 class TypeAdapter(
     mContext: Context,
     categoryList: MutableList<CommonDataItem>,
-    val onViewItemClick: ( Int,String) -> Unit
+    val onViewItemClick: (Int, String) -> Unit
 ) :
     RecyclerView.Adapter<TypeAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
 
 
     var mContext: Context
-    var selectedPos=0
+    var selectedPos = 0
 
     init {
         this.dataList = categoryList
@@ -31,26 +31,33 @@ class TypeAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListFoodTypeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListFoodTypeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
-        holder.binding.tvTilte.text = current.title
-        if (position==selectedPos) {
+        holder.binding.tvTitle.text = current.title
+        if (position == selectedPos) {
             holder.binding.llMain.setBackgroundResource(R.drawable.tab_selected)
-            holder.binding.tvTilte.setTextColor(ContextCompat.getColor(mContext, R.color.app_color)
+            holder.binding.tvTitle.setTextColor(
+                ContextCompat.getColor(mContext, R.color.app_color)
             )
 
         } else {
             holder.binding.llMain.setBackgroundResource(R.drawable.tab_unselected)
-            holder.binding.tvTilte.setTextColor(ContextCompat.getColor(mContext, R.color.textPlaceHolder))
+            holder.binding.tvTitle.setTextColor(
+                ContextCompat.getColor(
+                    mContext,
+                    R.color.textPlaceHolder
+                )
+            )
         }
         holder.itemView.setOnClickListener() {
-            selectedPos=position
-            onViewItemClick(position,dataList[position].type)
+            selectedPos = position
+            onViewItemClick(position, dataList[position].type)
             notifyDataSetChanged()
         }
 
@@ -61,7 +68,8 @@ class TypeAdapter(
         return dataList.size
     }
 
-    class MainViewHolder(val binding: ListFoodTypeItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainViewHolder(val binding: ListFoodTypeItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(modal: CommonDataItem) {
             binding.modal = modal
         }

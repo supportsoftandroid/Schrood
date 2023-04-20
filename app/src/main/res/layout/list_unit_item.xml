@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+     >
+    <data>
+        <variable
+            name="modal"
+            type="com.food.schrood.model.CommonDataItem" />
+
+    </data>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/llMain"
+    android:layout_marginEnd="@dimen/dp_5"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:gravity="center"
+        android:paddingVertical="@dimen/dp_10"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:maxLines="1"
+        android:padding="@dimen/dp_5"
+        android:text="Veg Items"
+        android:textColor="@color/textPlaceHolder"
+        android:textSize="@dimen/sp_12" />
+
+
+
+</LinearLayout>
+</layout>

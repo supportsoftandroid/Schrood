@@ -94,8 +94,12 @@ class ReviewsFragment : Fragment() {
     }
 
     private fun showAddReviewBottomSheet() {
-      val  dialog= BottomSheetDialog(requireActivity(), R.style.CustomBottomSheetStyle)
-        val dialogBinding = DialogBottomAddRateStoreBinding.inflate(LayoutInflater.from(requireActivity()), null, false)
+        val dialog = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
+        val dialogBinding = DialogBottomAddRateStoreBinding.inflate(
+            LayoutInflater.from(requireActivity()),
+            null,
+            false
+        )
         val sheetView = dialogBinding.root
         dialog.setContentView(sheetView)
         dialog.setCancelable(false)
@@ -111,6 +115,7 @@ class ReviewsFragment : Fragment() {
         }
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

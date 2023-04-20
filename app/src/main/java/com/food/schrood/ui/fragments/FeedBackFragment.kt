@@ -28,6 +28,7 @@ class FeedBackFragment : Fragment() {
 
 
     }
+
     private var _binding: FragmentFeedackBinding? = null
     private val binding get() = _binding!!
     lateinit var viewModal: NotificationsViewModel
@@ -67,7 +68,7 @@ class FeedBackFragment : Fragment() {
     }
 
     fun initView() {
-        binding.viewHeader.txtTitle.text=requireActivity().getString(R.string.feedbacks)
+        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.feedbacks)
 
     }
 

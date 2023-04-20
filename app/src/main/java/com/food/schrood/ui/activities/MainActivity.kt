@@ -23,29 +23,31 @@ class MainActivity : AppCompatActivity() {
     companion object {
         lateinit var navView: BottomNavigationView
         fun hideNavigationTab() {
-            navView.visibility= View.GONE
+            navView.visibility = View.GONE
         }
+
         fun visibleNavigationTab() {
-            navView.visibility= View.VISIBLE
+            navView.visibility = View.VISIBLE
         }
     }
+
     private lateinit var binding: ActivityMainBinding
-    var doubleBackToExitPressedOnce:Boolean=false
-    var isHomeFragment:Boolean=true
+    var doubleBackToExitPressedOnce: Boolean = false
+    var isHomeFragment: Boolean = true
     lateinit var mContext: Context
     lateinit var preferenceManager: PreferenceManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        mContext=this@MainActivity
+        mContext = this@MainActivity
         preferenceManager = PreferenceManager(mContext)
         navView = binding.navView
-      //  navView.inflateMenu(R.menu.bottom_nav_menu)
-        binding.let{
+        //  navView.inflateMenu(R.menu.bottom_nav_menu)
+        binding.let {
             initView()
             clickListener()
-           // navView.menu.findItem(R.id.nav_home).isChecked=true
+            // navView.menu.findItem(R.id.nav_home).isChecked=true
             StaticData.replaceFragment(mContext, HomeFragment())
         }
 
@@ -68,12 +70,13 @@ class MainActivity : AppCompatActivity() {
         }
         )
     }
+
     private fun clickListener() {
-        navView.setOnItemSelectedListener{
-            isHomeFragment=false
+        navView.setOnItemSelectedListener {
+            isHomeFragment = false
             when (it.itemId) {
                 R.id.nav_home -> {
-                    isHomeFragment=true
+                    isHomeFragment = true
                     StaticData.replaceFragment(mContext, HomeFragment())
                     return@setOnItemSelectedListener true
                 }
@@ -84,7 +87,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_favorite -> {
                     StaticData.replaceFragment(mContext, FavoriteFragment())
                     return@setOnItemSelectedListener true
-                }R.id.nav_message -> {
+                }
+                R.id.nav_message -> {
                     StaticData.replaceFragment(mContext, MessageFragment())
                     return@setOnItemSelectedListener true
                 }
@@ -100,19 +104,21 @@ class MainActivity : AppCompatActivity() {
         if (backStackEntryCount > 0) {
             supportFragmentManager.popBackStackImmediate()
             if (backStackEntryCount == 1) {
-                navView.visibility=View.VISIBLE
+                navView.visibility = View.VISIBLE
                 //  super.onBackPressed();
             } else {
-                navView.visibility=View.GONE
+                navView.visibility = View.GONE
                 //  super.onBackPressed();
             }
         } else {
-            navView.visibility=View.VISIBLE
+
+            navView.visibility = View.VISIBLE
             if (!isHomeFragment) {
-                doubleBackToExitPressedOnce=false
-                StaticData.replaceFragment(mContext,HomeFragment())
-            }else
-            {
+                StaticData.changeStatusBarColor(this, "home")
+                navView.selectedItemId = R.id.nav_home
+                doubleBackToExitPressedOnce = false
+                //StaticData.replaceFragment(mContext, HomeFragment())
+            } else {
                 if (doubleBackToExitPressedOnce) {
                     finish()
                 } else {
@@ -128,6 +134,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
     @Deprecated("Deprecated in Java")
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

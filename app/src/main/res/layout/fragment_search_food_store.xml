@@ -135,16 +135,23 @@
 
         </RadioGroup>
 
-
-
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rgStatus"
+        app:layout_constraintBottom_toBottomOf="parent"
+         >
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rgStatus"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/dp_50">
+            >
 
             <TextView
                 android:layout_width="@dimen/dp_0"
@@ -174,27 +181,29 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvList"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_15"
+                android:layout_marginBottom="@dimen/dp_150"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/list_product_item"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/rvStatusList"
                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/rvStatusList"
+
                 />
 
             <TextView
                 android:id="@+id/tvMessage"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@color/colorWhite"
                 android:fontFamily="@font/poppins_regular"
+                android:minHeight="@dimen/dp_500"
+                android:visibility="gone"
                 android:gravity="center"
                 android:text="@string/loading"
-                android:visibility="gone"
-
                 android:textColor="@color/colorTextHint"
                 android:textSize="@dimen/sp_17"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -205,6 +214,31 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/llCartView"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <include
+            android:id="@+id/cartViewBody"
+            layout="@layout/layout_cart_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+        </include>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

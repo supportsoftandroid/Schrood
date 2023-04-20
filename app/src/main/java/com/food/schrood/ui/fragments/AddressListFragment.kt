@@ -90,7 +90,10 @@ class AddressListFragment : Fragment() {
 
         binding.viewBody.tvMessage.visibility = View.VISIBLE
         adaper =
-            AddressItemAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
+            AddressItemAdapter(
+                requireActivity(),
+                dataList,
+                { pos, type -> onAdapterClick(pos, type) })
         binding.viewBody.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.viewBody.rvList.adapter = adaper
         binding.viewBody.tvMessage.visibility = View.GONE

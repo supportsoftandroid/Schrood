@@ -66,7 +66,7 @@ class ChatHistoryFragment : Fragment() {
     lateinit var userChatItem: ChatUserItem
     lateinit var friendItem: ChatUserItem
     lateinit var messageItem: MessageItem
-      var threadId: String=""
+    var threadId: String = ""
     var firebase_token: String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,22 +78,21 @@ class ChatHistoryFragment : Fragment() {
         val root: View = binding.root
         preferenceManager = PreferenceManager(requireActivity())
         utilsManager = UtilsManager(requireActivity())
-      //  loginResponse = preferenceManager.getLoginData()!!
-      //  userDetails = loginResponse.data
-      //  friendItem = arguments?.getParcelable<ChatUserItem>("friend_item") as ChatUserItem
-      //  threadId = friendItem.thread_id
+        //  loginResponse = preferenceManager.getLoginData()!!
+        //  userDetails = loginResponse.data
+        //  friendItem = arguments?.getParcelable<ChatUserItem>("friend_item") as ChatUserItem
+        //  threadId = friendItem.thread_id
         viewModelStore.clear()
 
-         initRecycleView()
+        initRecycleView()
         clickListener()
-       /* if (!StaticData.hasPermissions(requireActivity(), *StaticData.PERMISSIONSList)) {
-            ActivityCompat.requestPermissions( requireActivity(),StaticData.PERMISSIONSList,StaticData.PERMISSION_ALL
-            )
-        }*/
+        /* if (!StaticData.hasPermissions(requireActivity(), *StaticData.PERMISSIONSList)) {
+             ActivityCompat.requestPermissions( requireActivity(),StaticData.PERMISSIONSList,StaticData.PERMISSION_ALL
+             )
+         }*/
 
         return root
     }
-
 
 
     fun initRecycleView() {
@@ -101,39 +100,39 @@ class ChatHistoryFragment : Fragment() {
         binding.viewHeader.txtTitle.text = arguments?.getString("title")
         binding.viewHeader.txtTitle.gravity = Gravity.START
         dataList.clear()
-        adaper = ChatMessageAdapter(requireActivity(), "1" , dataList)
+        adaper = ChatMessageAdapter(requireActivity(), "1", dataList)
         binding.viewBody.rvList.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.viewBody.rvList.adapter = adaper
-       // binding.viewBody.tvMessage.visibility = View.GONE
+        // binding.viewBody.tvMessage.visibility = View.GONE
 
         binding.viewBody.swipeRefreshLayout.setOnRefreshListener {
             binding.viewBody.swipeRefreshLayout.isRefreshing = false
         }
 
-      //  binding.viewBody.tvMessage.text = requireActivity().getString(R.string.lets_start_chat)
+        //  binding.viewBody.tvMessage.text = requireActivity().getString(R.string.lets_start_chat)
         notifyMessageList()
-       /* val lastLame = if (TextUtils.isEmpty(userDetails.l_name)) "" else " " + userDetails.l_name
-        val userType = if (friendItem.type.equals("tutor")) "student" else "tutor"
+        /* val lastLame = if (TextUtils.isEmpty(userDetails.l_name)) "" else " " + userDetails.l_name
+         val userType = if (friendItem.type.equals("tutor")) "student" else "tutor"
 
-        userChatItem = ChatUserItem(
-            userDetails.id,
-            userDetails.name + lastLame,
-            userDetails.image.toString(),
-            threadId,
-            userType,
-            firebase_token,
-            Constants.DEVICE_TYPE,
-            "",
-            ""
-        )
-        //update my Chat list
-        viewModel.updateChatList(userChatItem.id, friendItem.id, friendItem)
-      initChatMessageItem()
-        getChatMessageList()
-        getFriendChatItem()
-        getUserChatItem()
-        getSingleMessageItem()*/
+         userChatItem = ChatUserItem(
+             userDetails.id,
+             userDetails.name + lastLame,
+             userDetails.image.toString(),
+             threadId,
+             userType,
+             firebase_token,
+             Constants.DEVICE_TYPE,
+             "",
+             ""
+         )
+         //update my Chat list
+         viewModel.updateChatList(userChatItem.id, friendItem.id, friendItem)
+       initChatMessageItem()
+         getChatMessageList()
+         getFriendChatItem()
+         getUserChatItem()
+         getSingleMessageItem()*/
 
         requireActivity().onBackPressedDispatcher.addCallback(requireActivity(),
             object : OnBackPressedCallback(true) {
@@ -156,10 +155,10 @@ class ChatHistoryFragment : Fragment() {
             "", "1", "", "",
             "", "", "2", threadId, getCurrentTimestamp()
         )
-       /* messageItem = MessageItem(
-            "", userChatItem.id, userChatItem.name, "",
-            "", "", friendItem.id, threadId, getCurrentTimestamp()
-        )*/
+        /* messageItem = MessageItem(
+             "", userChatItem.id, userChatItem.name, "",
+             "", "", friendItem.id, threadId, getCurrentTimestamp()
+         )*/
     }
 
     fun getChatMessageList() {
@@ -224,6 +223,11 @@ class ChatHistoryFragment : Fragment() {
         binding.viewHeader.imgBack.setOnClickListener() {
             requireActivity().onBackPressed()
         }
+        binding.viewHeader.imgMenu1.visibility=View.VISIBLE
+        binding.viewHeader.imgMenu1.setImageResource(R.drawable.ic_call)
+        binding.viewHeader.imgMenu1.setOnClickListener() {
+            requireActivity().onBackPressed()
+        }
         binding.imgSendMsg.setOnClickListener() {
             if (binding.etReply.text.toString().trim().length == 0) {
                 showToast(
@@ -236,38 +240,38 @@ class ChatHistoryFragment : Fragment() {
                 messageItem.type = "text"
                 binding.etReply.text = null
 
-                 dataList.add(messageItem)
-     notifyMessageList()
+                dataList.add(messageItem)
+                notifyMessageList()
 
-               // addMessage(messageItem)
+                // addMessage(messageItem)
 
             }
         }
-   /*     binding.etReply.setOnTouchListener(View.OnTouchListener { v, event ->
-            val DRAWABLE_LEFT = 0
-            val DRAWABLE_TOP = 1
-            val DRAWABLE_RIGHT = 2
-            val DRAWABLE_BOTTOM = 3
-            if (event.action == MotionEvent.ACTION_UP) {
-                if (event.rawX >= binding.etReply.getRight() - binding.etReply.getCompoundDrawables()
-                        .get(DRAWABLE_RIGHT).getBounds().width()
-                ) {
-                    binding.etReply.clearFocus()
-                    utilsManager.showGallaryBottomModelSheet(requireActivity())
+        /*     binding.etReply.setOnTouchListener(View.OnTouchListener { v, event ->
+                 val DRAWABLE_LEFT = 0
+                 val DRAWABLE_TOP = 1
+                 val DRAWABLE_RIGHT = 2
+                 val DRAWABLE_BOTTOM = 3
+                 if (event.action == MotionEvent.ACTION_UP) {
+                     if (event.rawX >= binding.etReply.getRight() - binding.etReply.getCompoundDrawables()
+                             .get(DRAWABLE_RIGHT).getBounds().width()
+                     ) {
+                         binding.etReply.clearFocus()
+                         utilsManager.showGallaryBottomModelSheet(requireActivity())
 
-                    return@OnTouchListener true
-                }
-            }
-            false
-        })*/
+                         return@OnTouchListener true
+                     }
+                 }
+                 false
+             })*/
     }
 
     private fun addMessage(messageItem: MessageItem) {
         messageItem.id = ""
         messageItem.thread_id = threadId
         messageItem.chat_time = getCurrentTimestamp()
-       /* dataList.add(messageItem)
-        notifyMessageList()*/
+        /* dataList.add(messageItem)
+         notifyMessageList()*/
         viewModel.addMessage(
             requireActivity(),
             friendItem.device_token,
@@ -306,8 +310,8 @@ class ChatHistoryFragment : Fragment() {
                 )
                 if (chatDetails.thread_id.contentEquals(threadId)) {
                     printLog("current message  ===", chatDetails.toString())
-                   // dataList.add(chatDetails)
-                   //  notifyMessageList()
+                    // dataList.add(chatDetails)
+                    //  notifyMessageList()
                 }
 
             }
@@ -330,8 +334,8 @@ class ChatHistoryFragment : Fragment() {
                     messageItem.id = ""
                     messageItem.thread_id = threadId
                     messageItem.chat_time = getCurrentTimestamp()
-                   /* dataList.add(messageItem)
-                    notifyMessageList()*/
+                    /* dataList.add(messageItem)
+                     notifyMessageList()*/
                     viewModel.addFileMessage(
                         requireActivity(), friendItem.device_token, userChatItem.name, messageItem,
                         File(messageItem.image_url)

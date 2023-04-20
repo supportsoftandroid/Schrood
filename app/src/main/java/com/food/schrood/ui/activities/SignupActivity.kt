@@ -9,8 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.food.schrood.R
 import com.food.schrood.databinding.ActivitySignUpBinding
 import com.food.schrood.databinding.ActivityVerifyOtpBinding
-import com.food.schrood.databinding.DialogAllowLocationsBinding
-import com.food.schrood.databinding.DialogAllowNotificationsBinding
 import com.food.schrood.utility.PreferenceManager
 import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.UtilsManager
@@ -29,7 +27,7 @@ class SignupActivity : AppCompatActivity() {
     val activityScope = CoroutineScope(Dispatchers.Main)
     lateinit var viewModal: SignUpViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
-        StaticData.changeStatusBarColor(this,"message")
+        StaticData.changeStatusBarColor(this, "message")
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         viewModal = ViewModelProvider(this).get(SignUpViewModel::class.java)
         super.onCreate(savedInstanceState)
@@ -47,7 +45,7 @@ class SignupActivity : AppCompatActivity() {
     private fun clickListener() {
 
         binding.imgBack.setOnClickListener {
-           finish()
+            finish()
         }
         binding.btnSubmit.setOnClickListener {
             showVerifyBottomSheet()
@@ -84,23 +82,31 @@ class SignupActivity : AppCompatActivity() {
         dialogBinding.btnSubmit.setOnClickListener {
 
             dialogVerify.dismiss()
-            utilsManager.showLocationBottomSheet(this@SignupActivity, {  type,dialog-> onNotificAllowClick(type,dialog) })
+            utilsManager.showNotificationBottomSheet(
+                this@SignupActivity,
+                { type, dialog -> onNotificAllowClick(type, dialog) })
 
         }
 
     }
 
-    private fun onNotificAllowClick(type: String,dialog: BottomSheetDialog) {
-        utilsManager.showLocationBottomSheet(this@SignupActivity, {  type,dialog-> onLocationAllowClick(type,dialog) })
+    private fun onNotificAllowClick(type: String, dialog: BottomSheetDialog) {
+        utilsManager.showLocationBottomSheet(
+            this@SignupActivity,
+            { type, dialog -> onLocationAllowClick(type, dialog) })
     }
-    private fun onLocationAllowClick(type: String,dialog: BottomSheetDialog) {
+
+    private fun onLocationAllowClick(type: String, dialog: BottomSheetDialog) {
         if (type.equals("allow")) {
             moveToNextClass()
-        }else{
-            utilsManager.showManualLocationDialog(this@SignupActivity, {  type,dialog-> onManualLocationClick(type,dialog) })
+        } else {
+            utilsManager.showManualLocationDialog(
+                this@SignupActivity,
+                { type, dialog -> onManualLocationClick(type, dialog) })
         }
     }
-    private fun onManualLocationClick(type: String,dialog: BottomSheetDialog) {
+
+    private fun onManualLocationClick(type: String, dialog: BottomSheetDialog) {
 
         moveToNextClass()
 

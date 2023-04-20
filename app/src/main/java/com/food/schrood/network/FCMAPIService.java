@@ -9,7 +9,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface FCMAPIService {
-    @Headers({"Content-Type:application/json","Authorization: key=${SERVER_KEY}"})
+    @Headers({"Content-Type:application/json", "Authorization: key=${SERVER_KEY}"})
     @POST("fcm/send")
     Call<ResponseBody> sendNotification(@Body JsonObject body);
 }

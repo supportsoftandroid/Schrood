@@ -20,14 +20,15 @@
         android:paddingVertical="@dimen/dp_10"
         android:shadowRadius="5">
 
-        <TextView
+        <ImageView
             android:id="@+id/imgCard"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
-            android:background="@drawable/button_background_global"
+
             android:contentDescription="@string/app_name"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
+            android:src="@drawable/ic_card"
             android:padding="@dimen/dp_2"
             android:text="Master Card"
             android:textColor="@color/colorWhite"
@@ -55,10 +56,11 @@
             android:id="@+id/imgDelete"
             android:layout_width="@dimen/dp_25"
             android:layout_height="@dimen/dp_25"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:padding="@dimen/dp_3"
+            android:layout_marginEnd="@dimen/dp_70"
+            android:padding="@dimen/dp_5"
 
             android:src="@drawable/ic_delete"
+            app:tint="@color/app_color"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgRight"
             />

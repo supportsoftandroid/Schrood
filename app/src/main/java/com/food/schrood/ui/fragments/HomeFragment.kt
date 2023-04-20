@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.food.schrood.R
+import com.food.schrood.databinding.DialogDeleteCartBinding
 import com.food.schrood.databinding.FragmentHomeBinding
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.ui.activities.MainActivity
@@ -15,6 +17,7 @@ import com.food.schrood.ui.adapter.RecentOrderAdapter
 import com.food.schrood.ui.adapter.StoreItemAdapter
 import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.HomeViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeFragment : Fragment() {
 
@@ -37,7 +40,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         StaticData.changeStatusBarColor(requireActivity(), "home")
-        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.let {
             clickListener()
@@ -124,10 +130,14 @@ class HomeFragment : Fragment() {
             StaticData.backStackAddFragment(requireActivity(), AddressListFragment())
 
         }
-        binding.cartViewBody.llViewCart.setOnClickListener() {
+        binding.cartViewBody.tvViewCart.setOnClickListener() {
             StaticData.changeStatusBarColor(requireActivity(), "other")
             MainActivity.hideNavigationTab()
             StaticData.backStackAddFragment(requireActivity(), CartFragment())
+
+        }
+        binding.cartViewBody.imgDelete.setOnClickListener() {
+            dialogDeleteCart()
 
         }
     }
@@ -138,6 +148,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCategoryClick(position: Int, type: String) {
+        StaticData.changeStatusBarColor(requireActivity(), "other")
         MainActivity.hideNavigationTab()
         StaticData.backStackAddFragment(
             requireActivity(),
@@ -150,10 +161,34 @@ class HomeFragment : Fragment() {
     }
 
     private fun onStoreClick(position: Int, type: String) {
+        StaticData.changeStatusBarColor(requireActivity(), "other")
         MainActivity.hideNavigationTab()
         StaticData.backStackAddFragment(
             requireActivity(),
             StoreDetailsFragment.newInstance(storeList[position].title)
         )
+    }
+
+    fun dialogDeleteCart() {
+        val dialogBinding =
+            DialogDeleteCartBinding.inflate(
+                LayoutInflater.from(requireActivity()),
+                null,
+                false
+            )
+        val dialogDelete = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
+        dialogDelete.setContentView(dialogBinding.root)
+
+
+
+        dialogBinding.btnCancel.setOnClickListener {
+            dialogDelete.dismiss()
+        }
+        dialogBinding.btnDelete.setOnClickListener {
+            dialogDelete.dismiss()
+           binding.llCartView.visibility=View.GONE
+        }
+
+        dialogDelete.show()
     }
 }

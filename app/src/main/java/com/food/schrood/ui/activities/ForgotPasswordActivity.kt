@@ -21,17 +21,17 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityForgotPasswordBinding
     val activityScope = CoroutineScope(Dispatchers.Main)
-    lateinit var dialogVerify:BottomSheetDialog
-    lateinit var dialogResetPass:BottomSheetDialog
+    lateinit var dialogVerify: BottomSheetDialog
+    lateinit var dialogResetPass: BottomSheetDialog
     lateinit var mContext: Context
     lateinit var preferenceManager: PreferenceManager
     private lateinit var utilsManager: UtilsManager
     override fun onCreate(savedInstanceState: Bundle?) {
-        StaticData.changeStatusBarColor(this,"message")
-        binding=ActivityForgotPasswordBinding.inflate(layoutInflater)
+        StaticData.changeStatusBarColor(this, "message")
+        binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        mContext=this
+        mContext = this
 
         preferenceManager = PreferenceManager(mContext)
         utilsManager = UtilsManager(mContext)
@@ -44,18 +44,19 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun clickListener() {
 
         binding.imgBack.setOnClickListener {
-         finish()
+            finish()
 
         }
         binding.btnSubmit.setOnClickListener {
-          showVerifyBottomSheet()
+            showVerifyBottomSheet()
 
         }
 
 
     }
+
     private fun showVerifyBottomSheet() {
-        dialogVerify= BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
+        dialogVerify = BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
         val dialogBinding = ActivityVerifyOtpBinding.inflate(LayoutInflater.from(this), null, false)
         val sheetView = dialogBinding.root
         dialogVerify.setContentView(sheetView)
@@ -84,9 +85,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
         dialogVerify.show()
 
     }
+
     private fun showResetPasswordBottomSheet() {
-        dialogResetPass= BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
-        val dialogBinding = DialogResetPasswordBinding.inflate(LayoutInflater.from(this), null, false)
+        dialogResetPass = BottomSheetDialog(this, R.style.CustomBottomSheetStyle)
+        val dialogBinding =
+            DialogResetPasswordBinding.inflate(LayoutInflater.from(this), null, false)
         val sheetView = dialogBinding.root
         dialogResetPass.setContentView(sheetView)
         dialogResetPass.setCancelable(false)
@@ -98,8 +101,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
         // Set the bottom sheet to be fullscreen
         dialogResetPass.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
-        StaticData.passWordEditText( mContext,false,dialogBinding.edPassword)
-        StaticData.passWordEditText( mContext,false,dialogBinding.edConPassword)
+        StaticData.passWordEditText(mContext, false, dialogBinding.edPassword)
+        StaticData.passWordEditText(mContext, false, dialogBinding.edConPassword)
         dialogBinding.imgBack.visibility = View.VISIBLE
         dialogBinding.imgBack.setOnClickListener {
             // Delete code here;

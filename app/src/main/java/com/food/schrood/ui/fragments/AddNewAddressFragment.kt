@@ -31,6 +31,7 @@ class AddNewAddressFragment : Fragment() {
 
 
     }
+
     private var _binding: FragmentAddAddressBinding? = null
     private val binding get() = _binding!!
     lateinit var viewModal: NotificationsViewModel

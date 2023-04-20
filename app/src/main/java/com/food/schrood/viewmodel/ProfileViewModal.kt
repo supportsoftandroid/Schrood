@@ -8,7 +8,7 @@ import com.food.schrood.model.LoginResponse
 /*import com.food.schrood.network.Repository.ProfileRepository*/
 
 
-class ProfileViewModal :ViewModel() {
+class ProfileViewModal : ViewModel() {
     lateinit var resModal: MutableLiveData<LoginResponse>
     lateinit var resUpdateModal: MutableLiveData<LoginResponse>
     /*fun getProfile(context: Context, token: String): LiveData<LoginResponse> {
@@ -19,9 +19,6 @@ class ProfileViewModal :ViewModel() {
         resUpdateModal = ProfileRepository(context).getProfile(token,"update",imagePath)
         return resUpdateModal
     }*/
-
-
-
 
 
 }

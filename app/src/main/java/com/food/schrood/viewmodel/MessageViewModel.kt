@@ -12,60 +12,63 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MessageViewModel : ViewModel() {
- /*   private   var database: FirebaseDatabase
-    private   var myChatListRef: DatabaseReference*/
+    /*   private   var database: FirebaseDatabase
+       private   var myChatListRef: DatabaseReference*/
     var loading: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
 
-    /*    database= Firebase.database
-        myChatListRef=database.getReference("chat_list")*/
+        /*    database= Firebase.database
+            myChatListRef=database.getReference("chat_list")*/
         loading.postValue(false)
     }
+
     private val _myListLiveData = MutableLiveData<ArrayList<ChatUserItem>>()
     val chatUserList: LiveData<ArrayList<ChatUserItem>> = _myListLiveData
-    fun getChatList(  user_id: String) {
-     //   myChatListRef.child(user_id).addValueEventListener(chatListener)
+    fun getChatList(user_id: String) {
+        //   myChatListRef.child(user_id).addValueEventListener(chatListener)
 
     }
+
     val dateComparator = Comparator<ChatUserItem> { item1, item2 ->
         val dateFormat = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss a", Locale.ENGLISH)
         val date1 = dateFormat.parse(item1.last_chat_time)
         val date2 = dateFormat.parse(item2.last_chat_time)
         date2.compareTo(date1)
     }
-  /*  private val chatListener =   object : ValueEventListener {
-        override fun onDataChange(snapshot: DataSnapshot) {
-            //   printLog("  chat List snapshot ",snapshot.toString())
-            var  chatUerList=ArrayList<ChatUserItem>()
-            if (snapshot!=null){
-                for (postSnapshot in snapshot.children) {
-                    val chatUserItem = postSnapshot.getValue(ChatUserItem::class.java)
-                    chatUserItem?.let {
-                        printLog("it.last_chat_time",it.last_chat_time)
-                        if (TextUtils.isEmpty(it.last_chat_time)){
-                            it.last_chat_time= StaticData.getCurrentTimestamp()
-                        }
-                        chatUerList.add(it)
-                    }
 
-                }
+    /*  private val chatListener =   object : ValueEventListener {
+          override fun onDataChange(snapshot: DataSnapshot) {
+              //   printLog("  chat List snapshot ",snapshot.toString())
+              var  chatUerList=ArrayList<ChatUserItem>()
+              if (snapshot!=null){
+                  for (postSnapshot in snapshot.children) {
+                      val chatUserItem = postSnapshot.getValue(ChatUserItem::class.java)
+                      chatUserItem?.let {
+                          printLog("it.last_chat_time",it.last_chat_time)
+                          if (TextUtils.isEmpty(it.last_chat_time)){
+                              it.last_chat_time= StaticData.getCurrentTimestamp()
+                          }
+                          chatUerList.add(it)
+                      }
 
-            }
-           val  usUerList= chatUerList.sortedWith(dateComparator)
-            _myListLiveData.value= ArrayList(usUerList)
-        }
+                  }
 
-        override fun onCancelled(error: DatabaseError) {
+              }
+             val  usUerList= chatUerList.sortedWith(dateComparator)
+              _myListLiveData.value= ArrayList(usUerList)
+          }
 
-            Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
-            _myListLiveData.value=ArrayList<ChatUserItem>()
-        }
-    }*/
+          override fun onCancelled(error: DatabaseError) {
+
+              Log.w(ContentValues.TAG, "Failed to read value.", error.toException())
+              _myListLiveData.value=ArrayList<ChatUserItem>()
+          }
+      }*/
     override fun onCleared() {
         super.onCleared()
-        printLog("onCleared","")
-    //    myChatListRef.removeEventListener(chatListener)
+        printLog("onCleared", "")
+        //    myChatListRef.removeEventListener(chatListener)
 
 
     }

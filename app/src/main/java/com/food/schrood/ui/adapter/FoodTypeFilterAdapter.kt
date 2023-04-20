@@ -14,7 +14,7 @@ import com.food.schrood.model.CommonDataItem
 class FoodTypeFilterAdapter(
     mContext: Context,
     categoryList: MutableList<CommonDataItem>,
-    val onViewItemClick: ( Int,String) -> Unit
+    val onViewItemClick: (Int, String) -> Unit
 ) :
     RecyclerView.Adapter<FoodTypeFilterAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
@@ -53,12 +53,12 @@ class FoodTypeFilterAdapter(
             holder.binding.tvTilte.setTextColor(ContextCompat.getColor(mContext, R.color.colorText))
         }
         holder.itemView.setOnClickListener() {
-            if (current.is_selected){
-                dataList[position].is_selected=false
-            }else{
-                dataList[position].is_selected=true
+            if (current.is_selected) {
+                dataList[position].is_selected = false
+            } else {
+                dataList[position].is_selected = true
             }
-            onViewItemClick(position,dataList[position].type)
+            onViewItemClick(position, dataList[position].type)
             notifyDataSetChanged()
         }
 

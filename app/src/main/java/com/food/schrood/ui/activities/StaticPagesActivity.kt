@@ -18,21 +18,23 @@ import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.StaticViewModal
 
 
-
 class StaticPagesActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
-        fun newInstance(mContext:Context,  title: String, type: String,){
-            val intent= Intent(mContext,StaticPagesActivity::class.java)
-            intent.putExtra(PAGE_Title,  title)
+        fun newInstance(mContext: Context, title: String, type: String) {
+            val intent = Intent(mContext, StaticPagesActivity::class.java)
+            intent.putExtra(PAGE_Title, title)
             intent.putExtra(PAGE_TYPE, type)
-            (mContext as Activity ).startActivity(intent)
+            (mContext as Activity).startActivity(intent)
         }
+
         var PAGE_TYPE: String = "page_type"
         var PAGE_Title: String = "page_title"
     }
+
     private lateinit var binding: ActivityStaticPagesBinding
+
     //    private lateinit var termsRepository: TermsRepository
-    lateinit var  adaper: FaqAdapter
+    lateinit var adaper: FaqAdapter
     var dataList = mutableListOf<FaqItem>()
     lateinit var viewModal: StaticViewModal
     private lateinit var utilsManager: UtilsManager
@@ -52,53 +54,53 @@ class StaticPagesActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-      private fun getApiData() {
-       /* if (utilsManager.isNetworkConnected()) {
-            if(type.equals("FAQs")){
-                viewModal.getFaqAPI(this, type).observe(this, Observer { res ->
-                  if (res.status) {
-                      dataList.addAll(res.data)
-                      binding.rvList.visibility=View.VISIBLE
-                      loadFaqData()
-                  }
-                })
-            }else {
-                viewModal.getCallAPI(this, type).observe(this, Observer { res ->
-                    StaticData.printLog(title, res.toString())
-                    if (res.status) {
-                        loadData(res.data)
-                    }
-                })
-            }
-        } else utilsManager.showAlertConnectionError()
-*/
+    private fun getApiData() {
+        /* if (utilsManager.isNetworkConnected()) {
+             if(type.equals("FAQs")){
+                 viewModal.getFaqAPI(this, type).observe(this, Observer { res ->
+                   if (res.status) {
+                       dataList.addAll(res.data)
+                       binding.rvList.visibility=View.VISIBLE
+                       loadFaqData()
+                   }
+                 })
+             }else {
+                 viewModal.getCallAPI(this, type).observe(this, Observer { res ->
+                     StaticData.printLog(title, res.toString())
+                     if (res.status) {
+                         loadData(res.data)
+                     }
+                 })
+             }
+         } else utilsManager.showAlertConnectionError()
+ */
 
     }
 
     private fun initViews() {
         binding.viewHeader.imgBack.setOnClickListener(this)
-        binding.viewHeader.txtTitle.text=title
+        binding.viewHeader.txtTitle.text = title
         if (type.equals("FAQs")) {
-            binding.webView.visibility=View.GONE
-            binding.rvList.visibility=View.VISIBLE
+            binding.webView.visibility = View.GONE
+            binding.rvList.visibility = View.VISIBLE
             adaper = FaqAdapter(this, dataList)
             binding.rvList.layoutManager = LinearLayoutManager(this)
             binding.rvList.adapter = adaper
-        }else{
-            binding.webView.visibility=View.VISIBLE
-            binding.rvList.visibility=View.GONE
+        } else {
+            binding.webView.visibility = View.VISIBLE
+            binding.rvList.visibility = View.GONE
             loadData(resources.getString(R.string.dummy_description))
         }
 
     }
 
     private fun loadFaqData() {
-       adaper.notifyDataSetChanged()
-        binding.webView.visibility=View.VISIBLE
+        adaper.notifyDataSetChanged()
+        binding.webView.visibility = View.VISIBLE
     }
 
     private fun loadData(content: String) {
-          binding.webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
+        binding.webView.loadDataWithBaseURL(null, content, "text/html", "UTF-8", null);
 
     }
 

@@ -58,7 +58,8 @@ class FilterFragment : Fragment() {
     var foodTypeList = mutableListOf<CommonDataItem>()
     lateinit var preferenceManager: PreferenceManager
     lateinit var utilsManager: UtilsManager
-   // lateinit var loginResponse: LoginResponse
+
+    // lateinit var loginResponse: LoginResponse
     private var price_range = 10
 
     override fun onCreateView(
@@ -72,7 +73,7 @@ class FilterFragment : Fragment() {
         preferenceManager = PreferenceManager(requireActivity())
         utilsManager = UtilsManager(requireActivity())
         val root: View = binding.root
-      //  loginResponse = preferenceManager.getLoginData()!!
+        //  loginResponse = preferenceManager.getLoginData()!!
         initView()
         clickListener()
         return root
@@ -107,7 +108,7 @@ class FilterFragment : Fragment() {
     }
 
     fun initView() {
-        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.filter)
+        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.filter_your_search)
         categoryList.clear()
         categoryList.add(CommonDataItem("All", "all", true))
         categoryList.add(CommonDataItem("Breakfast", "breakfast", false))
@@ -137,7 +138,7 @@ class FilterFragment : Fragment() {
         adapterFoodType = FoodTypeFilterAdapter(
             requireActivity(),
             foodTypeList,
-            {  pos ,type-> onFoodClick(pos,type) })
+            { pos, type -> onFoodClick(pos, type) })
         binding.rvFoodType.layoutManager = GridLayoutManager(requireActivity(), 4)
         binding.rvFoodType.adapter = adapterFoodType
 
@@ -168,11 +169,11 @@ class FilterFragment : Fragment() {
     }
 
 
-    fun onCategoryClick(position: Int,type: String) {
+    fun onCategoryClick(position: Int, type: String) {
 
     }
 
-    fun onFoodClick( position: Int,type: String) {
+    fun onFoodClick(position: Int, type: String) {
 
     }
 

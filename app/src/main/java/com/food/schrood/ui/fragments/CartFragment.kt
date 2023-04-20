@@ -1,5 +1,6 @@
 package com.food.schrood.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -10,9 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
 import com.food.schrood.databinding.DialogBottomAddCardBinding
+import com.food.schrood.databinding.DialogBottomOrderSuccessBinding
+import com.food.schrood.databinding.DialogBottomSpecialInstructionBinding
 import com.food.schrood.databinding.FragmentCartBinding
 import com.food.schrood.model.CardData
 import com.food.schrood.model.CommonDataItem
+import com.food.schrood.ui.activities.MainActivity
 import com.food.schrood.ui.adapter.CartItemAdapter
 import com.food.schrood.ui.adapter.SavedCardAdapter
 import com.food.schrood.utility.PreferenceManager
@@ -49,7 +53,9 @@ class CartFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModal = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(NotificationsViewModel::class.java)
+        viewModal = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            NotificationsViewModel::class.java
+        )
 
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -69,7 +75,7 @@ class CartFragment : Fragment() {
         binding.viewAddress.imgEdit.setOnClickListener() {
             StaticData.backStackAddFragment(
                 requireActivity(),
-                AddNewAddressFragment.newInstance("")
+                AddressListFragment.newInstance("")
             )
 
         }
@@ -79,15 +85,24 @@ class CartFragment : Fragment() {
         binding.tvAddNewCard.setOnClickListener() {
             dialogAddCard()
         }
+        binding.imgEdit.setOnClickListener() {
+            dialogAddInstructions()
+        }
+
+        binding.btnPlaceOrder.setOnClickListener() {
+            dialogOrderSuccess()
+        }
 
     }
 
     fun initView() {
-        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.saved_address)
+        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.order_mode)
         dataList.clear()
 
         dataList.add(CommonDataItem("Creamy Burger", "", false))
         dataList.add(CommonDataItem("Mountain Dew", "", false))
+        dataList.add(CommonDataItem("Appetizers", "", false))
+        dataList.add(CommonDataItem("Pasta", "", false))
         adaper =
             CartItemAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
         binding.rvCartList.layoutManager = LinearLayoutManager(requireActivity())
@@ -108,8 +123,8 @@ class CartFragment : Fragment() {
             "Schrood",
             true,
             { pos, type -> onCardItemClick(pos, type) })
-        binding.rvCartList.layoutManager = LinearLayoutManager(requireActivity())
-        binding.rvCartList.adapter = savedCardAdapter
+        binding.rvCardList.layoutManager = LinearLayoutManager(requireActivity())
+        binding.rvCardList.adapter = savedCardAdapter
 
 
     }
@@ -119,7 +134,7 @@ class CartFragment : Fragment() {
     }
 
     private fun onAdapterClick(pos: Int, type: String) {
-        requireActivity().onBackPressed()
+
 
     }
 
@@ -157,6 +172,79 @@ class CartFragment : Fragment() {
 
         }
         dialogAddcard.show()
+    }
+
+    fun dialogAddInstructions() {
+        val dialogBinding =
+            DialogBottomSpecialInstructionBinding.inflate(
+                LayoutInflater.from(requireActivity()),
+                null,
+                false
+            )
+        val dialogInstructions = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
+        dialogInstructions.setContentView(dialogBinding.root)
+        dialogInstructions.setCancelable(false)
+
+
+        dialogBinding.imgClose.setOnClickListener {
+            dialogInstructions.dismiss()
+        }
+        dialogBinding.btnSubmit.setOnClickListener {
+            //  btnAdd = dialogBinding.btnAdd
+            // progressBar = dialogBinding.progressBar
+            if (TextUtils.isEmpty(dialogBinding.edMessage.text.toString().trim())) {
+                dialogBinding.edMessage.requestFocus()
+                utilsManager.showAlertMessageError(
+                    requireActivity(),
+                    requireActivity().getString(R.string.type_special_instructions)
+                )
+
+            } else {
+                dialogBinding.edMessage.clearFocus()
+                binding.tvInstructions.text = dialogBinding.edMessage.text.toString()
+                dialogBinding.edMessage.text = null
+                dialogInstructions.dismiss()
+
+
+            }
+
+
+        }
+        dialogInstructions.show()
+    }
+
+    fun dialogOrderSuccess() {
+        val dialogBinding =
+            DialogBottomOrderSuccessBinding.inflate(
+                LayoutInflater.from(requireActivity()),
+                null,
+                false
+            )
+        val dialogOrder = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
+        dialogOrder.setContentView(dialogBinding.root)
+        dialogOrder.setCancelable(false)
+
+
+        dialogBinding.imgClose.setOnClickListener {
+            dialogOrder.dismiss()
+        }
+        dialogBinding.btnSubmit.setOnClickListener {
+            val i = Intent(requireActivity(), MainActivity::class.java)
+            i.putExtra("from","order")
+            i.putExtra("type","order")
+            i.putExtra("order_id","#SC6012548")
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            requireActivity().finish()
+        }
+        dialogBinding.tvHome.setOnClickListener {
+            val i = Intent(requireActivity(), MainActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            requireActivity().finish()
+        }
+
+        dialogOrder.show()
     }
 
     override fun onDestroyView() {

@@ -8,8 +8,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 
-
-
 import java.lang.reflect.Type
 
 class PreferenceManager(context: Context) {
@@ -18,8 +16,10 @@ class PreferenceManager(context: Context) {
 
     private var sharedPreferences: SharedPreferences
     fun initPreferenceManager(context: Context): SharedPreferences {
-             sharedPreferences = context.getSharedPreferences(  Constants.SHARED_PREFERENCE_FILE_NAME,
-                Context.MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences(
+            Constants.SHARED_PREFERENCE_FILE_NAME,
+            Context.MODE_PRIVATE
+        )
         return sharedPreferences
     }
 
@@ -53,10 +53,13 @@ class PreferenceManager(context: Context) {
         editor.putString(key, value)
         editor.apply()
     }
-    fun saveAuthToken( value: String?) {
+
+    fun saveAuthToken(value: String?) {
         editor.putString(KEY_ACCESS_TOKEN, value)
         editor.apply()
-    } fun getAuthToken():String {
+    }
+
+    fun getAuthToken(): String {
         return sharedPreferences.getString(KEY_ACCESS_TOKEN, "").toString()
     }
 
@@ -84,7 +87,7 @@ class PreferenceManager(context: Context) {
     }
 
     init {
-        sharedPreferences =  initPreferenceManager(context)
+        sharedPreferences = initPreferenceManager(context)
         editor = sharedPreferences.edit()
         editor.apply()
 

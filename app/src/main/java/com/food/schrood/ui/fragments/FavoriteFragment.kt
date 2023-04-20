@@ -101,8 +101,18 @@ class FavoriteFragment : Fragment() {
                 }
                 R.id.rbProduct -> {
 
-                    binding.rbProduct.setTextColor(ContextCompat.getColor(requireActivity(), R.color.app_color))
-                    binding.rbStore.setTextColor(ContextCompat.getColor(requireActivity(), R.color.textPlaceHolder))
+                    binding.rbProduct.setTextColor(
+                        ContextCompat.getColor(
+                            requireActivity(),
+                            R.color.app_color
+                        )
+                    )
+                    binding.rbStore.setTextColor(
+                        ContextCompat.getColor(
+                            requireActivity(),
+                            R.color.textPlaceHolder
+                        )
+                    )
                     binding.rvList.adapter = adaper
                 }
             }

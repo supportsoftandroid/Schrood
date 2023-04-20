@@ -2,7 +2,7 @@ package com.food.schrood.utility
 
 import kotlinx.coroutines.*
 
-class Debouncer (private val timeMillis: Long = 500) {
+class Debouncer(private val timeMillis: Long = 500) {
     private var debounceJob: Job? = null
 
     fun debounce(action: () -> Unit) {

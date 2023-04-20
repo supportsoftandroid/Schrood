@@ -1,7 +1,6 @@
 package com.food.schrood.model
 
 
-
 class Notification(
     private val title: String,
     private val message: String,

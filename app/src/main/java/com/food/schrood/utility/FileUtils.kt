@@ -27,9 +27,11 @@ import java.util.*
 
 object FileUtils {
     const val DOCUMENTS_DIR = "documents"
+
     // configured android:authorities in AndroidManifest (https://developer.android.com/reference/android/support/v4/content/FileProvider)
     const val AUTHORITY = "YOUR_AUTHORITY.provider"
     const val HIDDEN_PREFIX = "."
+
     /**
      * TAG for log messages.
      */
@@ -610,13 +612,13 @@ object FileUtils {
     fun imageRotate(photoPath: String?) {
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-  //   var  file :File=File(photoPath)
+        //   var  file :File=File(photoPath)
         val bitmap = BitmapFactory.decodeFile(photoPath, options)
         val ei = photoPath?.let { ExifInterface(it) }
         val orientation: Int = ei?.getAttributeInt(
             ExifInterface.TAG_ORIENTATION,
             ExifInterface.ORIENTATION_UNDEFINED
-        ) ?:0
+        ) ?: 0
 
         var rotatedBitmap: Bitmap? = null
         when (orientation) {
@@ -629,6 +631,7 @@ object FileUtils {
 
 
     }
+
     fun rotateImage(source: Bitmap, angle: Int): Bitmap? {
         val matrix = Matrix()
         matrix.postRotate(angle.toFloat())
@@ -638,7 +641,7 @@ object FileUtils {
         )
     }
 
-    fun getBitmapFromUri(context: Context,imageUri: Uri): Bitmap? {
+    fun getBitmapFromUri(context: Context, imageUri: Uri): Bitmap? {
         context.getContentResolver().notifyChange(imageUri, null)
         val cr: ContentResolver = context.getContentResolver()
         val bitmap: Bitmap
@@ -651,10 +654,10 @@ object FileUtils {
         }
     }
 
-      fun getFilePathFromBitmap(mContext: Context, bitmap: Bitmap): String {
+    fun getFilePathFromBitmap(mContext: Context, bitmap: Bitmap): String {
         val file: File
         val bytes = ByteArrayOutputStream()
-          bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         file = File(
             mContext.getCacheDir(), "temporary_file" + Random().nextInt(
                 9999 - 1 + 1
@@ -668,7 +671,7 @@ object FileUtils {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-       return file.absolutePath
+        return file.absolutePath
         // return requestFile;
     }
 

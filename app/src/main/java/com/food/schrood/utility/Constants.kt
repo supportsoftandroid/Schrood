@@ -5,7 +5,8 @@ object Constants {
     const val COUNTRY_CODE = "+61"
     const val SHARED_PREFERENCE_FILE_NAME = "geno_education"
     const val DEVICE_TYPE = "android"
-    const val STRIPE_PUBLISH_KEY = "pk_test_51LicFNFkV20vz5IvboMHk365cdTOHJ310eS4NgBJ2avgBTWLRgnMrQZVEEOTr9Y3s6YB7F6gtFkAhXSlx27rKd1S00e7dSexd3"
+    const val STRIPE_PUBLISH_KEY =
+        "pk_test_51LicFNFkV20vz5IvboMHk365cdTOHJ310eS4NgBJ2avgBTWLRgnMrQZVEEOTr9Y3s6YB7F6gtFkAhXSlx27rKd1S00e7dSexd3"
 
 
     /*  APP URLs    */
@@ -24,8 +25,9 @@ object Constants {
     const val API_WELCOME_SCREEN = "welcomescreen"
     const val ACCEPT_JSON_HEADER = "Accept: application/json"
     const val FCM_JSON_HEADER = "Authorization: key=$SERVER_KEY"
+
     // const val ACCEPT_JSON_HEADER = "Content-Type: application/json"
-    const val  PROFILE_EDIT_REQUEST_KEY="ptofile_edit_tutor"
+    const val PROFILE_EDIT_REQUEST_KEY = "ptofile_edit_tutor"
 
 
     const val API_LOGIN = "login"

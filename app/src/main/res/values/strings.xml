@@ -2,16 +2,15 @@
     <string name="app_name">Schrood</string>
 
 
-    <string name="your_food_your_way_everywhere_everyday">Your Food Your Way Everywhere Everyday</string>
+    <string name="your_food_your_way_everywhere_everyday">Your Food Your Way \n Everywhere Everyday</string>
     <string name="with_scrhood_you_can_make_sure_you_get_exactly_what_you_want_before_your_order">With Scrhood you can make sure you get exactly what you want before your order</string>
 
     <string name="language_is_no_barrier_wherever_you_are_in_the_world">Language is no barrier wherever you are in the world</string>
-    <string name="schrood_translates_your_messages_into_any_language">Schrood translates your messages into any language</string>
-    <string name="pick_up_eat_in_or_delivery">Pick up, Eat in or Delivery</string>
-    <string name="schrood_is_free_fast_and_easy_be_schrood_with_your_food_now_that_s_schrood">Schrood is Free, Fast and Easy. Be Schrood With Your Food.Now That’s Schrood</string>
+    <string name="schrood_translates_your_messages_into_any_language">Schrood translates your messages into \n any language</string>
+    <string name="pick_up_eat_in_or_delivery">Pick up, Eat in or \n Delivery</string>
+    <string name="schrood_is_free_fast_and_easy_be_schrood_with_your_food_now_that_s_schrood">Schrood is Free, Fast and Easy. Be Schrood  With Your Food.Now That’s Schrood</string>
 
     <string name="title_home">Home</string>
-
     <string name="notifications">Notifications</string>
     <string name="notification">Notification</string>
     <string name="messages">Messages</string>
@@ -50,6 +49,7 @@
     <string name="currency_symbol">$</string>
 
     <string name="filter">Filter</string>
+    <string name="filter_your_search">Filter your Search</string>
     <string name="press_again_to_exit_from_app">Press back again to exit</string>
     <string name="area">Area</string>
     <string name="dummy_contact">(08)82162790</string>
@@ -197,7 +197,7 @@
     <string name="add_bank_details">Add Bank Details</string>
     <string name="edit_bank_details">Edit Bank Details</string>
 
-    <string name="to_get_your_tuition_payments_please_tell_us_your_bank_details">To get your tuition payments, please tell us your bank details.</string>
+
     <string name="account_holder_name">Account Holder Name</string>
     <string name="account_bank_name">Account Bank Name</string>
     <string name="account_number">Account Number</string>
@@ -206,20 +206,17 @@
     <string name="enter_account_number">Enter Account Number</string>
     <string name="government_issued_id_number">Government Issued Id Number</string>
     <string name="enter_government_issued_id_number">Enter Government Issued Id Number</string>
-    <string name="student_reviews">Student Reviews</string>
+
     <string name="name">Name</string>
     <string name="edit">Edit</string>
     <string name="save">Save</string>
     <string name="pick_address">Pick Address</string>
     <string name="search_here">Search Here</string>
-    <string name="search_tutor">Search Tutor</string>
-    <string name="upcoming_bookings">Upcoming Bookings</string>
+
+
     <string name="see_all">See All</string>
-    <string name="update_slot">Update Slot</string>
-    <string name="today_bookings">Today Bookings</string>
-    <string name="all_bookings">All Bookings</string>
-    <string name="today_evenue">Today Revenue</string>
-    <string name="total_evenue">Total Revenue</string>
+
+
 
     <string name="good_morning">Good Morning</string>
     <string name="good_afternoon">Good Afternoon</string>
@@ -309,6 +306,7 @@
     <string name="ingredients">Ingredients:</string>
     <string name="replace_cart_items">Replace Cart Items</string>
     <string name="no_keep_existing_items">No, keep existing items</string>
+    <string name="order_type">Order Type</string>
     <string name="order_mode">Order mode</string>
     <string name="card_holder_name">Card Holder Name</string>
     <string name="please_enter_name">Please enter name</string>
@@ -350,7 +348,7 @@
     <string name="add_more_items">+ Add more items</string>
     <string name="offers_benefits"><![CDATA[Offers& Benefits]]></string>
     <string name="apply_coupon">Apply Coupon</string>
-    <string name="special_cooking_instructions">Special cooking instructions</string>
+    <string name="add_special_cooking_instructions">Add Special cooking instructions</string>
     <string name="bill_details">Bill Details</string>
     <string name="item_total">Item Total</string>
     <string name="gst_charges">GST Charges</string>
@@ -360,6 +358,12 @@
     <string name="add_new_card_label">+ Add new card</string>
     <string name="delete_account">Delete Account</string>
     <string name="enter_manually">Enter Manually</string>
+    <string name="delete_cart_items">Delete Cart Items</string>
+    <string name="yes_clear_cart_items">Yes, clear cart items</string>
+    <string name="are_you_sure_you_want_to_clear_your_carts_it_won_t_display_in_your_carts">Are you sure you want to clear your carts. It won\'t display in your carts</string>
+    <string name="delivered">Delivered</string>
+    <string name="paid_total">Paid Total</string>
+    <string name="your_current_location">Your Current Location</string>
 
 
 </resources>

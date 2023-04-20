@@ -77,7 +77,7 @@ class ProfileFragment : Fragment() {
 
         }
         binding.tvDelete.setOnClickListener() {
-           deleteAccount()
+            deleteAccount()
 
         }
     }
@@ -148,8 +148,8 @@ class ProfileFragment : Fragment() {
 
         dataList.add(CommonDataItem(getString(R.string.edit_profile), "EditProfile", false))
         dataList.add(CommonDataItem(getString(R.string.change_password), "ChangePassword", false))
-        dataList.add(CommonDataItem(getString(R.string.saved_cards), "SavedCards", false))
         dataList.add(CommonDataItem(getString(R.string.saved_address), "SavedAddress", false))
+        dataList.add(CommonDataItem(getString(R.string.saved_cards), "SavedCards", false))
         dataList.add(CommonDataItem(getString(R.string.notifications), "Notifications", false))
 
 
@@ -161,7 +161,8 @@ class ProfileFragment : Fragment() {
         dataList.add(CommonDataItem(getString(R.string.about), "About", false))
 
 
-        adaper = ProfileAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
+        adaper =
+            ProfileAdapter(requireActivity(), dataList, { pos, type -> onAdapterClick(pos, type) })
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adaper
         setFragmentResultListener(PROFILE_EDIT_REQUEST_KEY) { key, bundle ->
@@ -243,6 +244,7 @@ class ProfileFragment : Fragment() {
         alertDialog.setCancelable(false)
         alertDialog.show()
     }
+
     private fun deleteAccount() {
         val builder = AlertDialog.Builder(requireActivity())
         // builder.setTitle(R.string.app_name)

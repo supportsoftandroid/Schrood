@@ -1,7 +1,6 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,8 +13,12 @@ import com.food.schrood.databinding.ListProductItemBinding
 import com.food.schrood.model.CommonDataItem
 
 
-class ProductItemAdapter(mContext: Context, categoryList: MutableList<CommonDataItem>, val onItemClick: ( position:Int,type:String) -> Unit) :
-    RecyclerView.Adapter<ProductItemAdapter.MainViewHolder>()  {
+class ProductItemAdapter(
+    mContext: Context,
+    categoryList: MutableList<CommonDataItem>,
+    val onItemClick: (position: Int, type: String) -> Unit
+) :
+    RecyclerView.Adapter<ProductItemAdapter.MainViewHolder>() {
     var dataList = mutableListOf<CommonDataItem>()
 
 
@@ -29,30 +32,31 @@ class ProductItemAdapter(mContext: Context, categoryList: MutableList<CommonData
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListProductItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListProductItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
-        holder.binding.tvName.text=current.title
-        if (current.is_selected){
+        holder.binding.tvName.text = current.title
+        if (current.is_selected) {
             holder.binding.imgFav.setImageResource(R.drawable.ic_favorite_24)
-        }else{
+        } else {
             holder.binding.imgFav.setImageResource(R.drawable.ic_un_favorite)
         }
-        holder.binding.imgFav.setOnClickListener(){
-            if (current.is_selected){
-                dataList[position].is_selected=false
-            }else{
-                dataList[position].is_selected=true
+        holder.binding.imgFav.setOnClickListener() {
+            if (current.is_selected) {
+                dataList[position].is_selected = false
+            } else {
+                dataList[position].is_selected = true
             }
             notifyDataSetChanged()
         }
 
-        holder.itemView.setOnClickListener(){
-            onItemClick(position,dataList[position].type)
+        holder.itemView.setOnClickListener() {
+            onItemClick(position, dataList[position].type)
         }
 
 
@@ -62,7 +66,8 @@ class ProductItemAdapter(mContext: Context, categoryList: MutableList<CommonData
         return dataList.size
     }
 
-    class MainViewHolder(val binding: ListProductItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainViewHolder(val binding: ListProductItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(modal: CommonDataItem) {
             binding.modal = modal
         }

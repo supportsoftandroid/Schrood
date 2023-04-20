@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="modalSelected"
-            type="com.food.schrood.model.CommonDataItem" />
-
-        <variable
-            name="modal"
             type="com.food.schrood.model.CommonDataItem" />
     </data>
 
@@ -169,8 +164,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
-            android:visibility="gone"
-
             android:fontFamily="@font/poppins_medium"
             android:gravity="center_vertical"
             android:maxLines="1"
@@ -185,6 +178,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone"
+
             android:layout_marginTop="@dimen/dp_5"
             android:layout_marginStart="@dimen/dp_25"
            app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +192,7 @@
                 android:background="@drawable/circle_white"
                 android:contentDescription="@string/app_name"
                 android:elevation="2dp"
-                android:padding="5dp"
+                android:padding="@dimen/dp_7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvList"
 
@@ -209,15 +203,13 @@
                 android:layout_width="@dimen/dp_40"
                 android:layout_height="@dimen/dp_40"
                 android:layout_marginTop="@dimen/dp_20"
-
+                android:elevation="2dp"
+                android:padding="@dimen/dp_7"
                 android:background="@drawable/circle_white"
                 android:contentDescription="@string/app_name"
-                android:elevation="2dp"
-                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvList"
-
-                app:srcCompat="@drawable/ic_un_favorite" />
+                android:src="@drawable/ic_call" />
             <ImageView
                 android:id="@+id/imgMessage"
                 android:layout_width="@dimen/dp_40"
@@ -227,7 +219,7 @@
                 android:background="@drawable/circle_white"
                 android:contentDescription="@string/app_name"
                 android:elevation="2dp"
-                android:padding="5dp"
+                android:padding="@dimen/dp_7"
                 app:tint="@color/app_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvList"

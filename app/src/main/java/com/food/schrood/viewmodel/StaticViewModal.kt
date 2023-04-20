@@ -17,7 +17,7 @@ import com.food.schrood.network.Repository.HelpCenterRepository
 import com.food.schrood.network.Repository.TermsRepository*/
 
 
-class StaticViewModal :ViewModel() {
+class StaticViewModal : ViewModel() {
     lateinit var termsRespons: MutableLiveData<TermsRespons>
     lateinit var faqResponse: MutableLiveData<FaqRespons>
     lateinit var helpCenterResponse: MutableLiveData<CommonResponse>

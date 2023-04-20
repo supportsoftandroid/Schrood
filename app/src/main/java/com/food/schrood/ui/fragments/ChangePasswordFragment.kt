@@ -33,63 +33,78 @@ class ChangePasswordFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModal =  ViewModelProvider(this).get(ChangePasswordViewModal::class.java)
+        viewModal = ViewModelProvider(this).get(ChangePasswordViewModal::class.java)
         _binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
         val root: View = binding.root
         preferenceManager = PreferenceManager(requireActivity())
         utilsManager = UtilsManager(requireActivity())
-       // loginResponse= preferenceManager.getLoginData()!!
+        // loginResponse= preferenceManager.getLoginData()!!
         setData()
         clickListener()
         return root
     }
 
 
-
-
     private fun clickListener() {
-        binding.viewHeader.imgBack.setOnClickListener(){
+        binding.viewHeader.imgBack.setOnClickListener() {
             requireActivity().onBackPressed()
         }
-        binding.btnSubmit.setOnClickListener(){
-                requireActivity().onBackPressed()
-          //  checkValidation()
+        binding.btnSubmit.setOnClickListener() {
+            requireActivity().onBackPressed()
+            //  checkValidation()
         }
 
     }
 
     private fun setData() {
-        binding.viewHeader.txtTitle.text=requireActivity().resources.getString(R.string.change_password)
-        StaticData.passWordEditText( requireActivity(),false,binding.edCurrentPassword)
-        StaticData.passWordEditText( requireActivity(),false,binding.edNewPassword)
-        StaticData.passWordEditText( requireActivity(),false,binding.edConfirmPassword)
+        binding.viewHeader.txtTitle.text =
+            requireActivity().resources.getString(R.string.change_password)
+        StaticData.passWordEditText(requireActivity(), false, binding.edCurrentPassword)
+        StaticData.passWordEditText(requireActivity(), false, binding.edNewPassword)
+        StaticData.passWordEditText(requireActivity(), false, binding.edConfirmPassword)
     }
+
     private fun checkValidation() {
 
         val currentPassword = binding.edCurrentPassword.text.toString()
         val newPassword = binding.edNewPassword.text.toString()
         val confPassword = binding.edConfirmPassword.text.toString()
         if (TextUtils.isEmpty(currentPassword)) {
-            showToast(requireActivity(),requireActivity().getString(R.string.enter_current_password))
+            showToast(
+                requireActivity(),
+                requireActivity().getString(R.string.enter_current_password)
+            )
             binding.edCurrentPassword.requestFocus()
-        }else if (TextUtils.isEmpty(newPassword)) {
+        } else if (TextUtils.isEmpty(newPassword)) {
             binding.edCurrentPassword.clearFocus()
             binding.edNewPassword.requestFocus()
-            showToast(requireActivity(),requireActivity().getString(R.string.enter_new_password))
-        }else if (!isStrongPassword(newPassword)) {
+            showToast(requireActivity(), requireActivity().getString(R.string.enter_new_password))
+        } else if (!isStrongPassword(newPassword)) {
             binding.edCurrentPassword.clearFocus()
             binding.edNewPassword.requestFocus()
-            showToast(requireActivity(),requireActivity().getString(R.string.strong_password_message))
-        }else if (newPassword.equals(currentPassword)) {
+            showToast(
+                requireActivity(),
+                requireActivity().getString(R.string.strong_password_message)
+            )
+        } else if (newPassword.equals(currentPassword)) {
             binding.edCurrentPassword.clearFocus()
             binding.edNewPassword.requestFocus()
-            showToast(requireActivity(),requireActivity().getString(R.string.current_password_and_new_password_different))
-        }else if (TextUtils.isEmpty(confPassword)) {
-            showToast(requireActivity(),requireActivity().getString(R.string.enter_conform_password))
+            showToast(
+                requireActivity(),
+                requireActivity().getString(R.string.current_password_and_new_password_different)
+            )
+        } else if (TextUtils.isEmpty(confPassword)) {
+            showToast(
+                requireActivity(),
+                requireActivity().getString(R.string.enter_conform_password)
+            )
             binding.edNewPassword.clearFocus()
             binding.edConfirmPassword.requestFocus()
         } else if (!newPassword.equals(confPassword)) {
-            showToast(requireActivity(),requireActivity().getString(R.string.confirm_password_not_match))
+            showToast(
+                requireActivity(),
+                requireActivity().getString(R.string.confirm_password_not_match)
+            )
             binding.edNewPassword.clearFocus()
             binding.edConfirmPassword.requestFocus()
         } else {
@@ -98,22 +113,22 @@ class ChangePasswordFragment : Fragment() {
             binding.edNewPassword.clearFocus()
             binding.edConfirmPassword.clearFocus()
 
-           /* if (utilsManager.isNetworkConnected()){
-                viewModal.changePassword(
-                    requireActivity(),
-                    binding.edCurrentPassword.text.toString(),
-                    binding.edNewPassword.text.toString(),
-                    preferenceManager.getAuthToken()
-                    ).observe(requireActivity(), Observer { res ->
-                    printLog("change password", "--->" + res)
-                    showToast(requireActivity(),res.message)
-                    if (res.status) {
-                        requireActivity().onBackPressed()
-                    }
+            /* if (utilsManager.isNetworkConnected()){
+                 viewModal.changePassword(
+                     requireActivity(),
+                     binding.edCurrentPassword.text.toString(),
+                     binding.edNewPassword.text.toString(),
+                     preferenceManager.getAuthToken()
+                     ).observe(requireActivity(), Observer { res ->
+                     printLog("change password", "--->" + res)
+                     showToast(requireActivity(),res.message)
+                     if (res.status) {
+                         requireActivity().onBackPressed()
+                     }
 
 
-                })
-            }*/
+                 })
+             }*/
         }
 
     }

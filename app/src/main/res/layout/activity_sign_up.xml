@@ -235,7 +235,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/i_agree_with"
+                android:button="@drawable/radio_btn_selecter"
                 android:layout_gravity="center"
+                android:paddingStart="@dimen/dp_5"
+
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/sp_14"
                 android:fontFamily="@font/poppins_regular"

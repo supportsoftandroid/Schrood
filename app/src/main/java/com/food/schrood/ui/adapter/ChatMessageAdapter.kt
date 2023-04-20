@@ -1,7 +1,6 @@
 package com.food.schrood.ui.adapter
 
 
-
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
@@ -24,14 +23,14 @@ import com.food.schrood.model.MessageItem
 import com.food.schrood.utility.StaticData.Companion.printLog
 
 
-class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList<MessageItem>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class ChatMessageAdapter(mContext: Context, userId: String, dataList: MutableList<MessageItem>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var dataList = mutableListOf<MessageItem>()
 
     private val LAYOUT_SENDER = 0
     private val LAYOUT_RECIPIENT = 1
     var mContext: Context
-      var userId: String
+    var userId: String
 
 
     init {
@@ -43,32 +42,37 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
 
     fun update(newdataList: MutableList<MessageItem>) {
         if (newdataList != null) {
-            dataList=newdataList
+            dataList = newdataList
             notifyDataSetChanged()
         }
 
     }
 
 
-   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-       when (viewType) {
-           LAYOUT_SENDER -> {
-               return MyViewHolder(
-                   DataBindingUtil.inflate(
-                       LayoutInflater.from(parent.context),
-                       R.layout.list_chat_my_message_item,
-                       parent,
-                       false
-                   )
-               )
-           }
-           else -> {
-               return FriendViewHolder(
-                   DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.list_chat_friend_message_item, parent, false)
-               )
-           }
-       }
-   }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        when (viewType) {
+            LAYOUT_SENDER -> {
+                return MyViewHolder(
+                    DataBindingUtil.inflate(
+                        LayoutInflater.from(parent.context),
+                        R.layout.list_chat_my_message_item,
+                        parent,
+                        false
+                    )
+                )
+            }
+            else -> {
+                return FriendViewHolder(
+                    DataBindingUtil.inflate(
+                        LayoutInflater.from(parent.context),
+                        R.layout.list_chat_friend_message_item,
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when {
@@ -90,7 +94,7 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
     override fun getItemViewType(position: Int): Int {
         dataList[position].also { message ->
             return when {
-                message.sender_id==userId -> {
+                message.sender_id == userId -> {
                     LAYOUT_SENDER
                 }
                 else -> LAYOUT_RECIPIENT
@@ -98,6 +102,7 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
         }
 
     }
+
     inner class MyViewHolder(private val item: ListChatMyMessageItemBinding) :
         RecyclerView.ViewHolder(item.root) {
         fun bind(message: MessageItem) {
@@ -109,45 +114,45 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
             } else {
                 item.tvMessage.visibility = View.GONE
                 item.cardImage.visibility = View.VISIBLE
-                loadFile(message,item.imageView)
+                loadFile(message, item.imageView)
                 item.imageView.setOnClickListener {
 
-                        viewDocumentImage(message)
+                    viewDocumentImage(message)
 
                 }
             }
         }
     }
 
-    inner  class FriendViewHolder(private val item: ListChatFriendMessageItemBinding) :
+    inner class FriendViewHolder(private val item: ListChatFriendMessageItemBinding) :
         RecyclerView.ViewHolder(item.root) {
         fun bind(message: MessageItem) {
             item.tvMessage.text = message.message
             item.tvChatTime.text = message.chat_time.toString()
-            if ( message.type.equals("text") ) {
+            if (message.type.equals("text")) {
                 item.tvMessage.visibility = View.VISIBLE
                 item.tvMessage.text = message.message
                 item.cardImage.visibility = View.GONE
             } else {
                 item.tvMessage.visibility = View.GONE
                 item.cardImage.visibility = View.VISIBLE
-                loadFile(message,item.imageView)
+                loadFile(message, item.imageView)
                 item.imageView.setOnClickListener {
 
-                        viewDocumentImage(message)
+                    viewDocumentImage(message)
 
                 }
             }
         }
     }
 
-    fun loadFile(message: MessageItem,imageView: ImageView){
+    fun loadFile(message: MessageItem, imageView: ImageView) {
         //printLog("message.file_format",message.file_format)
         Glide.with(mContext)
             .load(message.image_url)
             .apply(
                 RequestOptions()
-                    .placeholder( R.drawable.ic_loading)
+                    .placeholder(R.drawable.ic_loading)
                     .error(R.drawable.ic_logo)
 
             ).into(imageView)
@@ -206,44 +211,46 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
         }*/
 
     }
+
     @SuppressLint("SetJavaScriptEnabled")
-    fun viewDocumentImage(message: MessageItem){
-        val dialogBinding= DialogViewChatItemBinding.inflate(LayoutInflater.from(mContext), null, false)
+    fun viewDocumentImage(message: MessageItem) {
+        val dialogBinding =
+            DialogViewChatItemBinding.inflate(LayoutInflater.from(mContext), null, false)
         val dialog = Dialog(mContext, R.style.GalleryDialog)
         dialog.setContentView(dialogBinding.root)
         dialog.setCancelable(false)
-        val fileUrl= message.image_url
+        val fileUrl = message.image_url
 
-        dialogBinding.imgClose.setOnClickListener{
+        dialogBinding.imgClose.setOnClickListener {
             dialogBinding.webView.loadUrl("")
             dialog.dismiss()
         }
-        when("image"){
-            "image"->{
-                dialogBinding.imgDocument.visibility=View.VISIBLE
+        when ("image") {
+            "image" -> {
+                dialogBinding.imgDocument.visibility = View.VISIBLE
                 Glide.with(mContext)
                     .load(fileUrl)
                     .apply(
                         RequestOptions()
-                            .placeholder( R.drawable.ic_loading)
+                            .placeholder(R.drawable.ic_loading)
                             .error(R.drawable.ic_logo)
 
                     ).into(dialogBinding.imgDocument)
             }
-            "video"->{
-                dialogBinding.webVideo.visibility=View.VISIBLE
-                loadVideoUrlInWebView( dialogBinding.webVideo,fileUrl)
+            "video" -> {
+                dialogBinding.webVideo.visibility = View.VISIBLE
+                loadVideoUrlInWebView(dialogBinding.webVideo, fileUrl)
             }
-            "pdf"->{
-                dialogBinding.webView.visibility=View.VISIBLE
+            "pdf" -> {
+                dialogBinding.webView.visibility = View.VISIBLE
                 val googleDocsUrl = "https://docs.google.com/gview?embedded=true&url=" + fileUrl
                 dialogBinding.webView.settings.javaScriptEnabled = true
                 dialogBinding.webView.settings.pluginState = WebSettings.PluginState.ON
                 dialogBinding.webView.webChromeClient = WebChromeClient()
                 dialogBinding.webView.loadUrl(googleDocsUrl)
             }
-            else->   {
-                dialogBinding.webView.visibility=View.VISIBLE
+            else -> {
+                dialogBinding.webView.visibility = View.VISIBLE
 
 // Enable JavaScript and other web settings
                 dialogBinding.webView.settings.javaScriptEnabled = true
@@ -255,16 +262,17 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
 // Load the URL in the web view
 
 
-                dialogBinding.webView.loadUrl(fileUrl,)
+                dialogBinding.webView.loadUrl(fileUrl)
             }
 
         }
 
         dialog.show()
     }
+
     @SuppressLint("SetJavaScriptEnabled")
     fun loadVideoUrlInWebView(webView: WebView, fileUrl: String) {
-        printLog(" file url",fileUrl.toString())
+        printLog(" file url", fileUrl.toString())
         webView.settings.allowFileAccess = true
         webView.settings.allowContentAccess = true
         webView.settings.javaScriptEnabled = true
@@ -272,7 +280,13 @@ class ChatMessageAdapter(mContext: Context,userId: String, dataList: MutableList
         webView.settings.mediaPlaybackRequiresUserGesture = false
         webView.webChromeClient = WebChromeClient()
 
-        webView.loadDataWithBaseURL(null, "<html><body><iframe width=\"100%\" height=\"100%\" src=\"$fileUrl\" frameborder=\"0\" allowfullscreen></iframe></body></html>", "text/html", "utf-8", null)
+        webView.loadDataWithBaseURL(
+            null,
+            "<html><body><iframe width=\"100%\" height=\"100%\" src=\"$fileUrl\" frameborder=\"0\" allowfullscreen></iframe></body></html>",
+            "text/html",
+            "utf-8",
+            null
+        )
     }
 }
 

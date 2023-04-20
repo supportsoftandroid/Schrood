@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
-import com.food.schrood.databinding.DialogBottomAddCardBinding
 import com.food.schrood.databinding.DialogBottomAddRateProductBinding
 import com.food.schrood.databinding.FragmentMyOrdersBinding
 import com.food.schrood.model.CommonDataItem
@@ -33,14 +32,11 @@ class MyOrderFragment : Fragment() {
 
     lateinit var adapter: OrderItemAdapter
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         StaticData.changeStatusBarColor(requireActivity(), "other")
         viewModal = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
+            this, ViewModelProvider.NewInstanceFactory()
         ).get(MyOrderViewModel::class.java)
         _binding = FragmentMyOrdersBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -54,56 +50,58 @@ class MyOrderFragment : Fragment() {
 
     fun initView() {
 
-        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.my_order)
+        binding.viewHeader.txtTitle.text = requireActivity().getString(R.string.my_orders)
         orderOngoingList.clear()
-        orderOngoingList.add(CommonDataItem("Cheese Pizza with Coke", "all", true))
-        orderOngoingList.add(CommonDataItem("Pizza Cheese  with Coke", "breakfast", false))
-        orderOngoingList.add(CommonDataItem("Spaghetti Land Pizza with Coke", "Lunch", false))
-        orderOngoingList.add(CommonDataItem("Pizza 4P", "Dinner", false))
-        orderOngoingList.add(CommonDataItem("Dessert Journey", "Pasta", false))
-        orderOngoingList.add(CommonDataItem("Cheese Pizza with Coke", "breakfast", false))
-        orderOngoingList.add(CommonDataItem("Spaghetti Land Pizza with Coke", "Lunch", false))
-        orderOngoingList.add(CommonDataItem("Pizza 4P", "Dinner", false))
-        orderOngoingList.add(CommonDataItem("Spaghetti Land Pizza with Coke", "Lunch", false))
-        orderOngoingList.add(CommonDataItem("Pizza 4P", "Dinner", false))
-        orderOngoingList.add(CommonDataItem("Dessert Journey", "Pasta", false))
-        orderOngoingList.add(CommonDataItem("Cheese Pizza with Coke", "breakfast", false))
-        orderOngoingList.add(CommonDataItem("Spaghetti Land Pizza with Coke", "Lunch", false))
-        orderOngoingList.add(CommonDataItem("Pizza 4P", "Dinner", false))
+        orderOngoingList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        orderOngoingList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        orderOngoingList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        orderOngoingList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+
+
+        orderOngoingList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        orderOngoingList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        orderOngoingList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        orderOngoingList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+
+
+        orderOngoingList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        orderOngoingList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        orderOngoingList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        orderOngoingList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+
 
 
         orderCompletedList.clear()
-        orderCompletedList.add(CommonDataItem("Pizza 4P", "Soups", true))
-        orderCompletedList.add(CommonDataItem("Spaghetti Land", "Spaghetti Land", true))
-        orderCompletedList.add(CommonDataItem("Dessert Journey", "Dessert Journey", true))
-        orderCompletedList.add(CommonDataItem("Cheese Pizza with Coke", "Dessert Journey", true))
-        orderCompletedList.add(CommonDataItem("Spaghetti with Coke", "Dessert Journey", true))
-        orderCompletedList.add(CommonDataItem("Pizza 4P", "Soups", true))
-        orderCompletedList.add(CommonDataItem("Spaghetti Land", "Spaghetti Land", true))
-        orderCompletedList.add(CommonDataItem("Dessert Journey", "Dessert Journey", true))
-        orderCompletedList.add(CommonDataItem("Cheese Pizza with Coke", "Dessert Journey", true))
-        orderCompletedList.add(CommonDataItem("Spaghetti with Coke", "Dessert Journey", true))
+        orderCompletedList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        orderCompletedList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        orderCompletedList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        orderCompletedList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+        orderCompletedList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        orderCompletedList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        orderCompletedList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        orderCompletedList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+        orderCompletedList.add(CommonDataItem("Sydney  Restaurant & Cafe", "Vegetarian", true))
+        orderCompletedList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
+        orderCompletedList.add(CommonDataItem("Pizza Italia Restaurant & Cafe", "Any", false))
+        orderCompletedList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
+
         dataList.clear()
         dataList = orderOngoingList
 
-        adapter =
-            OrderItemAdapter(requireActivity(), dataList) { pos, type -> onOrderClick(pos, type) }
-        binding.rvList.layoutManager =
-            LinearLayoutManager(requireActivity())
+        adapter = OrderItemAdapter(requireActivity(), dataList) { pos, type -> onOrderClick(pos, type) }
+        binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adapter
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.rbOngoing -> {
                     binding.rbOngoing.setTextColor(
                         ContextCompat.getColor(
-                            requireActivity(),
-                            R.color.app_color
+                            requireActivity(), R.color.app_color
                         )
                     )
                     binding.rbHistory.setTextColor(
                         ContextCompat.getColor(
-                            requireActivity(),
-                            R.color.colorText
+                            requireActivity(), R.color.colorText
                         )
                     )
                     dataList.clear()
@@ -113,14 +111,12 @@ class MyOrderFragment : Fragment() {
                 R.id.rbHistory -> {
                     binding.rbHistory.setTextColor(
                         ContextCompat.getColor(
-                            requireActivity(),
-                            R.color.app_color
+                            requireActivity(), R.color.app_color
                         )
                     )
                     binding.rbOngoing.setTextColor(
                         ContextCompat.getColor(
-                            requireActivity(),
-                            R.color.textPlaceHolder
+                            requireActivity(), R.color.textPlaceHolder
                         )
                     )
                     dataList.clear()
@@ -143,15 +139,26 @@ class MyOrderFragment : Fragment() {
 
         }
     }
+
     private fun onOrderClick(position: Int, type: String) {
-        if (type.equals("rate")){
+        if (type.equals("rate")) {
             dialogRateProduct()
+        }else if (type.equals("view")) {
+            MainActivity.hideNavigationTab()
+
+            StaticData.backStackAddFragment(requireActivity(),OrderDetailsFragment())
+        }
+      else if (type.equals("reorder")) {
+            MainActivity.hideNavigationTab()
+            StaticData.backStackAddFragment(requireActivity(),CartFragment())
         }
 
     }
+
     fun dialogRateProduct() {
-        val dialogBinding =
-            DialogBottomAddRateProductBinding.inflate(LayoutInflater.from(requireActivity()), null, false)
+        val dialogBinding = DialogBottomAddRateProductBinding.inflate(
+            LayoutInflater.from(requireActivity()), null, false
+        )
         val dialogRate = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
         dialogRate.setContentView(dialogBinding.root)
 
@@ -166,7 +173,6 @@ class MyOrderFragment : Fragment() {
         }
         dialogRate.show()
     }
-
 
 
     override fun onDestroyView() {
