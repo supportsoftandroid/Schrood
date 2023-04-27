@@ -4,17 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
 import com.food.schrood.databinding.DialogBottomAddRateProductBinding
-import com.food.schrood.databinding.FragmentMyOrdersBinding
 import com.food.schrood.databinding.FragmentOrderDetailsBinding
 import com.food.schrood.model.CommonDataItem
 import com.food.schrood.ui.activities.MainActivity
-import com.food.schrood.ui.adapter.OrderItemAdapter
 import com.food.schrood.ui.adapter.OrderProductItemAdapter
 import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.MyOrderViewModel

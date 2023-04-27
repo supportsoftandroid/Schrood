@@ -27,7 +27,7 @@ object Constants {
     const val FCM_JSON_HEADER = "Authorization: key=$SERVER_KEY"
 
     // const val ACCEPT_JSON_HEADER = "Content-Type: application/json"
-    const val PROFILE_EDIT_REQUEST_KEY = "ptofile_edit_tutor"
+    const val PROFILE_EDIT_REQUEST_KEY = "profile_edit"
 
 
     const val API_LOGIN = "login"

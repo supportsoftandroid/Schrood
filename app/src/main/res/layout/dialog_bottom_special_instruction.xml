@@ -76,7 +76,7 @@
         android:layout_marginTop="@dimen/dp_20"
         android:fontFamily="@font/poppins_medium"
         android:gravity="start"
-        android:text="The restaurants will try their best to follow your cooking instructions bu no cancellation or refund will be proceedif your is not met with chef."
+        android:text="@string/the_restaurants_will_try_their_best_to_follow_your_cooking_instructions_but_no_cancellation_or_refund_will_be_proceed_if_your_is_not_met_with_chef"
         android:textColor="@color/colorTextHint"
         android:textSize="@dimen/sp_12"
         app:layout_constraintStart_toStartOf="parent"

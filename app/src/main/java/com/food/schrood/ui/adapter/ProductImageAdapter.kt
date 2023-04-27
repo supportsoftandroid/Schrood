@@ -6,13 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.food.schrood.R
-import com.food.schrood.databinding.ListFaqItemBinding
 import com.food.schrood.databinding.ListImageItemBinding
-import com.food.schrood.databinding.ListProfileItemBinding
 import com.food.schrood.model.CommonDataItem
-import com.food.schrood.model.FaqItem
-import com.food.schrood.utility.StaticData.Companion.printLog
 
 
 class ProductImageAdapter(mContext: Context, dataList: MutableList<CommonDataItem>) :

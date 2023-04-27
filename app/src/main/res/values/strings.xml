@@ -364,6 +364,7 @@
     <string name="delivered">Delivered</string>
     <string name="paid_total">Paid Total</string>
     <string name="your_current_location">Your Current Location</string>
+    <string name="the_restaurants_will_try_their_best_to_follow_your_cooking_instructions_but_no_cancellation_or_refund_will_be_proceed_if_your_is_not_met_with_chef">The restaurants will try their best to follow your cooking instructions but no cancellation or refund will be proceed if your is not met with chef.</string>
 
 
 </resources>

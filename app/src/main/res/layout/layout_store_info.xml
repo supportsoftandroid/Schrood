@@ -179,6 +179,7 @@
             android:orientation="horizontal"
             android:visibility="gone"
 
+
             android:layout_marginTop="@dimen/dp_5"
             android:layout_marginStart="@dimen/dp_25"
            app:layout_constraintEnd_toEndOf="parent"
@@ -214,6 +215,7 @@
                 android:id="@+id/imgMessage"
                 android:layout_width="@dimen/dp_40"
                 android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_20"
 
                 android:background="@drawable/circle_white"

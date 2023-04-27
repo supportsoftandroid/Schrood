@@ -4,13 +4,8 @@ package com.food.schrood.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-
 import androidx.recyclerview.widget.RecyclerView
-import com.food.schrood.R
 import com.food.schrood.databinding.ListOrderProductItemBinding
-import com.food.schrood.databinding.ListProductItemBinding
-
 import com.food.schrood.model.CommonDataItem
 
 
