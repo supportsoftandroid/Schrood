@@ -45,7 +45,7 @@ class SavedCardAdapter(
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val current = dataList[position]
         holder.bind(current)
-       // holder.binding.imgCard.text = current.brand
+        // holder.binding.imgCard.text = current.brand
         holder.binding.txtName.text =
             if (TextUtils.isEmpty(current.name)) userName else current.name
         holder.binding.tvCardNo.text = "**** **** **** ${current.last4}"

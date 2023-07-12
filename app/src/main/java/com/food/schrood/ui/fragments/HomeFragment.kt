@@ -17,12 +17,13 @@ import com.food.schrood.ui.adapter.RecentOrderAdapter
 import com.food.schrood.ui.adapter.StoreItemAdapter
 import com.food.schrood.utility.StaticData
 import com.food.schrood.viewmodel.HomeViewModel
+import com.food.schrood.viewmodel.SignUpViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    lateinit var homeViewModel: HomeViewModel
+    val viewModal by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,10 +41,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         StaticData.changeStatusBarColor(requireActivity(), "home")
-        homeViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.let {
             clickListener()
@@ -186,7 +183,7 @@ class HomeFragment : Fragment() {
         }
         dialogBinding.btnDelete.setOnClickListener {
             dialogDelete.dismiss()
-           binding.llCartView.visibility=View.GONE
+            binding.llCartView.visibility = View.GONE
         }
 
         dialogDelete.show()

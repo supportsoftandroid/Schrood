@@ -39,9 +39,6 @@ class OrderProductItemAdapter(
         holder.binding.tvFoodName.text = current.title
 
 
-
-
-
     }
 
     override fun getItemCount(): Int {

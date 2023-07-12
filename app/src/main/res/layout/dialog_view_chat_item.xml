@@ -1,102 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
 
 
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_gravity="center"
-    android:id="@+id/clvForgotPassword"
-    android:orientation="vertical"
-    android:layout_marginHorizontal="@dimen/dp_10"
-    android:paddingVertical="@dimen/dp_10"
-    android:paddingHorizontal="@dimen/dp_10">
-    <ImageView
-        android:id="@+id/imgClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@drawable/circle_white"
-        android:contentDescription="Cancel"
-        app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_close"
-
-        app:tint="@color/app_color" />
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvForgotPassword"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dp_10"
-        android:orientation="horizontal"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/imgClose"
-        android:minHeight="@dimen/dp_300"
-
-        >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/dp_10"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:paddingVertical="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/imgDocument"
-            android:layout_width="@dimen/dp_300"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_20"
-
-            android:adjustViewBounds="true"
-            android:minHeight="@dimen/dp_300"
-            android:src="@drawable/ic_loading"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-     <!--   <WebView
-            android:id="@+id/web_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_20"
-
-            android:adjustViewBounds="true"
-            android:minHeight="@dimen/dp_300"
-            android:src="@drawable/loading"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <WebView
-            android:id="@+id/web_view"
-            android:layout_width="@dimen/dp_400"
-            android:layout_height="500dp"
-            android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginBottom="@dimen/dp_50"
-            android:visibility="gone"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-
-            />
-
-        <WebView
-            android:id="@+id/webVideo"
+            android:id="@+id/imgClose"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_400"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/circle_white"
+            android:contentDescription="Cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close"
+
+            app:tint="@color/app_color" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:minHeight="@dimen/dp_300"
+
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imgClose"
+
+            >
+
+            <ImageView
+                android:id="@+id/imgDocument"
+                android:layout_width="@dimen/dp_300"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_20"
+
+                android:adjustViewBounds="true"
+                android:minHeight="@dimen/dp_300"
+                android:src="@drawable/ic_loading"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--   <WebView
+                   android:id="@+id/web_view"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginHorizontal="@dimen/dp_20"
+
+                   android:adjustViewBounds="true"
+                   android:minHeight="@dimen/dp_300"
+                   android:src="@drawable/loading"
+                   android:visibility="gone"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />-->
+
+            <WebView
+                android:id="@+id/web_view"
+                android:layout_width="@dimen/dp_400"
+                android:layout_height="500dp"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_50"
+                android:visibility="gone"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+            <WebView
+                android:id="@+id/webVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_400"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

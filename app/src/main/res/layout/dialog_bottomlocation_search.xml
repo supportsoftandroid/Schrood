@@ -3,92 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
     android:layout_gravity="bottom"
     android:background="@drawable/background_white_top_radius"
     android:orientation="vertical"
+    android:padding="@dimen/dp_10"
 
-    android:padding="@dimen/dp_10">
+    app:layout_constraintBottom_toBottomOf="parent">
+
     <ImageView
         android:id="@+id/imgClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_10"
         android:background="@null"
-        android:visibility="gone"
         android:contentDescription="Cancel"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close" />
+
     <ImageView
         android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/dp_20"
+        android:adjustViewBounds="true"
         android:src="@drawable/location_marker_radius"
-        app:layout_constraintTop_toBottomOf="@+id/imgClose"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgClose" />
 
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_35"
         android:layout_marginHorizontal="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_35"
         android:fontFamily="@font/poppins_semi_bold"
+        android:gravity="start"
         android:text="@string/enter_location"
         android:textColor="@color/colorTextLabel"
         android:textSize="@dimen/sp_20"
-        android:gravity="start"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_title" />
 
     <EditText
-        android:id="@+id/ediLocation"
+        android:id="@+id/edLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_20"
+        android:autofillHints=""
         android:background="@drawable/bg_edit_text"
-        android:hint="Enter Current Location"
-        android:inputType="text"
+        android:hint="@string/enter_current_location"
+
         android:minHeight="@dimen/dp_45"
         android:padding="10dp"
-        android:text=""
+        android:focusable="false"
+        android:editable="false"
         android:textColorHint="@color/textPlaceHolder"
-        android:imeOptions="actionDone"
         android:textSize="@dimen/sp_14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/tvDescription" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_25"
         android:layout_marginHorizontal="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_25"
+        android:layout_marginBottom="@dimen/dp_60"
         android:background="@drawable/button_background_global"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/submit"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/sp_16"
-        android:layout_marginBottom="@dimen/dp_60"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ediLocation"
+        app:layout_constraintTop_toBottomOf="@+id/edLocation"
         app:layout_constraintVertical_bias="0.0" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

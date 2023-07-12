@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.food.schrood.R
@@ -15,6 +16,7 @@ import com.food.schrood.model.SliderItem
 import com.food.schrood.ui.adapter.WelcomePagerAdapter
 import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.getURLForResource
+import com.food.schrood.utility.StaticData.Companion.printLog
 import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.WelcomeViewModal
 
@@ -27,8 +29,8 @@ class WelcomeActivity : AppCompatActivity() {
 
     private lateinit var utilsManager: UtilsManager
     private lateinit var mAdapter: WelcomePagerAdapter
-    private lateinit var viewModal: WelcomeViewModal
 
+    private val viewModel by lazy { ViewModelProvider(this@WelcomeActivity)[WelcomeViewModal::class.java] }
     override fun onCreate(savedInstanceState: Bundle?) {
         StaticData.changeStatusBarColor(this, "message")
         window.statusBarColor = ContextCompat.getColor(this, R.color.colorLightYellow)
@@ -40,25 +42,29 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModal = ViewModelProvider(this).get(WelcomeViewModal::class.java)
+
         mContext = this@WelcomeActivity
         utilsManager = UtilsManager(mContext)
-        initPager()
-        clickListener()
-        //   getApiData()
+        binding.let {
+            initPager()
+            clickListener()
+            getApiData()
+        }
+
+
 
     }
 
     private fun clickListener() {
 
         binding.btnGetStarted.setOnClickListener() {
-            if (currentPos < dataList.size - 1) {
-                currentPos = currentPos + 1
-                binding.viewPagerWelcome.setCurrentItem(currentPos)
-            } else {
-                moveNextScreen()
-            }
-
+            /* if (currentPos < dataList.size - 1) {
+                 currentPos = currentPos + 1
+                 binding.viewPagerWelcome.setCurrentItem(currentPos)
+             } else {
+                 moveNextScreen()
+             }*/
+            moveNextScreen()
         }
 
     }
@@ -79,6 +85,7 @@ class WelcomeActivity : AppCompatActivity() {
                 getURLForResource(R.drawable.welcome1_your_food).toString()
             )
         )
+
         dataList.add(
             SliderItem(
                 R.drawable.welcome_2_language_no_barreer,
@@ -129,24 +136,20 @@ class WelcomeActivity : AppCompatActivity() {
         mAdapter = WelcomePagerAdapter(mContext, dataList)
         binding.viewPagerWelcome.adapter = mAdapter
     }
-    /*  fun getApiData(){
+      fun getApiData(){
           if (utilsManager.isNetworkConnected()) {
-              viewModal.getBannerData(this).observe(this, Observer { res ->
-
-                  printLog("welcome activity res",   res.toString())
-
+              viewModel.getBannerData(this).observe(this, Observer { res ->
                   if (res.status) {
                       if (!res.data.isEmpty()) {
                           dataList.clear()
                           dataList.addAll(res.data)
-
                           setupPagerAdapter()
                       }
                   }
 
               })
           }
-      }*/
+      }
 
 
 }

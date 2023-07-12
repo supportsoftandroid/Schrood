@@ -223,7 +223,7 @@ class ChatHistoryFragment : Fragment() {
         binding.viewHeader.imgBack.setOnClickListener() {
             requireActivity().onBackPressed()
         }
-        binding.viewHeader.imgMenu1.visibility=View.VISIBLE
+        binding.viewHeader.imgMenu1.visibility = View.VISIBLE
         binding.viewHeader.imgMenu1.setImageResource(R.drawable.ic_call)
         binding.viewHeader.imgMenu1.setOnClickListener() {
             requireActivity().onBackPressed()

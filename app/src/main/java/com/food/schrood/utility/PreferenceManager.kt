@@ -2,6 +2,7 @@ package com.food.schrood.utility
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.food.schrood.model.LocationData
 import com.food.schrood.model.LoginResponse
 import com.food.schrood.utility.Constants.KEY_ACCESS_TOKEN
 import com.google.gson.Gson
@@ -38,16 +39,34 @@ class PreferenceManager(context: Context) {
     fun setLoginData(beans: LoginResponse?) {
         val gson = Gson()
         val json: String = gson.toJson(beans)
-        /*if (beans?.data?.token!=null&&beans?.data?.type!=null){
+        if (beans?.data?.token!=null&&beans?.data?.type!=null){
             editor.putString(
                 Constants.KEY_ACCESS_TOKEN,
                 "${beans?.data?.type} ${beans?.data?.token}"
             )
-        }*/
+        }
         editor.putString(Constants.KEY_LOGIN_DATA, json)
         editor.apply()
     }
 
+
+    fun setLocationData(beans: LocationData) {
+        val gson = Gson()
+        val json: String = gson.toJson(beans)
+        editor.putString(Constants.KEY_LOCATION_DATA, json)
+        editor.apply()
+    }
+    fun getLocationData(): LocationData? {
+        val json: String = sharedPreferences.getString(Constants.KEY_LOCATION_DATA, null).toString()
+        val gson = Gson()
+        val type: Type = object : TypeToken<LocationData>() {}.getType()
+        val beans: LocationData = try {
+            gson.fromJson(json, type)
+        } catch (e: Exception) {
+            return null
+        }
+        return beans
+    }
 
     fun saveString(key: String?, value: String?) {
         editor.putString(key, value)

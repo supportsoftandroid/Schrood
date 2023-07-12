@@ -25,21 +25,23 @@ class ProductImageAdapter(mContext: Context, dataList: MutableList<CommonDataIte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ListImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-          val current = dataList[position]
-         holder.bind(current)
+        val current = dataList[position]
+        holder.bind(current)
 
     }
 
     override fun getItemCount(): Int {
-          return dataList.size
+        return dataList.size
     }
 
-    class MainViewHolder(val binding: ListImageItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MainViewHolder(val binding: ListImageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(modal: CommonDataItem) {
             binding.modal = modal
         }

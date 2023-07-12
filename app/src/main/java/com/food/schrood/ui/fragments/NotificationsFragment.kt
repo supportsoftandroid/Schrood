@@ -95,6 +95,7 @@ class NotificationsFragment : Fragment() {
             }
         }
     }
+
     private fun showAllowNotificationBottomSheet() {
         val dialog = BottomSheetDialog(requireActivity(), R.style.GalleryDialog)
         val dialogBinding = DialogBottomAllowNotificationsBinding.inflate(
@@ -114,11 +115,12 @@ class NotificationsFragment : Fragment() {
             dialog.dismiss()
         }
         dialogBinding.tvCancel.setOnClickListener {
-            binding.viewHeader.btnCheckSwitch.isChecked=false
+            binding.viewHeader.btnCheckSwitch.isChecked = false
             dialog.dismiss()
         }
 
     }
+
     private fun onAdapterClick(pos: Int, type: String) {
 
     }

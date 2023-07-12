@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 
 import com.food.schrood.model.CommonResponse
 import com.food.schrood.model.FaqRespons
-import com.food.schrood.model.TermsRespons
+import com.food.schrood.model.TermsResponse
 
 
 /*import com.food.schrood.model.FaqResponse
@@ -18,7 +18,7 @@ import com.food.schrood.network.Repository.TermsRepository*/
 
 
 class StaticViewModal : ViewModel() {
-    lateinit var termsRespons: MutableLiveData<TermsRespons>
+    lateinit var termsResponse: MutableLiveData<TermsResponse>
     lateinit var faqResponse: MutableLiveData<FaqRespons>
     lateinit var helpCenterResponse: MutableLiveData<CommonResponse>
 

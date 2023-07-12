@@ -20,13 +20,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.food.schrood.R
-import com.food.schrood.databinding.DialogAllowLocationsBinding
-import com.food.schrood.databinding.DialogAllowNotificationsBinding
-import com.food.schrood.databinding.DialogBottomlocationSearchBinding
-import com.food.schrood.databinding.DialogImageUploadBinding
+import com.food.schrood.databinding.*
 import com.food.schrood.ui.activities.LoginActivity
 import com.food.schrood.utility.Constants.ERROR_ALERT
+import com.food.schrood.utility.PermissionUtilityUpdated.Companion.checkFileAccessPermission
 import com.food.schrood.utility.StaticData.Companion.IMAGE_CROP_REQUEST_CODE
+import com.food.schrood.utility.StaticData.Companion.showToast
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -70,7 +69,7 @@ class UtilsManager(private val context: Context) {
     }
 
 
-    fun showGallaryBottomModelSheet(activity: Activity) {
+    fun showGallaryBottomModelSheet(activity: Activity, progressDialog: DialogManager) {
         val bindingDialog =
             DialogImageUploadBinding.inflate(LayoutInflater.from(context), null, false)
         //val sheetView: View =  LayoutInflater.from(context).inflate(R.layout.dialog_image_upload,null)
@@ -79,12 +78,10 @@ class UtilsManager(private val context: Context) {
         dialogImageUpload.setContentView(bindingDialog.root)
 
 
-        /*  val cameraView = sheetView.findViewById<LinearLayout>(R.id.layout_camera)
-          val viewGallary = sheetView.findViewById<LinearLayout>(R.id.layout_gallery)
-          val imgClose = sheetView.findViewById<ImageView>(R.id.imgClose)*/
         // checking for runtime permission
-        StaticData.checkFileAccessPermission(context)
+        checkFileAccessPermission(context)
         bindingDialog.imgClose.setOnClickListener {
+            progressDialog.dismissDialog()
             dialogImageUpload.dismiss()
 
         }
@@ -98,6 +95,7 @@ class UtilsManager(private val context: Context) {
                 .cameraOnly()//Crop image(Optional), Check Customization for more option
                 .compress(150)            //Final image size will be less than 1 MB(Optional)
                 .createIntent { intent ->
+                    progressDialog.showProgressDialog("")
                     activity.startActivityForResult(intent, IMAGE_CROP_REQUEST_CODE)
                     //    startForImageResult.launch(intent)
                 }
@@ -112,6 +110,7 @@ class UtilsManager(private val context: Context) {
                 .galleryOnly()
                 .compress(150)            //Final image size will be less than 1 MB(Optional)
                 .createIntent { intent ->
+                    progressDialog.showProgressDialog("")
                     activity.startActivityForResult(intent, IMAGE_CROP_REQUEST_CODE)
                     //  startForImageResult.launch(intent)
                 }
@@ -120,6 +119,47 @@ class UtilsManager(private val context: Context) {
         dialogImageUpload.show()
     }
 
+    fun showOTPDialogBottom(
+        context: Context, isCancelable: Boolean,
+        onItemClick: (type: String, otp: String, dlg: BottomSheetDialog) -> Unit
+    ) {
+        val dialog = BottomSheetDialog(context, R.style.GalleryDialog)
+        val dialogBinding =
+            ActivityVerifyOtpBinding.inflate(LayoutInflater.from(context), null, false)
+        val sheetView = dialogBinding.root
+        dialog.setContentView(sheetView)
+        dialog.setCancelable(isCancelable)
+
+        val screenHeight = context.resources.displayMetrics.heightPixels
+        val layoutParams = sheetView.layoutParams
+        layoutParams.height = screenHeight
+        sheetView.layoutParams = layoutParams
+
+        // Set the bottom sheet to be fullscreen
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        dialog.behavior.isDraggable = false
+        dialogBinding.imgBack.visibility = View.VISIBLE
+        dialogBinding.imgBack.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogBinding.tvResend.setOnClickListener {
+            onItemClick("resend", "", dialog)
+
+        }
+        dialogBinding.btnSubmit.setOnClickListener {
+            val otp = dialogBinding.pinview.value.toString()
+            if (otp.length < 4) {
+                showToast(context, context.getString(R.string.please_enter_4_digit_otp))
+            } else {
+                dialogBinding.pinview.clearFocus()
+                onItemClick("verify", dialogBinding.pinview.value.toString(), dialog)
+            }
+
+        }
+
+        dialog.show()
+
+    }
     fun hideKeyboard(view: View) {
         val inputMethodManager =
             context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -186,7 +226,8 @@ class UtilsManager(private val context: Context) {
             connectivityManager.activeNetworkInfo
         }
         val networkCapabilities = connectivityManager.getNetworkCapabilities(network as Network?)
-          isConnected = networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+        isConnected =
+            networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
         if (!isConnected) {
             //   Toast.makeText(context, Constants.ERROR_MESSAGE,1).show()
             showAlertConnectionError()
@@ -228,7 +269,7 @@ class UtilsManager(private val context: Context) {
 
         // Set the bottom sheet to be fullscreen
         dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-
+        dialog.behavior.isDraggable = false
 
         dialogBinding.imgBack.visibility = View.VISIBLE
         dialogBinding.imgBack.setOnClickListener {
@@ -266,7 +307,7 @@ class UtilsManager(private val context: Context) {
 
         // Set the bottom sheet to be fullscreen
         dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-
+        dialog.behavior.isDraggable = false
 
         dialogBinding.imgBack.visibility = View.VISIBLE
         dialogBinding.imgBack.setOnClickListener {
@@ -289,7 +330,7 @@ class UtilsManager(private val context: Context) {
 
     fun showManualLocationDialog(
         context: Context,
-        onItemClick: (type: String, dlg: BottomSheetDialog) -> Unit
+        onItemClick: (type: String,edLocation:EditText, dlg: BottomSheetDialog) -> Unit
     ) {
         val dialog = BottomSheetDialog(context, R.style.GalleryDialog)
         val dialogBinding =
@@ -298,13 +339,13 @@ class UtilsManager(private val context: Context) {
         dialog.setContentView(sheetView)
         dialog.setCancelable(false)
 
-      /*  val screenHeight = context.resources.displayMetrics.heightPixels
-        val layoutParams = sheetView.layoutParams
-        layoutParams.height = screenHeight
-        sheetView.layoutParams = layoutParams
+        /*  val screenHeight = context.resources.displayMetrics.heightPixels
+          val layoutParams = sheetView.layoutParams
+          layoutParams.height = screenHeight
+          sheetView.layoutParams = layoutParams
 
-        // Set the bottom sheet to be fullscreen
-        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED*/
+          // Set the bottom sheet to be fullscreen
+          dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED*/
 
 
         dialogBinding.imgClose.visibility = View.VISIBLE
@@ -312,9 +353,14 @@ class UtilsManager(private val context: Context) {
             // Delete code here;
             dialog.dismiss()
         }
+        dialogBinding.edLocation.setOnClickListener {
+
+            onItemClick("enter",dialogBinding.edLocation, dialog,)
+
+        }
         dialogBinding.btnSubmit.setOnClickListener {
 
-            onItemClick("allow", dialog)
+            onItemClick("submit",dialogBinding.edLocation, dialog)
 
         }
 

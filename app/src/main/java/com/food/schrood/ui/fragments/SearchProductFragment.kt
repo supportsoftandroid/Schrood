@@ -63,7 +63,8 @@ class SearchProductFragment : Fragment() {
         statusList.add(CommonDataItem("Non-Veg ", "Non Veg", true))
         statusList.add(CommonDataItem("Vegan", "Vegan", false))
 
-        typeAdapter = FoodTypeAdapter(requireActivity(), statusList) { pos, type -> onStatusClick(pos, type)
+        typeAdapter = FoodTypeAdapter(requireActivity(), statusList) { pos, type ->
+            onStatusClick(pos, type)
         }
         binding.rvStatusList.layoutManager = GridLayoutManager(requireActivity(), 4)
         binding.rvStatusList.adapter = typeAdapter
@@ -89,7 +90,8 @@ class SearchProductFragment : Fragment() {
         storeList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
         storeList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
 
-        adapterStore = StoreItemAdapter(requireActivity(), storeList) { pos, type -> onStoreClick(pos, type) }
+        adapterStore =
+            StoreItemAdapter(requireActivity(), storeList) { pos, type -> onStoreClick(pos, type) }
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adapterStore
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
@@ -169,6 +171,7 @@ class SearchProductFragment : Fragment() {
             StoreDetailsFragment.newInstance(storeList[position].title)
         )
     }
+
     fun dialogDeleteCart() {
         val dialogBinding =
             DialogDeleteCartBinding.inflate(
@@ -186,11 +189,12 @@ class SearchProductFragment : Fragment() {
         }
         dialogBinding.btnDelete.setOnClickListener {
             dialogDelete.dismiss()
-            binding.llCartView.visibility=View.GONE
+            binding.llCartView.visibility = View.GONE
         }
 
         dialogDelete.show()
     }
+
     fun dialogProductDetails() {
         val dialogBinding =
             DialogBottomProductDetailsBinding.inflate(
@@ -216,8 +220,9 @@ class SearchProductFragment : Fragment() {
         productImageList.add(CommonDataItem("Rock Italia Restaurant & Cafe", "Non Veg", false))
         productImageList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
 
-       val adapterImage = ProductImageAdapter(requireActivity(), productImageList)
-        dialogBinding.rvList.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        val adapterImage = ProductImageAdapter(requireActivity(), productImageList)
+        dialogBinding.rvList.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         dialogBinding.rvList.adapter = adapterImage
 
 
@@ -228,22 +233,24 @@ class SearchProductFragment : Fragment() {
         unitList.add(CommonDataItem("Large", "Large", true))
 
 
-        val unitAdapter = UnitItemAdapter(requireActivity(), unitList) { pos, type -> onUnitClick(pos, type)
+        val unitAdapter = UnitItemAdapter(requireActivity(), unitList) { pos, type ->
+            onUnitClick(pos, type)
         }
-        dialogBinding.rvFoodVariantList.layoutManager =LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        dialogBinding.rvFoodVariantList.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         dialogBinding.rvFoodVariantList.adapter = unitAdapter
 
         dialogBinding.imgBack.setOnClickListener() {
-          dialogProduct.dismiss()
+            dialogProduct.dismiss()
         }
         dialogBinding.tvPlus.setOnClickListener() {
-            val count =dialogBinding.tvCount.text.toString().toInt()
+            val count = dialogBinding.tvCount.text.toString().toInt()
             val newCountValue = count + 1
             dialogBinding.tvCount.text = newCountValue.toString()
         }
 
         dialogBinding.tvMinus.setOnClickListener() {
-            val count =dialogBinding.tvCount.text.toString().toInt()
+            val count = dialogBinding.tvCount.text.toString().toInt()
             if (count > 0) {
                 val newCountValue = count - 1
                 dialogBinding.tvCount.text = newCountValue.toString()
@@ -283,11 +290,12 @@ class SearchProductFragment : Fragment() {
         }
         dialogBinding.btnReplace.setOnClickListener {
             dialogReplaceCard.dismiss()
-            binding.llCartView.visibility=View.VISIBLE
+            binding.llCartView.visibility = View.VISIBLE
         }
 
         dialogReplaceCard.show()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

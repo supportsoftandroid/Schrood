@@ -35,9 +35,16 @@ import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.food.schrood.BuildConfig
 import com.food.schrood.R
+import com.food.schrood.model.LocationData
 import com.food.schrood.ui.activities.LoginActivity
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.model.TypeFilter
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -66,12 +73,7 @@ class StaticData {
         const val GALLARY_REQUEST_CODE = 202
         const val IMAGE_CROP_REQUEST_CODE = 277
         const val AUTOCOMPLETE_REQUEST_CODE = 653
-        const val LOCATION_MAP_ADD_REQUEST_CODE = 9883
-        const val MANAGE_ALL_FILES_ACCESS_REQUEST_CODE: Int = 2296
-        const val REQUEST_CODE_ASK_CAMERA_STORAGE_PERMISSIONS = 1324
-        const val PERMISSION_ALL = 2296
-        val PERMISSIONSList = getPermission()
-        val PERMISSIONS_CAMERA_STORAGE_LIST = getCameraStoragePermission()
+
 
         /*  val  regex =("^[+]{1}(?:[0-9\\-\\(\\)\\/"
           "\\.]\\s?){6, 15}[0-9]{1}$");*/
@@ -81,68 +83,6 @@ class StaticData {
 
         }
 
-        fun getPermission(): Array<String> {
-            var permissionList = arrayListOf<String>()
-            permissionList.add(Manifest.permission.INTERNET)
-
-            permissionList.add(Manifest.permission.ACCESS_NETWORK_STATE)
-            permissionList.add(Manifest.permission.CAMERA)
-            permissionList.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-            permissionList.add(Manifest.permission.ACCESS_COARSE_LOCATION)
-            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION)
-            if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                permissionList.add(Manifest.permission.READ_MEDIA_IMAGES)
-
-            } else if (SDK_INT >= Build.VERSION_CODES.R) {
-                permissionList.add(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
-            } else {
-                permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            }
-            // val array: Array<String> = permissionList.toTypedArray()
-            return permissionList.toTypedArray()
-        }
-
-        fun getCameraStoragePermission(): Array<String> {
-            var permissionList = arrayListOf<String>()
-
-            permissionList.add(Manifest.permission.CAMERA)
-            permissionList.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                permissionList.add(Manifest.permission.READ_MEDIA_IMAGES)
-
-            }
-            /* else if (SDK_INT >= Build.VERSION_CODES.R) {
-                 permissionList.add(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
-             } else {
-                 permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-             }*/
-            // val array: Array<String> = permissionList.toTypedArray()
-            return permissionList.toTypedArray()
-        }
-
-
-        fun checkStorageAndCameraPermission(mContext: Context?): Boolean {
-            val isGranted = hasPermissions(mContext, PERMISSIONS_CAMERA_STORAGE_LIST.toString())
-            if (!isGranted) {
-                requestStorageAndCameraPermission(mContext)
-            }
-            return isGranted
-        }
-
-        fun checkFileAccessPermission(context: Context): Boolean {
-            var isGranted = true
-            checkStorageAndCameraPermission(context)
-            /* if (SDK_INT >= Build.VERSION_CODES.R) {
-                 isGranted = Environment.isExternalStorageManager()
-                 if (isGranted) {
-                     checkStorageAndCameraPermission(context)
-                 }
-             } else {
-                 isGranted = checkStorageAndCameraPermission(context)
-             }*/
-            return isGranted
-        }
 
         fun changeStatusBarColor(context: Context, from: String) {
             // Set the status bar color
@@ -170,57 +110,6 @@ class StaticData {
         }
 
 
-        fun requestFileAccessPermission(activity: Activity) {
-            if (!checkFileAccessPermission(activity)) {
-                if (SDK_INT >= Build.VERSION_CODES.R) {
-                    try {
-                        val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
-                        intent.addCategory("android.intent.category.DEFAULT")
-                        intent.data =
-                            Uri.parse(String.format("package:%s", activity.getPackageName()))
-                        activity.startActivityForResult(
-                            intent,
-                            MANAGE_ALL_FILES_ACCESS_REQUEST_CODE
-                        )
-
-                    } catch (e: java.lang.Exception) {
-                        requestStorageAndCameraPermission(activity)
-                        val intent = Intent()
-                        intent.action = Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
-                        activity.startActivityForResult(
-                            intent, MANAGE_ALL_FILES_ACCESS_REQUEST_CODE
-                        )
-                    }
-                } else {
-                    //below android 11
-                    requestStorageAndCameraPermission(activity)
-                }
-            } else {
-                requestStorageAndCameraPermission(activity)
-            }
-        }
-
-        fun requestStorageAndCameraPermission(mContext: Context?) {
-            ActivityCompat.requestPermissions(
-                (mContext as Activity?)!!, PERMISSIONS_CAMERA_STORAGE_LIST,
-                REQUEST_CODE_ASK_CAMERA_STORAGE_PERMISSIONS
-            )
-        }
-
-        fun hasPermissions(context: Context?, vararg permissions: String?): Boolean {
-            if (SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
-                for (permission in permissions) {
-                    if (ContextCompat.checkSelfPermission(
-                            context,
-                            permission!!
-                        ) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        return false
-                    }
-                }
-            }
-            return true
-        }
         /* fun getChatMessageDate(): StartupTime {
             val date = now()
              return date
@@ -394,25 +283,6 @@ class StaticData {
 
         }
 
-        fun getGreetingDate(context: Context): String {
-            val date = Date()
-            val cal = Calendar.getInstance()
-            cal.time = date
-            val hour = cal[Calendar.HOUR_OF_DAY]
-            //Set greeting
-            var greeting: String = context.getString(R.string.good_morning)
-            if (hour >= 6 && hour < 12) {
-                greeting = context.getString(R.string.good_morning)
-            } else if (hour >= 12 && hour < 17) {
-                greeting = context.getString(R.string.good_afternoon)
-            } else if (hour >= 17 && hour < 21) {
-                greeting = context.getString(R.string.good_evening)
-            } else if (hour >= 21 && hour < 24) {
-                greeting = context.getString(R.string.good_night)
-            }
-            return greeting
-
-        }
 
         fun getCurrentTimeZone(): String {
             val tz = TimeZone.getDefault()
@@ -505,18 +375,19 @@ class StaticData {
         }
 
         fun loadImage(imageView: ImageView, imageURL: String) {
-            /*    Glide.with(imageView.getContext())
+            Glide.with(imageView.getContext())
                     .setDefaultRequestOptions(  RequestOptions()
-                        .circleCrop())
+                       )
                     .load(imageURL)
-                    .placeholder(R.drawable.ic_logo)
+                    .placeholder(R.drawable.ic_loading)
                     .error(R.drawable.ic_logo)
-                    .into(imageView)*/
+                    .into(imageView)
         }
 
 
         fun passWordEditText(context: Context, isVisiblePassword: Boolean, edPassword: EditText) {
             var isVisible = isVisiblePassword
+            edPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_password_visibility_off, 0)
             edPassword.setOnTouchListener(View.OnTouchListener { v, event ->
                 val DRAWABLE_LEFT = 0
                 val DRAWABLE_TOP = 1
@@ -526,14 +397,14 @@ class StaticData {
                     if (event.rawX >= edPassword.getRight() - edPassword.getCompoundDrawables()
                             .get(DRAWABLE_RIGHT).getBounds().width()
                     ) {
-                        //  edPassword.clearFocus()
+                        edPassword.clearFocus()
                         if (isVisible) {
                             isVisible = false
                             edPassword.transformationMethod = PasswordTransformationMethod()
                             edPassword.setCompoundDrawablesWithIntrinsicBounds(
                                 0,
                                 0,
-                                R.drawable.ic_password_visibility,
+                                R.drawable.ic_password_visibility_off,
                                 0
                             )
                         } else {
@@ -542,7 +413,7 @@ class StaticData {
                             edPassword.setCompoundDrawablesWithIntrinsicBounds(
                                 0,
                                 0,
-                                R.drawable.ic_password_visibility_off,
+                                R.drawable.ic_password_visibility,
                                 0
                             )
                         }
@@ -801,65 +672,67 @@ class StaticData {
             return age.toString()
         }
 
-        @SuppressLint("SuspiciousIndentation")
+
         fun getAddressFromLatLan(
             context: Context,
             latitude: Double,
             longitude: Double
-        ): MutableList<Address>? {
-            var addresses = mutableListOf<Address>()
-            val geocoder = Geocoder(context, Locale.getDefault())
+        ): LocationData {
 
+            val geocoder = Geocoder(context, Locale.getDefault())
+            var   addressList= mutableListOf<Address> ()
             if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                geocoder.getFromLocation(
+
+               geocoder.getFromLocation(
                     latitude,
                     longitude,
                     1, object : Geocoder.GeocodeListener {
                         override fun onGeocode(addresses: MutableList<Address>) {
-                            setAddressFrom(context, addresses)
+                            addressList=addresses
+
                         }
+
                     }
                 )
+             return   setAddressFrom(context, addressList)
             } else {
-                addresses = geocoder.getFromLocation(
+                addressList = geocoder.getFromLocation(
                     latitude,
                     longitude,
                     1,
                 ) as MutableList<Address>
-                setAddressFrom(context, addresses)
+              return  setAddressFrom(context, addressList)
             }
 
 
 
-            return addresses
+
         }
 
-        fun setAddressFrom(context: Context, addresses: MutableList<Address>) {
+        fun setAddressFrom(context: Context, addresses: MutableList<Address>):LocationData {
+
+             val locationData=LocationData("","","","","","","","","","" )
             if (addresses.size > 0) {
                 val address =
                     addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
 
                 val houseNo = addresses[0].featureName
                 val thoroughfare = addresses[0].thoroughfare
-                val landmark = addresses[0].subLocality
+                var landmark = addresses[0].subLocality
                 val city = addresses[0].locality
                 val state = addresses[0].adminArea
                 val country = addresses[0].countryName
-                val zipcodeFromMap = addresses[0].postalCode
-
-                var locality = houseNo + "," + landmark + "," + city
-
-                printLog("setAddressFrom latitude", addresses[0].latitude.toString())
-                printLog("setAddressFrom longitude", addresses[0].longitude.toString())
-                printLog("setAddressFrom knownName", houseNo.toString())
-                printLog("setAddressFrom thoroughfare", thoroughfare + "")
-                printLog("setAddressFrom landmark", landmark + "")
-                printLog("setAddressFrom city", city + "")
-                printLog("setAddressFrom state", state + "")
-                printLog("setAddressFrom locality", locality + "")
-                printLog("setAddressFrom address", address + "")
-
-                val intent = Intent()
+                val zipcode = addresses[0].postalCode
+                if (!houseNo.isEmpty()) {
+                    landmark = houseNo + "," + landmark
+                }
+                locationData.address=address
+                locationData.landmark=landmark
+                locationData.city=city
+                locationData.state=state
+                locationData.country=country
+                locationData.zipcode=zipcode
+             /*   val intent = Intent()
                 intent.putExtra("landmark", landmark)
                 intent.putExtra("state", state)
                 intent.putExtra("country", country)
@@ -868,9 +741,10 @@ class StaticData {
                 intent.putExtra("zipcode", zipcodeFromMap)
                 intent.putExtra("latitude", addresses[0].latitude)
                 intent.putExtra("longitude", addresses[0].longitude)
-                (context as Activity).setResult(LOCATION_MAP_ADD_REQUEST_CODE, intent)
+                (context as Activity).setResult(LOCATION_MAP_ADD_REQUEST_CODE, intent)*/
 
             }
+            return locationData
         }
 
         fun compressImage(context: Context, imageUri: String): String {
@@ -1011,7 +885,7 @@ class StaticData {
             return inSampleSize
         }
 
-        /*    fun searchPlace(activity: Activity) {
+            fun searchPlace(activity: Activity) {
                 val fields = Arrays.asList(
                     Place.Field.ID,
                     Place.Field.NAME,
@@ -1024,7 +898,7 @@ class StaticData {
                      .setCountry(Constants.COUNTRY_NAME)
                     .build(activity)
                 activity.startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
-            }*/
+            }
 
 
         fun InvalidSession(context: Context, message: String) {

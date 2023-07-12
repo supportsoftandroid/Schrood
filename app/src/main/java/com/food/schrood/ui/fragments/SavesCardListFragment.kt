@@ -105,15 +105,7 @@ class SavesCardListFragment : Fragment() {
         dataList.add(CardData("visa", "Johan Rock", 0, 0, 0, "", "", 4464, false))
         dataList.add(CardData("visa", "Mical Joy", 0, 0, 0, "", "", 6864, false))
         dataList.add(CardData("visa", "Json Roy", 0, 0, 0, "", "", 4464, false))
-        dataList.add(CardData("visa", "Allison Smith", 0, 0, 0, "", "", 6864, false))
-        dataList.add(CardData("visa", "Johan Rock", 0, 0, 0, "", "", 4464, false))
-        dataList.add(CardData("visa", "Mical Joy", 0, 0, 0, "", "", 6864, false))
-        dataList.add(CardData("visa", "Json Roy", 0, 0, 0, "", "", 4464, false))
-        dataList.add(CardData("visa", "Allison Smith", 0, 0, 0, "", "", 6864, false))
-        dataList.add(CardData("visa", "Johan Rock", 0, 0, 0, "", "", 4464, false))
-        dataList.add(CardData("visa", "Mical Joy", 0, 0, 0, "", "", 6864, false))
-        dataList.add(CardData("visa", "Json Roy", 0, 0, 0, "", "", 4464, false))
-        binding.viewHeader.txtTitle.text =
+         binding.viewHeader.txtTitle.text =
             if (title.length == 0) requireActivity().getString(R.string.saved_cards) else title
         //  val name=if (loginResponse.data.l_name.isEmpty())loginResponse.data.name else loginResponse.data.name +" "+loginResponse.data.l_name
         adaper = SavedCardAdapter(

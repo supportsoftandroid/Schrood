@@ -18,13 +18,14 @@
         android:indeterminateOnly="false"
         android:outlineSpotShadowColor="@color/colorPrimary"
         android:progressTint="@color/colorPrimary" />
+
     <TextView
+        android:id="@+id/tvProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvProgress"
+        android:layout_below="@+id/progressbar_circular"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimary"
-        android:text="@string/please_wait"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/progressbar_circular"/>
+        android:text="@string/please_wait"
+        android:textColor="@color/colorPrimary" />
 </RelativeLayout>

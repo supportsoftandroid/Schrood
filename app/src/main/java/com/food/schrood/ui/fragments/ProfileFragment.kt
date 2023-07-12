@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -18,16 +19,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.food.schrood.R
 import com.food.schrood.databinding.FragmentProfileBinding
 import com.food.schrood.model.CommonDataItem
+import com.food.schrood.model.LoginResponse
 import com.food.schrood.model.UserDetails
 import com.food.schrood.ui.activities.MainActivity
 import com.food.schrood.ui.activities.StaticPagesActivity
 import com.food.schrood.ui.adapter.ProfileAdapter
-import com.food.schrood.utility.Constants
+import com.food.schrood.utility.*
 import com.food.schrood.utility.Constants.PROFILE_EDIT_REQUEST_KEY
-import com.food.schrood.utility.PreferenceManager
-import com.food.schrood.utility.StaticData
 import com.food.schrood.utility.StaticData.Companion.showToast
-import com.food.schrood.utility.UtilsManager
 import com.food.schrood.viewmodel.ProfileViewModal
 import com.github.dhaval2404.imagepicker.ImagePicker
 
@@ -40,9 +39,9 @@ class ProfileFragment : Fragment() {
     var dataList = mutableListOf<CommonDataItem>()
     lateinit var preferenceManager: PreferenceManager
     lateinit var utilsManager: UtilsManager
-    //  private lateinit var loginResponse: LoginResponse
+      private lateinit var loginResponse: LoginResponse
+    lateinit var progressDialog: DialogManager
 
-    lateinit var userType: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -50,12 +49,13 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
         preferenceManager = PreferenceManager(requireActivity())
         utilsManager = UtilsManager(requireActivity())
+        progressDialog = DialogManager(requireActivity())
         viewModal = ViewModelProvider(this).get(ProfileViewModal::class.java)
-        /*  userType=preferenceManager.getString(USER_ROLE_KEY).toString()
-          loginResponse= preferenceManager.getLoginData()!!*/
+
+        loginResponse= preferenceManager.getLoginData()!!
         setData()
         clickListener()
-        // getProfileData()
+         getProfileData()
 
         return root
     }
@@ -63,14 +63,10 @@ class ProfileFragment : Fragment() {
     private fun clickListener() {
         binding.imgBack.setOnClickListener() {
             requireActivity().onBackPressed()
-
         }
 
-
-
-
         binding.imgCamera.setOnClickListener {
-            //  utilsManager.showGallaryBottomModelSheet(requireActivity())
+             utilsManager.showGallaryBottomModelSheet(requireActivity(),progressDialog)
         }
         binding.tvLogout.setOnClickListener() {
             logOutFromApp()
@@ -82,7 +78,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    /*  private fun getProfileData() {
+      private fun getProfileData() {
           if (_binding != null) {
               if (utilsManager.isNetworkConnected()) {
                   viewModal.getProfile(
@@ -102,9 +98,9 @@ class ProfileFragment : Fragment() {
                   })
               }
           }
-      }*/
+      }
 
-    /*  private fun updateProfile(imagePath: String) {
+       private fun updateProfile(imagePath: String) {
 
           if (utilsManager.isNetworkConnected()) {
               viewModal.updateProfileImage(
@@ -120,12 +116,10 @@ class ProfileFragment : Fragment() {
 
               })
           }
-      }*/
+      }
 
     private fun setProfileData(userData: UserDetails) {
-
         binding.tvName.text = userData.name + " " + userData.l_name.toString()
-
         userData?.image?.let { loadImage(it) }
     }
 
@@ -152,11 +146,10 @@ class ProfileFragment : Fragment() {
         dataList.add(CommonDataItem(getString(R.string.saved_cards), "SavedCards", false))
         dataList.add(CommonDataItem(getString(R.string.notifications), "Notifications", false))
 
-
         dataList.add(CommonDataItem(getString(R.string.terms_and_conditions), "Terms", false))
         dataList.add(CommonDataItem(getString(R.string.user_policy), "UserPolicy", false))
         dataList.add(CommonDataItem(getString(R.string.faqs), "FAQs", false))
-        dataList.add(CommonDataItem(getString(R.string.become_vendor), "BecomeVendor", false))
+        /*   dataList.add(CommonDataItem(getString(R.string.become_vendor), "BecomeVendor", false))*/
         dataList.add(CommonDataItem(getString(R.string.send_feedback), "SendFeedback", false))
         dataList.add(CommonDataItem(getString(R.string.about), "About", false))
 
@@ -169,7 +162,7 @@ class ProfileFragment : Fragment() {
             // Any type can be passed via to the bundle
             val from = bundle.getString("from").toString()
             if (from.equals("edit_profile")) {
-                // getProfileData()
+                getProfileData()
             }
             // Do something with the result...
         }
@@ -265,13 +258,15 @@ class ProfileFragment : Fragment() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == StaticData.IMAGE_CROP_REQUEST_CODE) {
+            progressDialog.dismissDialog()
             if (resultCode == Activity.RESULT_OK) {
                 //Image Uri will not be null for RESULT_OK
                 val imagefileUri = data?.data!!
                 if (imagefileUri != null) {
                     val imagefilePath = imagefileUri?.path.toString()
-                    //updateProfile(imagefilePath)
+                    updateProfile(imagefilePath)
 
 
                 }

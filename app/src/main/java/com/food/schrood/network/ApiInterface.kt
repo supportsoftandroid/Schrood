@@ -14,24 +14,20 @@ import retrofit2.http.*
 
 public interface ApiInterface {
 
-    /* @GET(Constants.API_WELCOME_SCREEN)
-     fun getWelcome(): Call<WelcomeResponse>*/
+     @GET(Constants.API_WELCOME_SCREEN)
+     fun getWelcome(): Call<WelcomeResponse>
 
     @Multipart
     @POST(Constants.API_SIGNUP)
     fun signup(
-        @Part("name") firstname: RequestBody,
-        @Part("email") email: RequestBody?,
-        @Part("country_code") countryCode: RequestBody?,
-        @Part("country_name_code") countryNameCode: RequestBody?,
-        @Part("mobile_number") mobile_number: RequestBody?,
-        @Part("password") password: RequestBody?,
-        @Part("device_type") device_type: RequestBody,
-        @Part("push_token") device_id: RequestBody,
-        @Part file_1: MultipartBody.Part?,
+        @Body body: JsonObject,
+        ): Call<LoginResponse>
 
-        ): Call<LoginResponse>?
-
+    @Headers(Constants.ACCEPT_JSON_HEADER)
+    @POST(Constants.API_LOGIN)
+    fun userLogin(
+        @Body body: JsonObject,
+    ): Call<LoginResponse>
 
     @Multipart
     @POST(Constants.API_EDIT_PROFILE)
@@ -40,34 +36,15 @@ public interface ApiInterface {
         @Part("name") firstname: RequestBody,
         @Part("email") email: RequestBody?,
         @Part("country_code") countryCode: RequestBody?,
-        @Part("country_name_code") countryNameCode: RequestBody?,
         @Part("mobile_number") mobile_number: RequestBody?,
         @Part("password") password: RequestBody?,
         @Part("device_type") device_type: RequestBody,
-    ): Call<LoginResponse>?
-
-
-    @Headers(Constants.ACCEPT_JSON_HEADER)
-    @POST(Constants.API_LOGIN)
-    fun userLoginRow(
-        @Body body: JsonObject,
     ): Call<LoginResponse>
-
-    @FormUrlEncoded
-    @POST(Constants.API_LOGIN)
-    fun userLogin(
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @Field("is_role") is_role: String,
-        @Field("device_type") device_type: String,
-        @Field("push_token") push_token: String?
-    ): Call<LoginResponse>
-
 
     @Headers(Constants.ACCEPT_JSON_HEADER)
     @POST(Constants.API_FORGOT_PASS)
     fun request_otp(
-        @Body email: JsonObject
+        @Body body: JsonObject
     ): Call<CommonResponse>
 
     @Headers(Constants.ACCEPT_JSON_HEADER)
@@ -92,9 +69,7 @@ public interface ApiInterface {
     @POST(Constants.API_UPLOAD_PROFILE_IMAGE)
     fun updateProfileImage(
         @Header("Authorization") authorization: String?,
-        @Part file_1: MultipartBody.Part?,
-
-        ): Call<LoginResponse>
+        @Part file_1: MultipartBody.Part?, ): Call<LoginResponse>
 
 
     @Headers(Constants.ACCEPT_JSON_HEADER)
@@ -167,13 +142,13 @@ public interface ApiInterface {
 
 
     @GET(Constants.API_PRIVACY_POLICY)
-    fun getPrivacyPolicy(): Call<TermsRespons>
+    fun getPrivacyPolicy(): Call<TermsResponse>
 
     @GET(Constants.API_TERMS_CONDITION)
-    fun getTermsCond(): Call<TermsRespons>
+    fun getTermsCond(): Call<TermsResponse>
 
     @GET(Constants.API_ABOUT_APP)
-    fun getAboutApp(): Call<TermsRespons>
+    fun getAboutApp(): Call<TermsResponse>
 
     /* @GET(Constants.API_FAQ)
       fun getFAQPolicy(  ): Call<FaqResponse>
@@ -186,19 +161,30 @@ public interface ApiInterface {
     ): Call<CommonResponse>
 
 
-    /* @Headers("Content-Type:application/json")*/
 
-    @Headers("Authorization: key=${SERVER_KEY}", "Content-Type: application/json")
-    /*   @Headers(
-           {
-               "Content-Type:application/json",
-               "Authorization:key=AAAAlfLYquE:APA91bEot3szy7Fxxj6npKaeyazjWrOR_gZGxhMMS51qNviPVMaMcQekj0xcSwdyFmxfEzv-e7L7Ql9XJ-sR0TD_UYNpM-ut-i35-OnnSDzJJaSnTLadBI5mFVsjgI1pUhtbLQt9QBpY"
-           }
-       )*/
-    @POST("fcm/send")
-    fun sendNotification(
-        @Header("Authorization") server_key: String,
-        @Body body: Sender
-    ): Call<ResponseBody>
+    @Headers(Constants.ACCEPT_JSON_HEADER)
+    @POST(Constants.API_EDIT_PROFILE)
+    fun updateProfile(
+        @Header("Authorization") authorization: String?,
+        @Body body: JsonObject
+    ): Call<LoginResponse>
 
+   /* @Multipart()
+    @POST(Constants.API_EDIT_PROFILE)
+    fun updateProfile(
+        @Header("Authorization") authorization: String?,
+        @Part("first_name") firstname: RequestBody,
+        @Part("last_name") lastname: RequestBody?,
+        @Part("country_code") countryCode: RequestBody?,
+        @Part("mobile") mobile_number: RequestBody?,
+        @Part("address") address: RequestBody?,
+        @Part("landmark") landmark: RequestBody?,
+        @Part("suburb") city: RequestBody?,
+        @Part("state") state: RequestBody?,
+        @Part("country") country: RequestBody?,
+        @Part("country_name_code") country_name_code: RequestBody?,
+        @Part("zipcode") zipcode: RequestBody?,
+        @Part("latitude") latitude: RequestBody?,
+        @Part("longitude") longitude: RequestBody?,
+    ): Call<LoginResponse>*/
 }

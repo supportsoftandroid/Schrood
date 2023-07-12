@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="@dimen/dp_500"
     android:layout_gravity="bottom"
     android:background="@drawable/background_white_top_radius"
+    android:minHeight="@dimen/dp_500"
     android:orientation="vertical"
     android:padding="@dimen/dp_10">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,20 +19,20 @@
             android:id="@+id/dialog_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_toLeftOf="@+id/imgClose"
             android:layout_alignParentStart="true"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:gravity="center"
             android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_toLeftOf="@+id/imgClose"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
             android:text="@string/add_a_new_card"
             android:textColor="@color/colorTextLabel"
             android:textSize="@dimen/sp_22"
-            android:fontFamily="@font/poppins_bold"
-            app:layout_constraintTop_toBottomOf="@+id/imgClose"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgClose" />
+
         <ImageView
             android:id="@+id/imgClose"
             android:layout_width="@dimen/dp_45"
@@ -39,90 +40,93 @@
             android:layout_height="@dimen/dp_45"
             android:layout_alignParentEnd="true"
 
-            android:background="@null"
-            android:padding="@dimen/dp_5"
             android:layout_gravity="end"
+            android:background="@null"
             android:contentDescription="Cancel"
+            android:padding="@dimen/dp_5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close" />
     </RelativeLayout>
 
 
-
     <com.stripe.android.view.CardMultilineWidget
         android:id="@+id/card_input_widget"
+        style="@style/Theme.App"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_30"
-        style="@style/Theme.App"
-
         android:layout_marginHorizontal="@dimen/dp_15"
+
+        android:layout_marginTop="@dimen/dp_30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:fontFamily="@font/poppins_regular"
         android:hint="@string/card_holder_name"
         android:padding="@dimen/dp_5"
-        android:fontFamily="@font/poppins_regular"
-        android:textColorHint="@color/colorA6A6AF"
-        android:layout_marginHorizontal="@dimen/dp_15"
-        android:layout_marginTop="@dimen/dp_15">
+        android:textColorHint="@color/colorA6A6AF">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ediName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ediName"
-            android:inputType="text"
             android:fontFamily="@font/poppins_regular"
-            android:textColorHint="@color/colorA6A6AF"
+            android:inputType="text"
             android:singleLine="true"
-            android:textSize="@dimen/sp_17"
-            />
+            android:textColorHint="@color/colorA6A6AF"
+            android:textSize="@dimen/sp_17" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBox"
-        android:textSize="@dimen/sp_12"
-        android:text="@string/save_this_credit_card"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="@dimen/dp_15"
         android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_15"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/save_this_credit_card"
+        android:textSize="@dimen/sp_12"
 
         />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="@dimen/dp_35"
         android:layout_marginHorizontal="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_35"
         android:layout_marginBottom="@dimen/dp_50"
         android:orientation="horizontal">
+
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
             android:layout_centerHorizontal="true"
-            android:visibility="gone"
 
-            android:id="@+id/progressBar"/>
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_global"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/add_card"
-
             android:singleLine="true"
+
+            android:text="@string/add_card"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/sp_15"
             android:textStyle="bold"
 
-           />
+            />
     </RelativeLayout>
 
 

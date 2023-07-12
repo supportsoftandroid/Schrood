@@ -40,147 +40,148 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewStoreInfo">
- <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/viewStoreInfo">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatusList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_20"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="3"
+                tools:listitem="@layout/list_food_type_item"
+
+                />
+
+            <TextView
+                android:id="@+id/tvOrderMode"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_15"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/order_mode"
+                android:textColor="@color/colorTextHint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvStatusList" />
+
+            <RadioGroup
+                android:id="@+id/rgServiceType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOrderMode">
+
+                <RadioButton
+                    android:id="@+id/rbDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_border_gray_radius_5"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:minHeight="@dimen/dp_35"
+                    android:text="@string/delivery"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_14" />
+
+                <RadioButton
+                    android:id="@+id/rbTakeAway"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_border_gray_radius_5"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:minHeight="@dimen/dp_35"
+                    android:text="@string/take_away"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/sp_14" />
+
+            </RadioGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_150"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgServiceType"
+                tools:listitem="@layout/list_product_item" />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/loading"
+                android:textColor="@color/colorTextHint"
+                android:textSize="@dimen/sp_17"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/llCartView"
+        android:layout_width="@dimen/dp_0"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        app:layout_constraintTop_toBottomOf="@id/viewStoreInfo">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvStatusList"
+        <include
+            android:id="@+id/cartViewBody"
+            layout="@layout/layout_cart_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_20"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="3"
-            tools:listitem="@layout/list_food_type_item"
 
-            />
 
-        <TextView
-            android:id="@+id/tvOrderMode"
-            android:layout_width="@dimen/dp_0"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_15"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/order_mode"
-            android:textColor="@color/colorTextHint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvStatusList" />
-
-        <RadioGroup
-            android:id="@+id/rgServiceType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_10"
-            android:orientation="horizontal"
-            android:weightSum="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvOrderMode">
-
-            <RadioButton
-                android:id="@+id/rbDelivery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btn_border_gray_radius_5"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:inputType="text"
-                android:minHeight="@dimen/dp_35"
-                android:text="@string/delivery"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/sp_14" />
-
-            <RadioButton
-                android:id="@+id/rbTakeAway"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_weight="1"
-                android:background="@drawable/btn_border_gray_radius_5"
-                android:checked="false"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:inputType="text"
-                android:minHeight="@dimen/dp_35"
-                android:text="@string/take_away"
-                android:textAllCaps="true"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/sp_14" />
-
-        </RadioGroup>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginBottom="@dimen/dp_150"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rgServiceType"
-            tools:listitem="@layout/list_product_item" />
+            app:layout_constraintStart_toStartOf="parent"></include>
 
-        <TextView
-            android:id="@+id/tvMessage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorWhite"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="@string/loading"
-            android:textColor="@color/colorTextHint"
-            android:textSize="@dimen/sp_17"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
-<LinearLayout
-android:id="@+id/llCartView"
-android:layout_width="@dimen/dp_0"
-android:layout_height="wrap_content"
-android:layout_marginHorizontal="@dimen/dp_20"
-android:layout_marginBottom="@dimen/dp_10"
-android:orientation="vertical"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent">
-<include
-    android:id="@+id/cartViewBody"
-    layout="@layout/layout_cart_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    >
-</include>
-
-</LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

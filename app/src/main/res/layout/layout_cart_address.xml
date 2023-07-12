@@ -59,8 +59,8 @@
             android:id="@+id/tvAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_7"
             android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_7"
             android:layout_marginEnd="@dimen/dp_5"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start|center_vertical"
@@ -69,8 +69,7 @@
             android:textSize="@dimen/sp_12"
             app:layout_constraintEnd_toStartOf="@+id/imgEdit"
             app:layout_constraintStart_toEndOf="@id/imgBar"
-            app:layout_constraintTop_toBottomOf="@+id/tvName"
-              />
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <TextView
             android:id="@+id/tvMobile"
@@ -78,17 +77,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_5"
             android:layout_marginEnd="@dimen/dp_5"
-            android:visibility="gone"
-
             android:fontFamily="@font/poppins_medium"
+
             android:gravity="start|center_vertical"
             android:text="215 468 62493"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/sp_12"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/imgEdit"
             app:layout_constraintStart_toEndOf="@id/imgBar"
-            app:layout_constraintTop_toBottomOf="@+id/tvAddress"
-             />
+            app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
 
         <View
             android:id="@+id/view1"

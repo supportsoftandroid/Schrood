@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.food.schrood.R
 import com.food.schrood.databinding.ActivityStaticPagesBinding
 import com.food.schrood.model.FaqItem
+import com.food.schrood.network.repository.TermsRepository
 import com.food.schrood.ui.adapter.FaqAdapter
 
 import com.food.schrood.utility.UtilsManager
@@ -33,7 +34,7 @@ class StaticPagesActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityStaticPagesBinding
 
-    //    private lateinit var termsRepository: TermsRepository
+       private lateinit var termsRepository: TermsRepository
     lateinit var adaper: FaqAdapter
     var dataList = mutableListOf<FaqItem>()
     lateinit var viewModal: StaticViewModal

@@ -230,9 +230,9 @@ class CartFragment : Fragment() {
         }
         dialogBinding.btnSubmit.setOnClickListener {
             val i = Intent(requireActivity(), MainActivity::class.java)
-            i.putExtra("from","order")
-            i.putExtra("type","order")
-            i.putExtra("order_id","#SC6012548")
+            i.putExtra("from", "order")
+            i.putExtra("type", "order")
+            i.putExtra("order_id", "#SC6012548")
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
             requireActivity().finish()

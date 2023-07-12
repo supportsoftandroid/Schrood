@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.food.schrood.R
 import com.food.schrood.databinding.ListItemWelcomeBinding
 import com.food.schrood.model.SliderItem
 
@@ -31,17 +34,17 @@ class WelcomePagerAdapter(internal var context: Context, var itemList: ArrayList
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val binding = ListItemWelcomeBinding.inflate(LayoutInflater.from(context), container, false)
-        val current = itemList[position]
 
-        //  var view = mLayoutInflater.inflate(binding.root, container, false)
-        binding.imgBanner.setImageResource(itemList[position].id)
 
-        /*   Glide.with(context)
-               .load(current.image)
+
+     //   binding.imgBanner.setImageResource(itemList[position].id)
+
+          Glide.with(context)
+               .load(itemList[position].image)
                .apply(
                    RequestOptions().placeholder(R.drawable.ic_loading).error(R.drawable.welcome_2_language_no_barreer)
-                      // .centerCrop()
-               ).into(binding.imgBanner)*/
+
+               ).into(binding.imgBanner)
         binding.tvheader.setText(itemList[position].title)
 
         binding.tvDescription.setText(itemList[position].content)

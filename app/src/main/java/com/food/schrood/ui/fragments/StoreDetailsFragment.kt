@@ -90,10 +90,10 @@ class StoreDetailsFragment : Fragment() {
     }
 
     fun initView() {
-        binding.viewStoreInfo.tvStoreWorkingHours.visibility=View.VISIBLE
-        binding.viewStoreInfo.llButtonOption.visibility=View.VISIBLE
-        binding.viewStoreInfo.imgCall.visibility=View.VISIBLE
-        binding.viewStoreInfo.imgMessage.visibility=View.VISIBLE
+        binding.viewStoreInfo.tvStoreWorkingHours.visibility = View.VISIBLE
+        binding.viewStoreInfo.llButtonOption.visibility = View.VISIBLE
+        binding.viewStoreInfo.imgCall.visibility = View.VISIBLE
+        binding.viewStoreInfo.imgMessage.visibility = View.VISIBLE
 
 
         // Food Type
@@ -177,6 +177,7 @@ class StoreDetailsFragment : Fragment() {
     private fun onStoreTypeClick(pos: Int, type: String) {
 
     }
+
     fun dialogDeleteCart() {
         val dialogBinding =
             DialogDeleteCartBinding.inflate(
@@ -194,11 +195,12 @@ class StoreDetailsFragment : Fragment() {
         }
         dialogBinding.btnDelete.setOnClickListener {
             dialogDelete.dismiss()
-            binding.llCartView.visibility=View.GONE
+            binding.llCartView.visibility = View.GONE
         }
 
         dialogDelete.show()
     }
+
     fun dialogProductDetails() {
         val dialogBinding =
             DialogBottomProductDetailsBinding.inflate(
@@ -225,7 +227,8 @@ class StoreDetailsFragment : Fragment() {
         productImageList.add(CommonDataItem("Johan Italia Restaurant & Cafe", "Vegan", false))
 
         val adapterImage = ProductImageAdapter(requireActivity(), productImageList)
-        dialogBinding.rvList.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        dialogBinding.rvList.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         dialogBinding.rvList.adapter = adapterImage
 
 
@@ -236,22 +239,24 @@ class StoreDetailsFragment : Fragment() {
         unitList.add(CommonDataItem("Large", "Large", true))
 
 
-        val unitAdapter = UnitItemAdapter(requireActivity(), unitList) { pos, type -> onUnitClick(pos, type)
+        val unitAdapter = UnitItemAdapter(requireActivity(), unitList) { pos, type ->
+            onUnitClick(pos, type)
         }
-        dialogBinding.rvFoodVariantList.layoutManager =LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        dialogBinding.rvFoodVariantList.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         dialogBinding.rvFoodVariantList.adapter = unitAdapter
 
         dialogBinding.imgBack.setOnClickListener() {
             dialogProduct.dismiss()
         }
         dialogBinding.tvPlus.setOnClickListener() {
-            val count =dialogBinding.tvCount.text.toString().toInt()
+            val count = dialogBinding.tvCount.text.toString().toInt()
             val newCountValue = count + 1
             dialogBinding.tvCount.text = newCountValue.toString()
         }
 
         dialogBinding.tvMinus.setOnClickListener() {
-            val count =dialogBinding.tvCount.text.toString().toInt()
+            val count = dialogBinding.tvCount.text.toString().toInt()
             if (count > 0) {
                 val newCountValue = count - 1
                 dialogBinding.tvCount.text = newCountValue.toString()
@@ -291,7 +296,7 @@ class StoreDetailsFragment : Fragment() {
         }
         dialogBinding.btnReplace.setOnClickListener {
             dialogReplaceCard.dismiss()
-            binding.llCartView.visibility=View.VISIBLE
+            binding.llCartView.visibility = View.VISIBLE
         }
 
         dialogReplaceCard.show()

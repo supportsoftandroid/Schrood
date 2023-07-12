@@ -147,9 +147,9 @@
             app:layout_constraintTop_toBottomOf="@id/tvAddress" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clvProduct"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/clvProduct"
             android:layout_marginStart="@dimen/dp_10"
             android:layout_marginEnd="@dimen/dp_5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -267,9 +267,9 @@
 
             android:layout_marginTop="@dimen/dp_10"
             android:background="@color/colorGray"
-            app:layout_constraintTop_toBottomOf="@+id/clvProduct"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clvProduct" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

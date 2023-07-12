@@ -10,529 +10,541 @@
     android:backgroundTint="@color/colorAppBg"
     android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent">
+
     <ImageView
         android:id="@+id/imgBack"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
-        android:background="@null"
-
-        android:paddingHorizontal="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_15"
         android:layout_marginStart="@dimen/dp_15"
-        android:paddingVertical="@dimen/dp_10"
 
+        android:layout_marginTop="@dimen/dp_15"
+        android:background="@null"
         android:contentDescription="@string/app_name"
+        android:paddingHorizontal="@dimen/dp_10"
+
+        android:paddingVertical="@dimen/dp_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
+
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
         android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dp_50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/imgBack"
         app:layout_constraintBottom_toTopOf="@+id/clvCartBottom"
-        >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_20"
-
-        >
-
-    <ImageView
-        android:id="@+id/imgClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@null"
-        android:visibility="gone"
-        android:contentDescription="@string/app_name"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_30"
-        android:layout_marginTop="@dimen/dp_30"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgClose"
-        tools:listitem="@layout/list_image_item" />
-
-
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_10"
-        android:layout_marginStart="@dimen/dp_30"
-        android:layout_marginTop="@dimen/dp_20"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:gravity="start"
-        android:text="Bread Egg Toast"
-        android:textColor="@color/colorTextLabel"
-        android:textSize="@dimen/sp_28"
-
-        app:layout_constraintEnd_toStartOf="@id/imgFav"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvList" />
-
-    <ImageView
-        android:id="@+id/imgFav"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginEnd="@dimen/dp_30"
-        android:background="@drawable/circle_white"
-        android:contentDescription="@string/app_name"
-        android:elevation="2dp"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvList"
-
-
-        app:srcCompat="@drawable/ic_un_favorite" />
-
-    <TextView
-        android:id="@+id/tvRatting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_30"
-
-        android:layout_marginTop="@dimen/dp_5"
-        android:drawableStart="@drawable/ic_star"
-        android:drawablePadding="@dimen/dp_7"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-
-        android:text="4.9 (284)"
-        android:textColor="@color/color244495"
-        android:textSize="@dimen/sp_10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
-
-    <TextView
-        android:id="@+id/tvFoodType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_30"
-
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:text="Breakfast"
-        android:textColor="@color/app_color"
-        android:textSize="@dimen/sp_12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
-
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_30"
-
-
-        android:layout_marginTop="@dimen/dp_5"
-
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-
-        android:text="$20.99"
-        android:textColor="@color/colorText"
-        android:textSize="@dimen/sp_16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRatting" />
-
-
-    <TextView
-        android:id="@+id/tvFoodCategory"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
-
-        android:layout_marginEnd="@dimen/dp_30"
-        android:background="@drawable/btn_background_radius_5"
-        android:backgroundTint="@color/colorMaroonVeryLight"
-        android:drawablePadding="@dimen/dp_7"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:maxLines="1"
-        android:paddingHorizontal="@dimen/dp_10"
-        android:paddingVertical="@dimen/dp_5"
-        android:text="Chinese"
-        android:textColor="@color/app_color"
-        android:textSize="@dimen/sp_10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFoodType" />
-
-    <ImageView
-        android:id="@+id/imgFoodType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_7"
-
-        android:layout_marginEnd="@dimen/dp_10"
-
-        android:contentDescription="@string/app_name"
-        android:elevation="2dp"
-
-        app:layout_constraintEnd_toStartOf="@id/tvFoodCategory"
-        app:layout_constraintTop_toBottomOf="@id/tvFoodType"
-
-
-        app:srcCompat="@drawable/ic_veg" />
-
-    <View
-        android:id="@+id/viewBorder"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="@dimen/dp_30"
-        android:layout_marginTop="@dimen/dp_15"
-        android:background="@color/colorLightGray"
-
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-        tools:listitem="@layout/list_status_item" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFoodVariantList"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_30"
-        android:layout_marginTop="@dimen/dp_15"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewBorder"
-        tools:listitem="@layout/list_status_item" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/llStoreInfo"
-        android:paddingTop="@dimen/dp_15"
-        android:paddingBottom="@dimen/dp_30"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList"
-
-
-        >
-
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_30"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Grilled salmon and veggies make for a colorful and balanced seafood dinner that's ready in just minutes. The grill turns the salmon flaky and moist while tenderizing the crispy pepper and onion pieces. Round out the meal with brown rice or quinoa."
-            android:textColor="@color/textPlaceHolder"
-            android:textSize="@dimen/sp_12"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
-
-        <TextView
-            android:id="@+id/tvIngredientsLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_30"
-            android:layout_marginTop="@dimen/dp_15"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:text="@string/ingredients"
-            android:textColor="@color/colorTextHint"
-            android:textSize="@dimen/sp_18"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
-
-        <TextView
-            android:id="@+id/tvIngredients"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_30"
-            android:layout_marginTop="@dimen/dp_15"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Ramen, Beef, Muer, Chinese, Cabbage. Whipping Cream, Ground White Pepper, Fresh Baby Spinach, Parmesan Cheese, Sourdough Boule,"
-            android:textColor="@color/textPlaceHolder"
-            android:textSize="@dimen/sp_12"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
-
-        <TextView
-            android:id="@+id/tvIngredientsNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_30"
-
-            android:layout_marginTop="@dimen/dp_10"
-            android:fontFamily="@font/poppins_medium"
-            android:text="All Ingredients are always fresh and natural!"
-            android:textColor="@color/colorTextLabel"
-            android:textSize="@dimen/sp_10"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBack">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clvStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_15"
-            android:background="@color/colorE0EAF0"
-            android:layout_marginBottom="@dimen/dp_100"
-            android:paddingHorizontal="@dimen/dp_30"
-            android:paddingVertical="10dp">
+            android:layout_marginBottom="@dimen/dp_20"
 
-            <TextView
-                android:id="@+id/tvStoreName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-
-                android:text="Rainbow Foods"
-                android:textColor="@color/app_color"
-                android:textSize="@dimen/sp_18"
-                app:layout_constraintEnd_toStartOf="@id/llStoreReview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-                />
-            <TextView
-                android:id="@+id/tvMenu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:layout_marginEnd="@dimen/dp_10"
-                android:fontFamily="@font/poppins_medium"
-                android:maxLines="1"
-                android:text="@string/sandwich_burger_fast_food"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/sp_10"
-                app:layout_constraintEnd_toStartOf="@id/llStoreReview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvStoreName" />
-            <TextView
-                android:id="@+id/tvAddress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_10"
-                android:fontFamily="@font/poppins_regular"
-                android:maxLines="2"
-                android:text="1C Grand Avenue, Camellia,2142 NSW Australia"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/sp_10"
-                app:layout_constraintEnd_toStartOf="@id/llStoreReview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvMenu" />
-            <LinearLayout
-                android:id="@+id/llStoreReview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:background="@drawable/btn_background_radius_5"
-                android:paddingHorizontal="@dimen/dp_5"
-                android:paddingVertical="@dimen/dp_10"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tvStoreRatting"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableStart="@drawable/ic_star"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="4.4"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/sp_14"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
-                <View
-                    android:id="@+id/viewBorder1"
-                    android:layout_width="@dimen/dp_45"
-                    android:layout_height="0.5dp"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="@dimen/dp_5"
-                    android:background="@color/colorWhite"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
-                <TextView
-                    android:id="@+id/tvReviewCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="2,312 \n Reviews"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/sp_8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
-            </LinearLayout>
-
-
-
-            <TextView
-                android:id="@+id/tvDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_15"
-                android:drawableStart="@drawable/ic_location_on_14"
-                android:drawablePadding="@dimen/dp_5"
-                android:drawableTint="@color/app_color"
-
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:text="250m"
-                android:textColor="@color/colorTextHint"
-                android:textSize="@dimen/sp_12"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-
-            <TextView
-                android:id="@+id/tvTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_15"
-                android:layout_marginStart="@dimen/dp_25"
-                android:drawableStart="@drawable/ic_watch_time"
-                android:drawablePadding="@dimen/dp_5"
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:paddingStart="@dimen/dp_5"
-                android:text="40-50 min"
-                android:textColor="@color/colorTextHint"
-                android:textSize="@dimen/sp_12"
-                app:layout_constraintStart_toEndOf="@id/tvDistance"
-                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/dp_0"
-        android:layout_height="wrap_content"
-        android:id="@+id/clvCartBottom"
-        android:paddingHorizontal="@dimen/dp_30"
-        android:paddingVertical="@dimen/dp_10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/background_white_top_radius"
-
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_add_cart"
-            android:orientation="horizontal"
-            android:id="@+id/llCartButton"
-            android:layout_marginVertical="@dimen/dp_5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/dp_10"
-                android:text="-"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/app_color"
-                android:textSize="@dimen/sp_28"
-                android:id="@+id/tvMinus"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20"
-                android:gravity="center"
-                android:layout_marginHorizontal="@dimen/dp_5"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/app_color"
-                android:textSize="@dimen/sp_16"
-                android:fontFamily="@font/poppins_medium"
-                android:id="@+id/tvCount"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:paddingHorizontal="@dimen/dp_10"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/app_color"
-                android:textSize="@dimen/sp_28"
-                android:fontFamily="@font/poppins_medium"
-                android:id="@+id/tvPlus"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-             android:id="@+id/llAddToCart"
-            android:background="@drawable/button_background_global"
-            android:orientation="horizontal"
-
-            android:paddingVertical="@dimen/dp_10"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="@dimen/dp_20"
-            app:layout_constraintStart_toEndOf="@+id/llCartButton"
             >
-            <TextView
+
+            <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@null"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/dp_10"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_30"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgClose"
+                tools:listitem="@layout/list_image_item" />
 
-                android:text="Add to cart ($29.99)"
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_20"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="start"
+                android:text="Bread Egg Toast"
+                android:textColor="@color/colorTextLabel"
+                android:textSize="@dimen/sp_28"
+
+                app:layout_constraintEnd_toStartOf="@id/imgFav"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvList" />
+
+            <ImageView
+                android:id="@+id/imgFav"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_30"
+                android:background="@drawable/circle_white"
+                android:contentDescription="@string/app_name"
+                android:elevation="2dp"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvList"
+
+
+                app:srcCompat="@drawable/ic_un_favorite" />
+
+            <TextView
+                android:id="@+id/tvRatting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_30"
+
+                android:layout_marginTop="@dimen/dp_5"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="@dimen/dp_7"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+
+                android:text="4.9 (284)"
+                android:textColor="@color/color244495"
+                android:textSize="@dimen/sp_10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <TextView
+                android:id="@+id/tvFoodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_30"
+
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="Breakfast"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_30"
+
+
+                android:layout_marginTop="@dimen/dp_5"
+
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+
+                android:text="$20.99"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRatting" />
+
+
+            <TextView
+                android:id="@+id/tvFoodCategory"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+
+                android:layout_marginEnd="@dimen/dp_30"
+                android:background="@drawable/btn_background_radius_5"
+                android:backgroundTint="@color/colorMaroonVeryLight"
+                android:drawablePadding="@dimen/dp_7"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:paddingVertical="@dimen/dp_5"
+                android:text="Chinese"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/sp_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFoodType" />
+
+            <ImageView
+                android:id="@+id/imgFoodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+
+                android:layout_marginEnd="@dimen/dp_10"
+
+                android:contentDescription="@string/app_name"
+                android:elevation="2dp"
+
+                app:layout_constraintEnd_toStartOf="@id/tvFoodCategory"
+                app:layout_constraintTop_toBottomOf="@id/tvFoodType"
+
+
+                app:srcCompat="@drawable/ic_veg" />
+
+            <View
+                android:id="@+id/viewBorder"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@color/colorLightGray"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+                tools:listitem="@layout/list_status_item" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFoodVariantList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewBorder"
+                tools:listitem="@layout/list_status_item" />
+
+            <LinearLayout
+                android:id="@+id/llStoreInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_30"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Grilled salmon and veggies make for a colorful and balanced seafood dinner that's ready in just minutes. The grill turns the salmon flaky and moist while tenderizing the crispy pepper and onion pieces. Round out the meal with brown rice or quinoa."
+                    android:textColor="@color/textPlaceHolder"
+                    android:textSize="@dimen/sp_12"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
+
+                <TextView
+                    android:id="@+id/tvIngredientsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_30"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/ingredients"
+                    android:textColor="@color/colorTextHint"
+                    android:textSize="@dimen/sp_18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
+
+                <TextView
+                    android:id="@+id/tvIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_30"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Ramen, Beef, Muer, Chinese, Cabbage. Whipping Cream, Ground White Pepper, Fresh Baby Spinach, Parmesan Cheese, Sourdough Boule,"
+                    android:textColor="@color/textPlaceHolder"
+                    android:textSize="@dimen/sp_12"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
+
+                <TextView
+                    android:id="@+id/tvIngredientsNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_30"
+
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="All Ingredients are always fresh and natural!"
+                    android:textColor="@color/colorTextLabel"
+                    android:textSize="@dimen/sp_10"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvFoodVariantList" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clvStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginBottom="@dimen/dp_100"
+                    android:background="@color/colorE0EAF0"
+                    android:paddingHorizontal="@dimen/dp_30"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:id="@+id/tvStoreName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+
+                        android:text="Rainbow Foods"
+                        android:textColor="@color/app_color"
+                        android:textSize="@dimen/sp_18"
+                        app:layout_constraintEnd_toStartOf="@id/llStoreReview"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:fontFamily="@font/poppins_medium"
+                        android:maxLines="1"
+                        android:text="@string/sandwich_burger_fast_food"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/sp_10"
+                        app:layout_constraintEnd_toStartOf="@id/llStoreReview"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvStoreName" />
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:fontFamily="@font/poppins_regular"
+                        android:maxLines="2"
+                        android:text="1C Grand Avenue, Camellia,2142 NSW Australia"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/sp_10"
+                        app:layout_constraintEnd_toStartOf="@id/llStoreReview"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvMenu" />
+
+                    <LinearLayout
+                        android:id="@+id/llStoreReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@drawable/btn_background_radius_5"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/dp_5"
+                        android:paddingVertical="@dimen/dp_10"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvStoreRatting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableStart="@drawable/ic_star"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="4.4"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/sp_14"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <View
+                            android:id="@+id/viewBorder1"
+                            android:layout_width="@dimen/dp_45"
+                            android:layout_height="0.5dp"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="@dimen/dp_5"
+                            android:background="@color/colorWhite"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvReviewCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="2,312 \n Reviews"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/sp_8"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tvDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:drawableStart="@drawable/ic_location_on_14"
+                        android:drawablePadding="@dimen/dp_5"
+                        android:drawableTint="@color/app_color"
+
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="250m"
+                        android:textColor="@color/colorTextHint"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_25"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:drawableStart="@drawable/ic_watch_time"
+                        android:drawablePadding="@dimen/dp_5"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/dp_5"
+                        android:text="40-50 min"
+                        android:textColor="@color/colorTextHint"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintStart_toEndOf="@id/tvDistance"
+                        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clvCartBottom"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_white_top_radius"
+        android:paddingHorizontal="@dimen/dp_30"
+        android:paddingVertical="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/llCartButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_5"
+            android:background="@drawable/border_add_cart"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:text="-"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/sp_28" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/dp_5"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:id="@+id/tvPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:text="+"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/sp_28" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llAddToCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:background="@drawable/button_background_global"
+
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/llCartButton"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvAddToCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:gravity="center"
-                android:layout_gravity="center_vertical"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:text="Add to cart ($29.99)"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/sp_16"
-                android:id="@+id/tvAddToCart"/>
+                android:textSize="@dimen/sp_16" />
 
 
         </LinearLayout>

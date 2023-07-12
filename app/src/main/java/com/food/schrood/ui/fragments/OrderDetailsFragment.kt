@@ -49,13 +49,18 @@ class OrderDetailsFragment : Fragment() {
 
     fun initView() {
 
-        binding.viewHeader.txtTitle.text =  "Order ID: SC00001"
+        binding.viewHeader.txtTitle.text = "Order ID: SC00001"
         dataList.clear()
         dataList.add(CommonDataItem("Creamy Burger", "", false))
         dataList.add(CommonDataItem("Mountain Dew", "", false))
         dataList.add(CommonDataItem("Appetizers", "", false))
 
-        adapter = OrderProductItemAdapter(requireActivity(), dataList) { pos, type -> onOrderClick(pos, type) }
+        adapter = OrderProductItemAdapter(requireActivity(), dataList) { pos, type ->
+            onOrderClick(
+                pos,
+                type
+            )
+        }
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adapter
 
@@ -65,7 +70,7 @@ class OrderDetailsFragment : Fragment() {
     private fun clickListener() {
 
         binding.viewHeader.imgBack.setOnClickListener() {
-           requireActivity().onBackPressed()
+            requireActivity().onBackPressed()
 
         }
         binding.tvRate.setOnClickListener() {
@@ -73,7 +78,7 @@ class OrderDetailsFragment : Fragment() {
 
         }
         binding.tvReOrder.setOnClickListener() {
-           StaticData.backStackAddFragment(requireActivity(),CartFragment())
+            StaticData.backStackAddFragment(requireActivity(), CartFragment())
 
         }
         binding.viewHeader.imgMenu1.setOnClickListener() {

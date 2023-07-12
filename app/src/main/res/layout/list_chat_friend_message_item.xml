@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="modal"
             type="com.food.schrood.model.MessageItem" />
@@ -9,69 +11,69 @@
 
     </data>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_15"
-        android:layout_marginEnd="@dimen/dp_45"
-        android:layout_marginTop="5dp">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:orientation="vertical"
-            >
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="@dimen/dp_45"
+            android:layout_marginBottom="@dimen/dp_15">
 
-            <TextView
-                android:id="@+id/tvMessage"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello John. How are you. Start working???"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/sp_14"
-                android:textIsSelectable="true"
-                android:autoLink="all"
-                android:paddingHorizontal="@dimen/dp_15"
-                android:paddingVertical="@dimen/dp_15"
-                android:background="@drawable/friend_msg_left_bg"
-                />
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardImage"
-                android:layout_width="@dimen/dp_200"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:visibility="gone"
-                android:layout_marginBottom="@dimen/dp_5"
-                android:maxHeight="@dimen/dp_150"
-                app:cardCornerRadius="@dimen/dp_10">
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_200"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_loading" />
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/tvChatTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today, 11:31 am"
-                android:gravity="end"
-                android:layout_gravity="start"
-                android:textColor="@color/colorTextHint"
-                android:textSize="@dimen/sp_12"
-                android:visibility="visible" />
-        </LinearLayout>
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:background="@drawable/friend_msg_left_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingHorizontal="@dimen/dp_15"
+                    android:paddingVertical="@dimen/dp_15"
+                    android:text="Hello John. How are you. Start working???"
+                    android:textColor="@color/colorText"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardImage"
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:maxHeight="@dimen/dp_150"
+                    android:visibility="gone"
+                    app:cardCornerRadius="@dimen/dp_10">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_200"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_loading" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tvChatTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="end"
+                    android:text="Today, 11:31 am"
+                    android:textColor="@color/colorTextHint"
+                    android:textSize="@dimen/sp_12"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </RelativeLayout>
 
 
-
-</LinearLayout>
+    </LinearLayout>
 </layout>

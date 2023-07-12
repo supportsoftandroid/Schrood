@@ -88,7 +88,8 @@ class MyOrderFragment : Fragment() {
         dataList.clear()
         dataList = orderOngoingList
 
-        adapter = OrderItemAdapter(requireActivity(), dataList) { pos, type -> onOrderClick(pos, type) }
+        adapter =
+            OrderItemAdapter(requireActivity(), dataList) { pos, type -> onOrderClick(pos, type) }
         binding.rvList.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvList.adapter = adapter
         binding.rgStatus.setOnCheckedChangeListener { group, checkedId ->
@@ -143,14 +144,13 @@ class MyOrderFragment : Fragment() {
     private fun onOrderClick(position: Int, type: String) {
         if (type.equals("rate")) {
             dialogRateProduct()
-        }else if (type.equals("view")) {
+        } else if (type.equals("view")) {
             MainActivity.hideNavigationTab()
 
-            StaticData.backStackAddFragment(requireActivity(),OrderDetailsFragment())
-        }
-      else if (type.equals("reorder")) {
+            StaticData.backStackAddFragment(requireActivity(), OrderDetailsFragment())
+        } else if (type.equals("reorder")) {
             MainActivity.hideNavigationTab()
-            StaticData.backStackAddFragment(requireActivity(),CartFragment())
+            StaticData.backStackAddFragment(requireActivity(), CartFragment())
         }
 
     }

@@ -101,11 +101,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"
-                    tools:listitem="@layout/list_cart_item"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvMyCartLabel" />
+                    app:layout_constraintTop_toBottomOf="@id/tvMyCartLabel"
+                    tools:listitem="@layout/list_cart_item" />
 
                 <TextView
                     android:id="@+id/tvOffersLabel"
@@ -116,9 +116,9 @@
                     android:gravity="start"
                     android:text="@string/offers_benefits"
                     android:textColor="@color/colorText"
-                    android:visibility="gone"
-
                     android:textSize="@dimen/sp_16"
+
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rvCartList" />
@@ -173,7 +173,6 @@
                             app:tint="@color/app_color" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -318,6 +317,7 @@
                     android:textSize="@dimen/sp_14"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvGST" />
+
                 <View
                     android:id="@+id/view1"
                     android:layout_width="@dimen/dp_0"
@@ -330,6 +330,7 @@
                     android:textSize="@dimen/sp_18"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvDeliveryChargeLabel" />
+
                 <TextView
                     android:id="@+id/tvToPayLabel"
                     android:layout_width="@dimen/dp_0"
@@ -360,15 +361,14 @@
                     android:id="@+id/tvPaymentOptionLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semi_bold"
                     android:layout_marginTop="@dimen/dp_40"
+                    android:fontFamily="@font/poppins_semi_bold"
                     android:text="@string/payment_option"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/sp_18"
-                    app:layout_constraintTop_toBottomOf="@id/tvToPayLabel"
                     app:layout_constraintEnd_toStartOf="@id/tvAddNewCard"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintTop_toBottomOf="@id/tvToPayLabel" />
 
                 <TextView
                     android:id="@+id/tvAddNewCard"
@@ -388,13 +388,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_20"
-                    tools:listitem="@layout/list_card_item"
-
-                    app:layout_constraintTop_toBottomOf="@id/tvPaymentOptionLabel"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    />
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPaymentOptionLabel"
+                    tools:listitem="@layout/list_card_item" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

@@ -28,8 +28,8 @@
             android:contentDescription="@string/app_name"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:src="@drawable/ic_card"
             android:padding="@dimen/dp_2"
+            android:src="@drawable/ic_card"
             android:text="Master Card"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/sp_12"
@@ -52,6 +52,7 @@
             app:layout_constraintEnd_toStartOf="@+id/imgDelete"
             app:layout_constraintStart_toEndOf="@+id/imgCard"
             app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/imgDelete"
             android:layout_width="@dimen/dp_25"
@@ -60,10 +61,10 @@
             android:padding="@dimen/dp_5"
 
             android:src="@drawable/ic_delete"
-            app:tint="@color/app_color"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgRight"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/app_color" />
+
         <TextView
             android:id="@+id/tvCardNo"
             android:layout_width="0dp"
@@ -81,17 +82,18 @@
             app:layout_constraintTop_toBottomOf="@+id/txtName"
 
             />
+
         <ImageView
             android:id="@+id/imgRight"
             android:layout_width="@dimen/dp_25"
             android:layout_height="@dimen/dp_25"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_5"
             android:adjustViewBounds="true"
             android:padding="@dimen/dp_3"
-            android:layout_gravity="center"
-            android:visibility="gone"
 
             android:src="@drawable/ic_radio_un_checked"
-            android:layout_marginTop="@dimen/dp_5"
+            android:visibility="gone"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtName" />
@@ -108,8 +110,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCardNo" />
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

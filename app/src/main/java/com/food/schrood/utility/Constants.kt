@@ -90,13 +90,14 @@ object Constants {
     const val KEY_USER_ID = "user_id"
     const val KEY_USER_NAME = "user_name"
     const val KEY_LOGIN_DATA = "login_data"
+    const val KEY_IS_NOTIFICATION = "login_data"
+    const val KEY_LOCATION_DATA = "location_data"
     const val KEY_USER_GENDER = "user_gender"
     const val KEY_USER_AGE = "user_age"
     const val KEY_USER_PROFILE = "user_profile"
 
-    const val KEY_FIREBASE_UID = "firebase_uid"
-    const val KEY_SEARCH = "search"
-    const val KEY_USER_PIN = "user_pin"
+
+
     const val KEY_IS_PIN_ENTERED = "is_pin_entered"
     const val IN_APP_PERMISSION = "Need Permissions"
     const val PERMISSIONS_ACCESS_MESSAGE =

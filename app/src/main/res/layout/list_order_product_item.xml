@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="modal"
             type="com.food.schrood.model.CommonDataItem" />
@@ -13,57 +14,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginBottom="@dimen/dp_5"
-        >
+        android:layout_marginBottom="@dimen/dp_5">
 
         <TextView
+            android:id="@+id/tvFoodName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
-            android:text="Cheese Pizza with Coke"
-            android:id="@+id/tvFoodName"
             android:layout_marginTop="@dimen/dp_5"
-            android:maxLines="1"
-            android:gravity="start"
             android:fontFamily="@font/poppins_medium"
+            android:gravity="start"
+            android:maxLines="1"
+            android:text="Cheese Pizza with Coke"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/sp_12"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
             />
 
         <TextView
+            android:id="@+id/tvVariant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
-            android:text="Regular | 1 Item"
-
-            android:id="@+id/tvVariant"
-            android:maxLines="1"
-            android:gravity="center_vertical"
             android:fontFamily="@font/poppins_regular"
+
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="Regular | 1 Item"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/sp_10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFoodName"
 
             />
+
         <TextView
+            android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
-            android:text="$25.90"
-            android:id="@+id/tvPrice"
-            android:maxLines="1"
-            android:gravity="center"
             android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="$25.90"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/sp_10"
-            app:layout_constraintTop_toBottomOf="@id/tvFoodName"
             app:layout_constraintEnd_toEndOf="parent"
-            />
-
-
-
+            app:layout_constraintTop_toBottomOf="@id/tvFoodName" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

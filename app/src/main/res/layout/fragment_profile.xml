@@ -28,7 +28,7 @@
             android:layout_width="@dimen/dp_120"
             android:layout_height="@dimen/dp_120"
             android:layout_marginTop="@dimen/dp_5"
-             android:src="@drawable/ic_profile_placeholder"
+            android:src="@drawable/ic_profile_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgBack" />
@@ -66,13 +66,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/dp_10"
-            android:paddingBottom="@dimen/dp_5"
             android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_5"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/tvLogout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvName"
-            app:layout_constraintBottom_toTopOf="@+id/tvLogout"
 
             tools:listitem="@layout/list_profile_item" />
 
@@ -80,23 +80,24 @@
             android:id="@+id/tvLogout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dp_10"
             android:layout_marginHorizontal="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             android:background="@drawable/button_background_global"
             android:elevation="2dp"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
+            android:inputType="text"
             android:minHeight="@dimen/dp_50"
             android:text="@string/logout"
-            android:inputType="text"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/sp_16"
 
+            app:layout_constraintBottom_toTopOf="@+id/tvDelete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tvDelete"
 
             />
+
         <TextView
             android:id="@+id/tvDelete"
             android:layout_width="match_parent"
@@ -113,8 +114,7 @@
             android:textSize="@dimen/sp_14"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.food.schrood.network.Repository
+package com.food.schrood.network.repository
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -8,11 +8,12 @@ import com.food.schrood.network.RetrofitClient
 import com.food.schrood.utility.Constants
 import com.food.schrood.utility.DialogManager
 import com.food.schrood.utility.StaticData.Companion.showToast
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginRepository(
+class SignUpRepository(
     mContext: Context,
 ) {
     val modelRes = MutableLiveData<LoginResponse>()
@@ -26,16 +27,26 @@ class LoginRepository(
 
     }
 
-    fun userLogin(
+    fun signUp(
+        name: String,
         email: String,
+        mobile: String,
+        country_code: String,
         password: String,
-        is_role: String,
-
         device_token: String
+
     ): MutableLiveData<LoginResponse> {
-        val call = RetrofitClient.apiInterface.userLogin(
-            email, password, is_role,
-            Constants.DEVICE_TYPE, device_token
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("name", name)
+        jsonObject.addProperty("email", email)
+        jsonObject.addProperty("country_code", country_code)
+        jsonObject.addProperty("mobile_number", mobile)
+        jsonObject.addProperty("password", password)
+        jsonObject.addProperty("device_type",  Constants.DEVICE_TYPE)
+        jsonObject.addProperty("push_token", device_token)
+        val call = RetrofitClient.apiInterface.signup(
+            jsonObject
+
         )
 
         setProgressDialog()
